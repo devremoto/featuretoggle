@@ -1,0 +1,103 @@
+<div class="row">
+  <div class="col-4">
+    <app-menu></app-menu>
+  </div>
+  <div class="col-8" *ngIf="selectedNode">
+    <div class="card">
+      <div class="card-header">
+        form
+      </div>
+      <div class="card-body">
+        <div class="row">
+          <div class="col-sm-6">
+            <mat-form-field>
+              <input
+                matInput
+                [(ngModel)]="selectedNode.name"
+                #nodeName
+                placeholder="Name"
+              />
+            </mat-form-field>
+          </div>
+          <div class="col-sm-6">
+            <mat-form-field>
+              <input
+                matInput
+                [matDatepicker]="picker"
+                [(ngModel)]="selectedNode.expiration"
+                placeholder="expiration date"
+              />
+              <mat-datepicker-toggle
+                matSuffix
+                [for]="picker"
+              ></mat-datepicker-toggle>
+              <mat-datepicker #picker></mat-datepicker>
+            </mat-form-field>
+          </div>
+          <hr style="color:black" />
+          <div class="col-sm-6">
+            <em
+              class="fa fa-plus fa-sm"
+              (click)="addUser(selectedNode.users)"
+            ></em
+            ><span (click)="addUser(selectedNode.users)">Add user</span>
+            <div *ngFor="let user of selectedNode.users">
+              <mat-form-field>
+                <input
+                  matInput
+                  [(ngModel)]="user.name"
+                  placeholder="Username"
+                  autofocus
+                />
+                <em
+                  matSuffix
+                  class="fa fa-minus fa-sm red"
+                  (click)="removeUser(selectedNode.users, user)"
+                ></em>
+              </mat-form-field>
+            </div>
+          </div>
+          <div class="col-sm-6">
+            <em
+              class="fa fa-plus fa-sm"
+              (click)="addEnvironment(selectedNode.environments)"
+            ></em>
+            <span (click)="addEnvironment(selectedNode.environments)"
+              >Add environment</span
+            >
+            <div *ngFor="let environment of selectedNode.environments">
+              <mat-form-field>
+                <input
+                  matInput
+                  [(ngModel)]="environment.name"
+                  placeholder="environment"
+                  autofocus
+                />
+                <em
+                  matSuffix
+                  class="fa fa-minus fa-sm"
+                  (click)="
+                    removeEnvironment(selectedNode.environments, environment)
+                  "
+                ></em>
+              </mat-form-field>
+            </div>
+          </div>
+          <div class="col-12">
+            <mat-checkbox
+              class="example-margin"
+              [(ngModel)]="selectedNode.enabled"
+              >Enabled</mat-checkbox
+            >
+          </div>
+          <div class="col-12">
+            <button class="btn btn-success" (click)="saveForm(selectedNode)">
+              Save
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<toaster-container></toaster-container>

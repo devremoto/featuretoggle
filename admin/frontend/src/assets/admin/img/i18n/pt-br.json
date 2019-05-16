@@ -1,0 +1,1357 @@
+﻿{
+	"ABOUT":{
+		"TITLE" : "ABOUT",
+		"MENU" : "About",
+		"GRID" : {
+			"COLUMN" : {		
+				"ID":"ID",
+				"TITLE":"TITLE",
+				"IMAGE":"IMAGE",
+				"DESCRIPTION":"DESCRIPTION",
+				"ACTIONS":"Ação"
+			},
+			"BUTTON": {
+				"EDIT":"Editar",
+				"REMOVE":"Remover",
+				"DUPLICATE":"Duplicar",
+				"NEW": "INCLUIR ABOUT"
+			},
+			"CONFIRM_DELETE":"Deseja realmente excluir este item?",
+			"REMOVE": {
+				"SUCCESS":"About removido com sucesso",
+				"ERROR":"Erro ao remover"
+			},
+			"DUPLICATE": {
+				"SUCCESS":"About duplicado com sucesso",
+				"ERROR":"Erro ao duplicar"
+			}
+		},
+		"FORM" : {
+			"LABEL" : {	
+				"TITLE":"TITLE",
+				"IMAGE":"IMAGE",
+				"DESCRIPTION":"DESCRIPTION",
+				"ID":"ID"
+			},
+			"BUTTON": {
+				"SAVE":"Salvar",
+				"CANCEL":"Cancelar"
+			},
+			"SAVE": {
+				"SUCCESS":"About salvo com sucesso",
+				"ERROR":"Erro ao salvar"
+			}
+		}
+	},
+	"AGENDAMENTO":{
+		"TITLE" : "AGENDAMENTO",
+		"MENU" : "Agendamento",
+		"GRID" : {
+			"COLUMN" : {		
+				"ID":"ID",
+				"DATA":"DATA",
+				"CLIENTE_ID":"CLIENTE ID",
+				"STATUS_AGENDAMENTO_ID":"STATUS AGENDAMENTO ID",
+				"ACTIONS":"Ação"
+			},
+			"BUTTON": {
+				"EDIT":"Editar",
+				"REMOVE":"Remover",
+				"DUPLICATE":"Duplicar",
+				"NEW": "INCLUIR AGENDAMENTO"
+			},
+			"CONFIRM_DELETE":"Deseja realmente excluir este item?",
+			"REMOVE": {
+				"SUCCESS":"Agendamento removido com sucesso",
+				"ERROR":"Erro ao remover"
+			},
+			"DUPLICATE": {
+				"SUCCESS":"Agendamento duplicado com sucesso",
+				"ERROR":"Erro ao duplicar"
+			}
+		},
+		"FORM" : {
+			"LABEL" : {	
+				"DATA":"DATA",
+				"CLIENTE_ID":"CLIENTE ID",
+				"CLIENTE":"CLIENTE",
+				"STATUS_AGENDAMENTO":"STATUS AGENDAMENTO",
+				"STATUS_AGENDAMENTO_ID":"STATUS AGENDAMENTO ID",
+				"ID":"ID"
+			},
+			"BUTTON": {
+				"SAVE":"Salvar",
+				"CANCEL":"Cancelar"
+			},
+			"SAVE": {
+				"SUCCESS":"Agendamento salvo com sucesso",
+				"ERROR":"Erro ao salvar"
+			}
+		}
+	},
+	"CIDADE":{
+		"TITLE" : "CIDADE",
+		"MENU" : "Cidade",
+		"GRID" : {
+			"COLUMN" : {		
+				"ID":"ID",
+				"NOME":"NOME",
+				"ESTADO_ID":"ESTADO ID",
+				"ACTIONS":"Ação"
+			},
+			"BUTTON": {
+				"EDIT":"Editar",
+				"REMOVE":"Remover",
+				"DUPLICATE":"Duplicar",
+				"NEW": "INCLUIR CIDADE"
+			},
+			"CONFIRM_DELETE":"Deseja realmente excluir este item?",
+			"REMOVE": {
+				"SUCCESS":"Cidade removido com sucesso",
+				"ERROR":"Erro ao remover"
+			},
+			"DUPLICATE": {
+				"SUCCESS":"Cidade duplicado com sucesso",
+				"ERROR":"Erro ao duplicar"
+			}
+		},
+		"FORM" : {
+			"LABEL" : {	
+				"NOME":"NOME",
+				"ESTADO_ID":"ESTADO ID",
+				"ESTADO":"ESTADO",
+				"ID":"ID"
+			},
+			"BUTTON": {
+				"SAVE":"Salvar",
+				"CANCEL":"Cancelar"
+			},
+			"SAVE": {
+				"SUCCESS":"Cidade salvo com sucesso",
+				"ERROR":"Erro ao salvar"
+			}
+		}
+	},
+	"CLIENTE":{
+		"TITLE" : "CLIENTE",
+		"MENU" : "Cliente",
+		"GRID" : {
+			"COLUMN" : {		
+				"ID":"ID",
+				"NOME":"NOME",
+				"NOME_FANTASIA":"NOME FANTASIA",
+				"CNPJ":"CNPJ",
+				"CPF":"CPF",
+				"INSCRICAO_ESTADUAL":"INSCRICAO ESTADUAL",
+				"INSCRICAO_MUNICIPAL":"INSCRICAO MUNICIPAL",
+				"TIPO_CONTRIBUICAO_ID":"TIPO CONTRIBUICAO ID",
+				"ENDERECO_ID":"ENDERECO ID",
+				"ACTIONS":"Ação"
+			},
+			"BUTTON": {
+				"EDIT":"Editar",
+				"REMOVE":"Remover",
+				"DUPLICATE":"Duplicar",
+				"NEW": "INCLUIR CLIENTE"
+			},
+			"CONFIRM_DELETE":"Deseja realmente excluir este item?",
+			"REMOVE": {
+				"SUCCESS":"Cliente removido com sucesso",
+				"ERROR":"Erro ao remover"
+			},
+			"DUPLICATE": {
+				"SUCCESS":"Cliente duplicado com sucesso",
+				"ERROR":"Erro ao duplicar"
+			}
+		},
+		"FORM" : {
+			"LABEL" : {	
+				"NOME":"NOME",
+				"NOME_FANTASIA":"NOME FANTASIA",
+				"CNPJ":"CNPJ",
+				"CPF":"CPF",
+				"INSCRICAO_ESTADUAL":"INSCRICAO ESTADUAL",
+				"INSCRICAO_MUNICIPAL":"INSCRICAO MUNICIPAL",
+				"TIPO_CONTRIBUICAO":"TIPO CONTRIBUICAO",
+				"TIPO_CONTRIBUICAO_ID":"TIPO CONTRIBUICAO ID",
+				"ENDERECO":"ENDERECO",
+				"ENDERECO_ID":"ENDERECO ID",
+				"ID":"ID"
+			},
+			"BUTTON": {
+				"SAVE":"Salvar",
+				"CANCEL":"Cancelar"
+			},
+			"SAVE": {
+				"SUCCESS":"Cliente salvo com sucesso",
+				"ERROR":"Erro ao salvar"
+			}
+		}
+	},
+	"CONTACT":{
+		"TITLE" : "CONTACT",
+		"MENU" : "Contact",
+		"GRID" : {
+			"COLUMN" : {		
+				"ID":"ID",
+				"NAME":"NAME",
+				"PHONE_NUMBER":"PHONE NUMBER",
+				"EMAIL":"EMAIL",
+				"SUBJECT":"SUBJECT",
+				"MESSAGE":"MESSAGE",
+				"ACTIONS":"Ação"
+			},
+			"BUTTON": {
+				"EDIT":"Editar",
+				"REMOVE":"Remover",
+				"DUPLICATE":"Duplicar",
+				"NEW": "INCLUIR CONTACT"
+			},
+			"CONFIRM_DELETE":"Deseja realmente excluir este item?",
+			"REMOVE": {
+				"SUCCESS":"Contact removido com sucesso",
+				"ERROR":"Erro ao remover"
+			},
+			"DUPLICATE": {
+				"SUCCESS":"Contact duplicado com sucesso",
+				"ERROR":"Erro ao duplicar"
+			}
+		},
+		"FORM" : {
+			"LABEL" : {	
+				"NAME":"NAME",
+				"PHONE_NUMBER":"PHONE NUMBER",
+				"EMAIL":"EMAIL",
+				"SUBJECT":"SUBJECT",
+				"MESSAGE":"MESSAGE",
+				"ID":"ID"
+			},
+			"BUTTON": {
+				"SAVE":"Salvar",
+				"CANCEL":"Cancelar"
+			},
+			"SAVE": {
+				"SUCCESS":"Contact salvo com sucesso",
+				"ERROR":"Erro ao salvar"
+			}
+		}
+	},
+	"EMPRESA":{
+		"TITLE" : "EMPRESA",
+		"MENU" : "Empresa",
+		"GRID" : {
+			"COLUMN" : {		
+				"ID":"ID",
+				"RAZAO_SOCIAL":"RAZAO SOCIAL",
+				"NOME_FANTASIA":"NOME FANTASIA",
+				"INSCRICAO_ESTADUAL":"INSCRICAO ESTADUAL",
+				"INSCRICAO_MUNICIPAL":"INSCRICAO MUNICIPAL",
+				"CNAE_PRINCIPAL":"CNAE PRINCIPAL",
+				"CONSUMIDOR_FINAL":"CONSUMIDOR FINAL",
+				"REGIME_TRIBUTARIO_ID":"REGIME TRIBUTARIO ID",
+				"TIPO_CONTRIBUICAO_ID":"TIPO CONTRIBUICAO ID",
+				"EMAIL":"EMAIL",
+				"SITE":"SITE",
+				"DDD":"DDD",
+				"TELEFONE":"TELEFONE",
+				"ENDERECO_ID":"ENDERECO ID",
+				"ACTIONS":"Ação"
+			},
+			"BUTTON": {
+				"EDIT":"Editar",
+				"REMOVE":"Remover",
+				"DUPLICATE":"Duplicar",
+				"NEW": "INCLUIR EMPRESA"
+			},
+			"CONFIRM_DELETE":"Deseja realmente excluir este item?",
+			"REMOVE": {
+				"SUCCESS":"Empresa removido com sucesso",
+				"ERROR":"Erro ao remover"
+			},
+			"DUPLICATE": {
+				"SUCCESS":"Empresa duplicado com sucesso",
+				"ERROR":"Erro ao duplicar"
+			}
+		},
+		"FORM" : {
+			"LABEL" : {	
+				"RAZAO_SOCIAL":"RAZAO SOCIAL",
+				"NOME_FANTASIA":"NOME FANTASIA",
+				"INSCRICAO_ESTADUAL":"INSCRICAO ESTADUAL",
+				"INSCRICAO_MUNICIPAL":"INSCRICAO MUNICIPAL",
+				"CNAE_PRINCIPAL":"CNAE PRINCIPAL",
+				"CONSUMIDOR_FINAL":"CONSUMIDOR FINAL",
+				"REGIME_TRIBUTARIO":"REGIME TRIBUTARIO",
+				"REGIME_TRIBUTARIO_ID":"REGIME TRIBUTARIO ID",
+				"TIPO_CONTRIBUICAO":"TIPO CONTRIBUICAO",
+				"TIPO_CONTRIBUICAO_ID":"TIPO CONTRIBUICAO ID",
+				"EMAIL":"EMAIL",
+				"SITE":"SITE",
+				"DDD":"DDD",
+				"TELEFONE":"TELEFONE",
+				"ENDERECO":"ENDERECO",
+				"ENDERECO_ID":"ENDERECO ID",
+				"ID":"ID"
+			},
+			"BUTTON": {
+				"SAVE":"Salvar",
+				"CANCEL":"Cancelar"
+			},
+			"SAVE": {
+				"SUCCESS":"Empresa salvo com sucesso",
+				"ERROR":"Erro ao salvar"
+			}
+		}
+	},
+	"ENDERECO":{
+		"TITLE" : "ENDERECO",
+		"MENU" : "Endereco",
+		"GRID" : {
+			"COLUMN" : {		
+				"ID":"ID",
+				"IDENTIFICACAO":"IDENTIFICACAO",
+				"RUA":"RUA",
+				"NUMERO":"NUMERO",
+				"COMPLEMENTO":"COMPLEMENTO",
+				"BAIRRO":"BAIRRO",
+				"CEP":"CEP",
+				"CIDADE_ID":"CIDADE ID",
+				"ACTIONS":"Ação"
+			},
+			"BUTTON": {
+				"EDIT":"Editar",
+				"REMOVE":"Remover",
+				"DUPLICATE":"Duplicar",
+				"NEW": "INCLUIR ENDERECO"
+			},
+			"CONFIRM_DELETE":"Deseja realmente excluir este item?",
+			"REMOVE": {
+				"SUCCESS":"Endereco removido com sucesso",
+				"ERROR":"Erro ao remover"
+			},
+			"DUPLICATE": {
+				"SUCCESS":"Endereco duplicado com sucesso",
+				"ERROR":"Erro ao duplicar"
+			}
+		},
+		"FORM" : {
+			"LABEL" : {	
+				"IDENTIFICACAO":"IDENTIFICACAO",
+				"RUA":"RUA",
+				"NUMERO":"NUMERO",
+				"COMPLEMENTO":"COMPLEMENTO",
+				"BAIRRO":"BAIRRO",
+				"CEP":"CEP",
+				"CIDADE_ID":"CIDADE ID",
+				"CIDADE":"CIDADE",
+				"ID":"ID"
+			},
+			"BUTTON": {
+				"SAVE":"Salvar",
+				"CANCEL":"Cancelar"
+			},
+			"SAVE": {
+				"SUCCESS":"Endereco salvo com sucesso",
+				"ERROR":"Erro ao salvar"
+			}
+		}
+	},
+	"ESTADO":{
+		"TITLE" : "ESTADO",
+		"MENU" : "Estado",
+		"GRID" : {
+			"COLUMN" : {		
+				"ID":"ID",
+				"NOME":"NOME",
+				"UF":"UF",
+				"PAIS_ID":"PAIS ID",
+				"ACTIONS":"Ação"
+			},
+			"BUTTON": {
+				"EDIT":"Editar",
+				"REMOVE":"Remover",
+				"DUPLICATE":"Duplicar",
+				"NEW": "INCLUIR ESTADO"
+			},
+			"CONFIRM_DELETE":"Deseja realmente excluir este item?",
+			"REMOVE": {
+				"SUCCESS":"Estado removido com sucesso",
+				"ERROR":"Erro ao remover"
+			},
+			"DUPLICATE": {
+				"SUCCESS":"Estado duplicado com sucesso",
+				"ERROR":"Erro ao duplicar"
+			}
+		},
+		"FORM" : {
+			"LABEL" : {	
+				"NOME":"NOME",
+				"UF":"UF",
+				"PAIS_ID":"PAIS ID",
+				"PAIS":"PAIS",
+				"CIDADES":"CIDADES",
+				"ID":"ID"
+			},
+			"BUTTON": {
+				"SAVE":"Salvar",
+				"CANCEL":"Cancelar"
+			},
+			"SAVE": {
+				"SUCCESS":"Estado salvo com sucesso",
+				"ERROR":"Erro ao salvar"
+			}
+		}
+	},
+	"FILIAL":{
+		"TITLE" : "FILIAL",
+		"MENU" : "Filial",
+		"GRID" : {
+			"COLUMN" : {		
+				"ID":"ID",
+				"RAZAO_SOCIAL":"RAZAO SOCIAL",
+				"NOME_FANTASIA":"NOME FANTASIA",
+				"INSCRICAO_ESTADUAL":"INSCRICAO ESTADUAL",
+				"INSCRICAO_MUNICIPAL":"INSCRICAO MUNICIPAL",
+				"CNAE_PRINCIPAL":"CNAE PRINCIPAL",
+				"CONSUMIDOR_FINAL":"CONSUMIDOR FINAL",
+				"REGIME_TRIBUTARIO_ID":"REGIME TRIBUTARIO ID",
+				"TIPO_CONTRIBUICAO_ID":"TIPO CONTRIBUICAO ID",
+				"EMAIL":"EMAIL",
+				"SITE":"SITE",
+				"DDD":"DDD",
+				"TELEFONE":"TELEFONE",
+				"ENDERECO_ID":"ENDERECO ID",
+				"ACTIONS":"Ação"
+			},
+			"BUTTON": {
+				"EDIT":"Editar",
+				"REMOVE":"Remover",
+				"DUPLICATE":"Duplicar",
+				"NEW": "INCLUIR FILIAL"
+			},
+			"CONFIRM_DELETE":"Deseja realmente excluir este item?",
+			"REMOVE": {
+				"SUCCESS":"Filial removido com sucesso",
+				"ERROR":"Erro ao remover"
+			},
+			"DUPLICATE": {
+				"SUCCESS":"Filial duplicado com sucesso",
+				"ERROR":"Erro ao duplicar"
+			}
+		},
+		"FORM" : {
+			"LABEL" : {	
+				"RAZAO_SOCIAL":"RAZAO SOCIAL",
+				"NOME_FANTASIA":"NOME FANTASIA",
+				"INSCRICAO_ESTADUAL":"INSCRICAO ESTADUAL",
+				"INSCRICAO_MUNICIPAL":"INSCRICAO MUNICIPAL",
+				"CNAE_PRINCIPAL":"CNAE PRINCIPAL",
+				"CONSUMIDOR_FINAL":"CONSUMIDOR FINAL",
+				"REGIME_TRIBUTARIO":"REGIME TRIBUTARIO",
+				"REGIME_TRIBUTARIO_ID":"REGIME TRIBUTARIO ID",
+				"TIPO_CONTRIBUICAO":"TIPO CONTRIBUICAO",
+				"TIPO_CONTRIBUICAO_ID":"TIPO CONTRIBUICAO ID",
+				"EMAIL":"EMAIL",
+				"SITE":"SITE",
+				"DDD":"DDD",
+				"TELEFONE":"TELEFONE",
+				"ENDERECO":"ENDERECO",
+				"ENDERECO_ID":"ENDERECO ID",
+				"ID":"ID"
+			},
+			"BUTTON": {
+				"SAVE":"Salvar",
+				"CANCEL":"Cancelar"
+			},
+			"SAVE": {
+				"SUCCESS":"Filial salvo com sucesso",
+				"ERROR":"Erro ao salvar"
+			}
+		}
+	},
+	"FORNECEDOR":{
+		"TITLE" : "FORNECEDOR",
+		"MENU" : "Fornecedor",
+		"GRID" : {
+			"COLUMN" : {		
+				"ID":"ID",
+				"RAZAO_SOCIAL":"RAZAO SOCIAL",
+				"NOME_FANTASIA":"NOME FANTASIA",
+				"INSCRICAO_ESTADUAL":"INSCRICAO ESTADUAL",
+				"INSCRICAO_MUNICIPAL":"INSCRICAO MUNICIPAL",
+				"CNAE_PRINCIPAL":"CNAE PRINCIPAL",
+				"CONSUMIDOR_FINAL":"CONSUMIDOR FINAL",
+				"REGIME_TRIBUTARIO_ID":"REGIME TRIBUTARIO ID",
+				"TIPO_CONTRIBUICAO_ID":"TIPO CONTRIBUICAO ID",
+				"EMAIL":"EMAIL",
+				"SITE":"SITE",
+				"DDD":"DDD",
+				"TELEFONE":"TELEFONE",
+				"ENDERECO_ID":"ENDERECO ID",
+				"ACTIONS":"Ação"
+			},
+			"BUTTON": {
+				"EDIT":"Editar",
+				"REMOVE":"Remover",
+				"DUPLICATE":"Duplicar",
+				"NEW": "INCLUIR FORNECEDOR"
+			},
+			"CONFIRM_DELETE":"Deseja realmente excluir este item?",
+			"REMOVE": {
+				"SUCCESS":"Fornecedor removido com sucesso",
+				"ERROR":"Erro ao remover"
+			},
+			"DUPLICATE": {
+				"SUCCESS":"Fornecedor duplicado com sucesso",
+				"ERROR":"Erro ao duplicar"
+			}
+		},
+		"FORM" : {
+			"LABEL" : {	
+				"RAZAO_SOCIAL":"RAZAO SOCIAL",
+				"NOME_FANTASIA":"NOME FANTASIA",
+				"INSCRICAO_ESTADUAL":"INSCRICAO ESTADUAL",
+				"INSCRICAO_MUNICIPAL":"INSCRICAO MUNICIPAL",
+				"CNAE_PRINCIPAL":"CNAE PRINCIPAL",
+				"CONSUMIDOR_FINAL":"CONSUMIDOR FINAL",
+				"REGIME_TRIBUTARIO":"REGIME TRIBUTARIO",
+				"REGIME_TRIBUTARIO_ID":"REGIME TRIBUTARIO ID",
+				"TIPO_CONTRIBUICAO":"TIPO CONTRIBUICAO",
+				"TIPO_CONTRIBUICAO_ID":"TIPO CONTRIBUICAO ID",
+				"EMAIL":"EMAIL",
+				"SITE":"SITE",
+				"DDD":"DDD",
+				"TELEFONE":"TELEFONE",
+				"ENDERECO":"ENDERECO",
+				"ENDERECO_ID":"ENDERECO ID",
+				"ID":"ID"
+			},
+			"BUTTON": {
+				"SAVE":"Salvar",
+				"CANCEL":"Cancelar"
+			},
+			"SAVE": {
+				"SUCCESS":"Fornecedor salvo com sucesso",
+				"ERROR":"Erro ao salvar"
+			}
+		}
+	},
+	"ITEM_ORCAMENTO":{
+		"TITLE" : "ITEM ORCAMENTO",
+		"MENU" : "Item Orcamento",
+		"GRID" : {
+			"COLUMN" : {		
+				"ID":"ID",
+				"PRODUTO_ID":"PRODUTO ID",
+				"ORCAMENTO_ID":"ORCAMENTO ID",
+				"ACTIONS":"Ação"
+			},
+			"BUTTON": {
+				"EDIT":"Editar",
+				"REMOVE":"Remover",
+				"DUPLICATE":"Duplicar",
+				"NEW": "INCLUIR ITEM ORCAMENTO"
+			},
+			"CONFIRM_DELETE":"Deseja realmente excluir este item?",
+			"REMOVE": {
+				"SUCCESS":"Item Orcamento removido com sucesso",
+				"ERROR":"Erro ao remover"
+			},
+			"DUPLICATE": {
+				"SUCCESS":"Item Orcamento duplicado com sucesso",
+				"ERROR":"Erro ao duplicar"
+			}
+		},
+		"FORM" : {
+			"LABEL" : {	
+				"PRODUTO_ID":"PRODUTO ID",
+				"PRODUTO":"PRODUTO",
+				"ORCAMENTO_ID":"ORCAMENTO ID",
+				"ORCAMENTO":"ORCAMENTO",
+				"ID":"ID"
+			},
+			"BUTTON": {
+				"SAVE":"Salvar",
+				"CANCEL":"Cancelar"
+			},
+			"SAVE": {
+				"SUCCESS":"Item Orcamento salvo com sucesso",
+				"ERROR":"Erro ao salvar"
+			}
+		}
+	},
+	"LANGUAGE":{
+		"TITLE" : "LANGUAGE",
+		"MENU" : "Language",
+		"GRID" : {
+			"COLUMN" : {		
+				"ID":"ID",
+				"CODE":"CODE",
+				"NAME":"NAME",
+				"IMAGE":"IMAGE",
+				"ACTIVE":"ACTIVE",
+				"DEFAULT":"DEFAULT",
+				"ACTIONS":"Ação"
+			},
+			"BUTTON": {
+				"EDIT":"Editar",
+				"REMOVE":"Remover",
+				"DUPLICATE":"Duplicar",
+				"NEW": "INCLUIR LANGUAGE"
+			},
+			"CONFIRM_DELETE":"Deseja realmente excluir este item?",
+			"REMOVE": {
+				"SUCCESS":"Language removido com sucesso",
+				"ERROR":"Erro ao remover"
+			},
+			"DUPLICATE": {
+				"SUCCESS":"Language duplicado com sucesso",
+				"ERROR":"Erro ao duplicar"
+			}
+		},
+		"FORM" : {
+			"LABEL" : {	
+				"CODE":"CODE",
+				"NAME":"NAME",
+				"IMAGE":"IMAGE",
+				"ACTIVE":"ACTIVE",
+				"DEFAULT":"DEFAULT",
+				"ID":"ID"
+			},
+			"BUTTON": {
+				"SAVE":"Salvar",
+				"CANCEL":"Cancelar"
+			},
+			"SAVE": {
+				"SUCCESS":"Language salvo com sucesso",
+				"ERROR":"Erro ao salvar"
+			}
+		}
+	},
+	"LOJA":{
+		"TITLE" : "LOJA",
+		"MENU" : "Loja",
+		"GRID" : {
+			"COLUMN" : {		
+				"ID":"ID",
+				"RAZAO_SOCIAL":"RAZAO SOCIAL",
+				"NOME_FANTASIA":"NOME FANTASIA",
+				"INSCRICAO_ESTADUAL":"INSCRICAO ESTADUAL",
+				"INSCRICAO_MUNICIPAL":"INSCRICAO MUNICIPAL",
+				"CNAE_PRINCIPAL":"CNAE PRINCIPAL",
+				"CONSUMIDOR_FINAL":"CONSUMIDOR FINAL",
+				"REGIME_TRIBUTARIO_ID":"REGIME TRIBUTARIO ID",
+				"TIPO_CONTRIBUICAO_ID":"TIPO CONTRIBUICAO ID",
+				"EMAIL":"EMAIL",
+				"SITE":"SITE",
+				"DDD":"DDD",
+				"TELEFONE":"TELEFONE",
+				"ENDERECO_ID":"ENDERECO ID",
+				"ACTIONS":"Ação"
+			},
+			"BUTTON": {
+				"EDIT":"Editar",
+				"REMOVE":"Remover",
+				"DUPLICATE":"Duplicar",
+				"NEW": "INCLUIR LOJA"
+			},
+			"CONFIRM_DELETE":"Deseja realmente excluir este item?",
+			"REMOVE": {
+				"SUCCESS":"Loja removido com sucesso",
+				"ERROR":"Erro ao remover"
+			},
+			"DUPLICATE": {
+				"SUCCESS":"Loja duplicado com sucesso",
+				"ERROR":"Erro ao duplicar"
+			}
+		},
+		"FORM" : {
+			"LABEL" : {	
+				"RAZAO_SOCIAL":"RAZAO SOCIAL",
+				"NOME_FANTASIA":"NOME FANTASIA",
+				"INSCRICAO_ESTADUAL":"INSCRICAO ESTADUAL",
+				"INSCRICAO_MUNICIPAL":"INSCRICAO MUNICIPAL",
+				"CNAE_PRINCIPAL":"CNAE PRINCIPAL",
+				"CONSUMIDOR_FINAL":"CONSUMIDOR FINAL",
+				"REGIME_TRIBUTARIO":"REGIME TRIBUTARIO",
+				"REGIME_TRIBUTARIO_ID":"REGIME TRIBUTARIO ID",
+				"TIPO_CONTRIBUICAO":"TIPO CONTRIBUICAO",
+				"TIPO_CONTRIBUICAO_ID":"TIPO CONTRIBUICAO ID",
+				"EMAIL":"EMAIL",
+				"SITE":"SITE",
+				"DDD":"DDD",
+				"TELEFONE":"TELEFONE",
+				"ENDERECO":"ENDERECO",
+				"ENDERECO_ID":"ENDERECO ID",
+				"ID":"ID"
+			},
+			"BUTTON": {
+				"SAVE":"Salvar",
+				"CANCEL":"Cancelar"
+			},
+			"SAVE": {
+				"SUCCESS":"Loja salvo com sucesso",
+				"ERROR":"Erro ao salvar"
+			}
+		}
+	},
+	"MAILING":{
+		"TITLE" : "MAILING",
+		"MENU" : "Mailing",
+		"GRID" : {
+			"COLUMN" : {		
+				"ID":"ID",
+				"EMAIL":"EMAIL",
+				"ACTIVE":"ACTIVE",
+				"ACTIONS":"Ação"
+			},
+			"BUTTON": {
+				"EDIT":"Editar",
+				"REMOVE":"Remover",
+				"DUPLICATE":"Duplicar",
+				"NEW": "INCLUIR MAILING"
+			},
+			"CONFIRM_DELETE":"Deseja realmente excluir este item?",
+			"REMOVE": {
+				"SUCCESS":"Mailing removido com sucesso",
+				"ERROR":"Erro ao remover"
+			},
+			"DUPLICATE": {
+				"SUCCESS":"Mailing duplicado com sucesso",
+				"ERROR":"Erro ao duplicar"
+			}
+		},
+		"FORM" : {
+			"LABEL" : {	
+				"EMAIL":"EMAIL",
+				"ACTIVE":"ACTIVE",
+				"ID":"ID"
+			},
+			"BUTTON": {
+				"SAVE":"Salvar",
+				"CANCEL":"Cancelar"
+			},
+			"SAVE": {
+				"SUCCESS":"Mailing salvo com sucesso",
+				"ERROR":"Erro ao salvar"
+			}
+		}
+	},
+	"ORCAMENTO":{
+		"TITLE" : "ORCAMENTO",
+		"MENU" : "Orcamento",
+		"GRID" : {
+			"COLUMN" : {		
+				"ID":"ID",
+				"DATA":"DATA",
+				"CLIENTE_ID":"CLIENTE ID",
+				"STATUS_ORCAMENTO_ID":"STATUS ORCAMENTO ID",
+				"ACTIONS":"Ação"
+			},
+			"BUTTON": {
+				"EDIT":"Editar",
+				"REMOVE":"Remover",
+				"DUPLICATE":"Duplicar",
+				"NEW": "INCLUIR ORCAMENTO"
+			},
+			"CONFIRM_DELETE":"Deseja realmente excluir este item?",
+			"REMOVE": {
+				"SUCCESS":"Orcamento removido com sucesso",
+				"ERROR":"Erro ao remover"
+			},
+			"DUPLICATE": {
+				"SUCCESS":"Orcamento duplicado com sucesso",
+				"ERROR":"Erro ao duplicar"
+			}
+		},
+		"FORM" : {
+			"LABEL" : {	
+				"DATA":"DATA",
+				"CLIENTE_ID":"CLIENTE ID",
+				"CLIENTE":"CLIENTE",
+				"ITEMS":"ITEMS",
+				"STATUS_ORCAMENTO":"STATUS ORCAMENTO",
+				"STATUS_ORCAMENTO_ID":"STATUS ORCAMENTO ID",
+				"ID":"ID"
+			},
+			"BUTTON": {
+				"SAVE":"Salvar",
+				"CANCEL":"Cancelar"
+			},
+			"SAVE": {
+				"SUCCESS":"Orcamento salvo com sucesso",
+				"ERROR":"Erro ao salvar"
+			}
+		}
+	},
+	"ORIGEM_PRODUTO":{
+		"TITLE" : "ORIGEM PRODUTO",
+		"MENU" : "Origem Produto",
+		"GRID" : {
+			"COLUMN" : {		
+				"ID":"ID",
+				"DESCRICAO":"DESCRICAO",
+				"ACTIONS":"Ação"
+			},
+			"BUTTON": {
+				"EDIT":"Editar",
+				"REMOVE":"Remover",
+				"DUPLICATE":"Duplicar",
+				"NEW": "INCLUIR ORIGEM PRODUTO"
+			},
+			"CONFIRM_DELETE":"Deseja realmente excluir este item?",
+			"REMOVE": {
+				"SUCCESS":"Origem Produto removido com sucesso",
+				"ERROR":"Erro ao remover"
+			},
+			"DUPLICATE": {
+				"SUCCESS":"Origem Produto duplicado com sucesso",
+				"ERROR":"Erro ao duplicar"
+			}
+		},
+		"FORM" : {
+			"LABEL" : {	
+				"DESCRICAO":"DESCRICAO",
+				"ID":"ID"
+			},
+			"BUTTON": {
+				"SAVE":"Salvar",
+				"CANCEL":"Cancelar"
+			},
+			"SAVE": {
+				"SUCCESS":"Origem Produto salvo com sucesso",
+				"ERROR":"Erro ao salvar"
+			}
+		}
+	},
+	"PAIS":{
+		"TITLE" : "PAIS",
+		"MENU" : "Pais",
+		"GRID" : {
+			"COLUMN" : {		
+				"ID":"ID",
+				"NOME":"NOME",
+				"SIGLA":"SIGLA",
+				"ACTIONS":"Ação"
+			},
+			"BUTTON": {
+				"EDIT":"Editar",
+				"REMOVE":"Remover",
+				"DUPLICATE":"Duplicar",
+				"NEW": "INCLUIR PAIS"
+			},
+			"CONFIRM_DELETE":"Deseja realmente excluir este item?",
+			"REMOVE": {
+				"SUCCESS":"Pais removido com sucesso",
+				"ERROR":"Erro ao remover"
+			},
+			"DUPLICATE": {
+				"SUCCESS":"Pais duplicado com sucesso",
+				"ERROR":"Erro ao duplicar"
+			}
+		},
+		"FORM" : {
+			"LABEL" : {	
+				"NOME":"NOME",
+				"SIGLA":"SIGLA",
+				"ESTADOS":"ESTADOS",
+				"ID":"ID"
+			},
+			"BUTTON": {
+				"SAVE":"Salvar",
+				"CANCEL":"Cancelar"
+			},
+			"SAVE": {
+				"SUCCESS":"Pais salvo com sucesso",
+				"ERROR":"Erro ao salvar"
+			}
+		}
+	},
+	"PRECO":{
+		"TITLE" : "PRECO",
+		"MENU" : "Preco",
+		"GRID" : {
+			"COLUMN" : {		
+				"ID":"ID",
+				"PRODUTO_ID":"PRODUTO ID",
+				"EMPRESA_ID":"EMPRESA ID",
+				"VALOR":"VALOR",
+				"ATIVO":"ATIVO",
+				"ACTIONS":"Ação"
+			},
+			"BUTTON": {
+				"EDIT":"Editar",
+				"REMOVE":"Remover",
+				"DUPLICATE":"Duplicar",
+				"NEW": "INCLUIR PRECO"
+			},
+			"CONFIRM_DELETE":"Deseja realmente excluir este item?",
+			"REMOVE": {
+				"SUCCESS":"Preco removido com sucesso",
+				"ERROR":"Erro ao remover"
+			},
+			"DUPLICATE": {
+				"SUCCESS":"Preco duplicado com sucesso",
+				"ERROR":"Erro ao duplicar"
+			}
+		},
+		"FORM" : {
+			"LABEL" : {	
+				"PRODUTO":"PRODUTO",
+				"PRODUTO_ID":"PRODUTO ID",
+				"EMPRESA":"EMPRESA",
+				"EMPRESA_ID":"EMPRESA ID",
+				"VALOR":"VALOR",
+				"ATIVO":"ATIVO",
+				"ID":"ID"
+			},
+			"BUTTON": {
+				"SAVE":"Salvar",
+				"CANCEL":"Cancelar"
+			},
+			"SAVE": {
+				"SUCCESS":"Preco salvo com sucesso",
+				"ERROR":"Erro ao salvar"
+			}
+		}
+	},
+	"PRODUTO":{
+		"TITLE" : "PRODUTO",
+		"MENU" : "Produto",
+		"GRID" : {
+			"COLUMN" : {		
+				"ID":"ID",
+				"CODIGO_EAN":"CODIGO EAN",
+				"CODIGO_EAN_TRIBUTARIO":"CODIGO EAN TRIBUTARIO",
+				"NCM":"NCM",
+				"NOME":"NOME",
+				"DESCRICAO":"DESCRICAO",
+				"PRECO":"PRECO",
+				"ORIGEM_PRODUTO_ID":"ORIGEM PRODUTO ID",
+				"ACTIONS":"Ação"
+			},
+			"BUTTON": {
+				"EDIT":"Editar",
+				"REMOVE":"Remover",
+				"DUPLICATE":"Duplicar",
+				"NEW": "INCLUIR PRODUTO"
+			},
+			"CONFIRM_DELETE":"Deseja realmente excluir este item?",
+			"REMOVE": {
+				"SUCCESS":"Produto removido com sucesso",
+				"ERROR":"Erro ao remover"
+			},
+			"DUPLICATE": {
+				"SUCCESS":"Produto duplicado com sucesso",
+				"ERROR":"Erro ao duplicar"
+			}
+		},
+		"FORM" : {
+			"LABEL" : {	
+				"CODIGO_EAN":"CODIGO EAN",
+				"CODIGO_EAN_TRIBUTARIO":"CODIGO EAN TRIBUTARIO",
+				"NCM":"NCM",
+				"NOME":"NOME",
+				"DESCRICAO":"DESCRICAO",
+				"PRECO":"PRECO",
+				"ORIGEM_PRODUTO":"ORIGEM PRODUTO",
+				"ORIGEM_PRODUTO_ID":"ORIGEM PRODUTO ID",
+				"ID":"ID"
+			},
+			"BUTTON": {
+				"SAVE":"Salvar",
+				"CANCEL":"Cancelar"
+			},
+			"SAVE": {
+				"SUCCESS":"Produto salvo com sucesso",
+				"ERROR":"Erro ao salvar"
+			}
+		}
+	},
+	"REGIME_TRIBUTARIO":{
+		"TITLE" : "REGIME TRIBUTARIO",
+		"MENU" : "Regime Tributario",
+		"GRID" : {
+			"COLUMN" : {		
+				"ID":"ID",
+				"DESCRICAO":"DESCRICAO",
+				"ACTIONS":"Ação"
+			},
+			"BUTTON": {
+				"EDIT":"Editar",
+				"REMOVE":"Remover",
+				"DUPLICATE":"Duplicar",
+				"NEW": "INCLUIR REGIME TRIBUTARIO"
+			},
+			"CONFIRM_DELETE":"Deseja realmente excluir este item?",
+			"REMOVE": {
+				"SUCCESS":"Regime Tributario removido com sucesso",
+				"ERROR":"Erro ao remover"
+			},
+			"DUPLICATE": {
+				"SUCCESS":"Regime Tributario duplicado com sucesso",
+				"ERROR":"Erro ao duplicar"
+			}
+		},
+		"FORM" : {
+			"LABEL" : {	
+				"DESCRICAO":"DESCRICAO",
+				"ID":"ID"
+			},
+			"BUTTON": {
+				"SAVE":"Salvar",
+				"CANCEL":"Cancelar"
+			},
+			"SAVE": {
+				"SUCCESS":"Regime Tributario salvo com sucesso",
+				"ERROR":"Erro ao salvar"
+			}
+		}
+	},
+	"SETTINGS":{
+		"TITLE" : "SETTINGS",
+		"MENU" : "Settings",
+		"GRID" : {
+			"COLUMN" : {		
+				"ID":"ID",
+				"KEY":"KEY",
+				"VALUE":"VALUE",
+				"ACTIONS":"Ação"
+			},
+			"BUTTON": {
+				"EDIT":"Editar",
+				"REMOVE":"Remover",
+				"DUPLICATE":"Duplicar",
+				"NEW": "INCLUIR SETTINGS"
+			},
+			"CONFIRM_DELETE":"Deseja realmente excluir este item?",
+			"REMOVE": {
+				"SUCCESS":"Settings removido com sucesso",
+				"ERROR":"Erro ao remover"
+			},
+			"DUPLICATE": {
+				"SUCCESS":"Settings duplicado com sucesso",
+				"ERROR":"Erro ao duplicar"
+			}
+		},
+		"FORM" : {
+			"LABEL" : {	
+				"KEY":"KEY",
+				"VALUE":"VALUE",
+				"ID":"ID"
+			},
+			"BUTTON": {
+				"SAVE":"Salvar",
+				"CANCEL":"Cancelar"
+			},
+			"SAVE": {
+				"SUCCESS":"Settings salvo com sucesso",
+				"ERROR":"Erro ao salvar"
+			}
+		}
+	},
+	"SOCIAL_NETWORK":{
+		"TITLE" : "SOCIAL NETWORK",
+		"MENU" : "Social Network",
+		"GRID" : {
+			"COLUMN" : {		
+				"ID":"ID",
+				"NAME":"NAME",
+				"CSS_ICON":"CSS ICON",
+				"URL":"URL",
+				"ACTIVE":"ACTIVE",
+				"ACTIONS":"Ação"
+			},
+			"BUTTON": {
+				"EDIT":"Editar",
+				"REMOVE":"Remover",
+				"DUPLICATE":"Duplicar",
+				"NEW": "INCLUIR SOCIAL NETWORK"
+			},
+			"CONFIRM_DELETE":"Deseja realmente excluir este item?",
+			"REMOVE": {
+				"SUCCESS":"Social Network removido com sucesso",
+				"ERROR":"Erro ao remover"
+			},
+			"DUPLICATE": {
+				"SUCCESS":"Social Network duplicado com sucesso",
+				"ERROR":"Erro ao duplicar"
+			}
+		},
+		"FORM" : {
+			"LABEL" : {	
+				"NAME":"NAME",
+				"CSS_ICON":"CSS ICON",
+				"URL":"URL",
+				"ACTIVE":"ACTIVE",
+				"ID":"ID"
+			},
+			"BUTTON": {
+				"SAVE":"Salvar",
+				"CANCEL":"Cancelar"
+			},
+			"SAVE": {
+				"SUCCESS":"Social Network salvo com sucesso",
+				"ERROR":"Erro ao salvar"
+			}
+		}
+	},
+	"STATUS_AGENDAMENTO":{
+		"TITLE" : "STATUS AGENDAMENTO",
+		"MENU" : "Status Agendamento",
+		"GRID" : {
+			"COLUMN" : {		
+				"ID":"ID",
+				"DESCRICAO":"DESCRICAO",
+				"ACTIONS":"Ação"
+			},
+			"BUTTON": {
+				"EDIT":"Editar",
+				"REMOVE":"Remover",
+				"DUPLICATE":"Duplicar",
+				"NEW": "INCLUIR STATUS AGENDAMENTO"
+			},
+			"CONFIRM_DELETE":"Deseja realmente excluir este item?",
+			"REMOVE": {
+				"SUCCESS":"Status Agendamento removido com sucesso",
+				"ERROR":"Erro ao remover"
+			},
+			"DUPLICATE": {
+				"SUCCESS":"Status Agendamento duplicado com sucesso",
+				"ERROR":"Erro ao duplicar"
+			}
+		},
+		"FORM" : {
+			"LABEL" : {	
+				"DESCRICAO":"DESCRICAO",
+				"ID":"ID"
+			},
+			"BUTTON": {
+				"SAVE":"Salvar",
+				"CANCEL":"Cancelar"
+			},
+			"SAVE": {
+				"SUCCESS":"Status Agendamento salvo com sucesso",
+				"ERROR":"Erro ao salvar"
+			}
+		}
+	},
+	"STATUS_ORCAMENTO":{
+		"TITLE" : "STATUS ORCAMENTO",
+		"MENU" : "Status Orcamento",
+		"GRID" : {
+			"COLUMN" : {		
+				"ID":"ID",
+				"DESCRICAO":"DESCRICAO",
+				"ACTIONS":"Ação"
+			},
+			"BUTTON": {
+				"EDIT":"Editar",
+				"REMOVE":"Remover",
+				"DUPLICATE":"Duplicar",
+				"NEW": "INCLUIR STATUS ORCAMENTO"
+			},
+			"CONFIRM_DELETE":"Deseja realmente excluir este item?",
+			"REMOVE": {
+				"SUCCESS":"Status Orcamento removido com sucesso",
+				"ERROR":"Erro ao remover"
+			},
+			"DUPLICATE": {
+				"SUCCESS":"Status Orcamento duplicado com sucesso",
+				"ERROR":"Erro ao duplicar"
+			}
+		},
+		"FORM" : {
+			"LABEL" : {	
+				"DESCRICAO":"DESCRICAO",
+				"ID":"ID"
+			},
+			"BUTTON": {
+				"SAVE":"Salvar",
+				"CANCEL":"Cancelar"
+			},
+			"SAVE": {
+				"SUCCESS":"Status Orcamento salvo com sucesso",
+				"ERROR":"Erro ao salvar"
+			}
+		}
+	},
+	"TIPO_CONTRIBUICAO":{
+		"TITLE" : "TIPO CONTRIBUICAO",
+		"MENU" : "Tipo Contribuicao",
+		"GRID" : {
+			"COLUMN" : {		
+				"ID":"ID",
+				"DESCRICAO":"DESCRICAO",
+				"ACTIONS":"Ação"
+			},
+			"BUTTON": {
+				"EDIT":"Editar",
+				"REMOVE":"Remover",
+				"DUPLICATE":"Duplicar",
+				"NEW": "INCLUIR TIPO CONTRIBUICAO"
+			},
+			"CONFIRM_DELETE":"Deseja realmente excluir este item?",
+			"REMOVE": {
+				"SUCCESS":"Tipo Contribuicao removido com sucesso",
+				"ERROR":"Erro ao remover"
+			},
+			"DUPLICATE": {
+				"SUCCESS":"Tipo Contribuicao duplicado com sucesso",
+				"ERROR":"Erro ao duplicar"
+			}
+		},
+		"FORM" : {
+			"LABEL" : {	
+				"DESCRICAO":"DESCRICAO",
+				"ID":"ID"
+			},
+			"BUTTON": {
+				"SAVE":"Salvar",
+				"CANCEL":"Cancelar"
+			},
+			"SAVE": {
+				"SUCCESS":"Tipo Contribuicao salvo com sucesso",
+				"ERROR":"Erro ao salvar"
+			}
+		}
+	},
+	"TRANSPORTADORA":{
+		"TITLE" : "TRANSPORTADORA",
+		"MENU" : "Transportadora",
+		"GRID" : {
+			"COLUMN" : {		
+				"ID":"ID",
+				"RAZAO_SOCIAL":"RAZAO SOCIAL",
+				"NOME_FANTASIA":"NOME FANTASIA",
+				"INSCRICAO_ESTADUAL":"INSCRICAO ESTADUAL",
+				"INSCRICAO_MUNICIPAL":"INSCRICAO MUNICIPAL",
+				"CNAE_PRINCIPAL":"CNAE PRINCIPAL",
+				"CONSUMIDOR_FINAL":"CONSUMIDOR FINAL",
+				"REGIME_TRIBUTARIO_ID":"REGIME TRIBUTARIO ID",
+				"TIPO_CONTRIBUICAO_ID":"TIPO CONTRIBUICAO ID",
+				"EMAIL":"EMAIL",
+				"SITE":"SITE",
+				"DDD":"DDD",
+				"TELEFONE":"TELEFONE",
+				"ENDERECO_ID":"ENDERECO ID",
+				"ACTIONS":"Ação"
+			},
+			"BUTTON": {
+				"EDIT":"Editar",
+				"REMOVE":"Remover",
+				"DUPLICATE":"Duplicar",
+				"NEW": "INCLUIR TRANSPORTADORA"
+			},
+			"CONFIRM_DELETE":"Deseja realmente excluir este item?",
+			"REMOVE": {
+				"SUCCESS":"Transportadora removido com sucesso",
+				"ERROR":"Erro ao remover"
+			},
+			"DUPLICATE": {
+				"SUCCESS":"Transportadora duplicado com sucesso",
+				"ERROR":"Erro ao duplicar"
+			}
+		},
+		"FORM" : {
+			"LABEL" : {	
+				"RAZAO_SOCIAL":"RAZAO SOCIAL",
+				"NOME_FANTASIA":"NOME FANTASIA",
+				"INSCRICAO_ESTADUAL":"INSCRICAO ESTADUAL",
+				"INSCRICAO_MUNICIPAL":"INSCRICAO MUNICIPAL",
+				"CNAE_PRINCIPAL":"CNAE PRINCIPAL",
+				"CONSUMIDOR_FINAL":"CONSUMIDOR FINAL",
+				"REGIME_TRIBUTARIO":"REGIME TRIBUTARIO",
+				"REGIME_TRIBUTARIO_ID":"REGIME TRIBUTARIO ID",
+				"TIPO_CONTRIBUICAO":"TIPO CONTRIBUICAO",
+				"TIPO_CONTRIBUICAO_ID":"TIPO CONTRIBUICAO ID",
+				"EMAIL":"EMAIL",
+				"SITE":"SITE",
+				"DDD":"DDD",
+				"TELEFONE":"TELEFONE",
+				"ENDERECO":"ENDERECO",
+				"ENDERECO_ID":"ENDERECO ID",
+				"ID":"ID"
+			},
+			"BUTTON": {
+				"SAVE":"Salvar",
+				"CANCEL":"Cancelar"
+			},
+			"SAVE": {
+				"SUCCESS":"Transportadora salvo com sucesso",
+				"ERROR":"Erro ao salvar"
+			}
+		}
+	},
+	"UPLOAD_FILE":{
+		"TITLE" : "UPLOAD FILE",
+		"MENU" : "Upload File",
+		"GRID" : {
+			"COLUMN" : {		
+				"ID":"ID",
+				"NAME":"NAME",
+				"INPUT_FILE_FIELD":"INPUT FILE FIELD",
+				"SIZE":"SIZE",
+				"TYPE":"TYPE",
+				"FILE_NAME":"FILE NAME",
+				"CONTROLLER":"CONTROLLER",
+				"EXTENSION":"EXTENSION",
+				"ACTIONS":"Ação"
+			},
+			"BUTTON": {
+				"EDIT":"Editar",
+				"REMOVE":"Remover",
+				"DUPLICATE":"Duplicar",
+				"NEW": "INCLUIR UPLOAD FILE"
+			},
+			"CONFIRM_DELETE":"Deseja realmente excluir este item?",
+			"REMOVE": {
+				"SUCCESS":"Upload File removido com sucesso",
+				"ERROR":"Erro ao remover"
+			},
+			"DUPLICATE": {
+				"SUCCESS":"Upload File duplicado com sucesso",
+				"ERROR":"Erro ao duplicar"
+			}
+		},
+		"FORM" : {
+			"LABEL" : {	
+				"NAME":"NAME",
+				"INPUT_FILE_FIELD":"INPUT FILE FIELD",
+				"SIZE":"SIZE",
+				"TYPE":"TYPE",
+				"FILE_NAME":"FILE NAME",
+				"CONTROLLER":"CONTROLLER",
+				"EXTENSION":"EXTENSION",
+				"ID":"ID"
+			},
+			"BUTTON": {
+				"SAVE":"Salvar",
+				"CANCEL":"Cancelar"
+			},
+			"SAVE": {
+				"SUCCESS":"Upload File salvo com sucesso",
+				"ERROR":"Erro ao salvar"
+			}
+		}
+	},
+  "APP":{
+	"NAME":"",
+	"DIALOG":{
+		"CONFIRM":{
+			"TITLE":"Confirmação"
+		},		
+		"OK":"Ok",
+		"CANCEL":"Cancelar"
+	},
+	"TOASTER":{
+		"TITLE":{
+			"SUCCESS":"Sucesso",
+			"ERROR":"Erro"
+		}
+	},
+	"UPLOAD":{
+		"BUTTON":"Selecione um arquivo"
+	}
+  }
+}

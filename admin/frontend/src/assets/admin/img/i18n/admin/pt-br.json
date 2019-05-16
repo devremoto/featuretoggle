@@ -1,0 +1,58 @@
+{
+     "HOME": {
+          "SIDE_BAR": {
+               "DASHBOARD": "Painel",
+               "NEW": "Novo",
+               "MENU": {
+                    "TITLE": "Administração",
+                    "SECTIONS": {
+                         "ADMIN": {
+                              "TITLE": "Admin",
+                              "CONTACT": "Contato"
+                         },
+                         "DATABASE": {
+                              "TITLE": "Banco de dados"
+                         }
+                    }
+               }
+          },
+          "HEADER": {
+               "MENU": {
+                    "DASHBOARD": "Painel de controle"
+               },
+               "BREAD_CRUMB": {
+                    "DASHBOARD": "Painel de controle",
+                    "SETTINGS": "Configurações"
+               }
+          }
+     },
+     "TRANSLATOR": {
+          "TITLE": "Editor de idiomas",
+          "HEADER": {
+               "PRINT": "Imprimir",
+               "SAVE": "Salvar",
+               "DOWNLOAD": "Download"
+          },
+          "TOASTER": {
+               "SAVE": "Salvar",
+               "ADD_ERROR": "Chave {{key}} setada para {{path}}",
+               "ADD_SUCCESS": "Chave {{key}} setada com sucesso para {{path}}",
+               "TITLE_ERROR": "Erro",
+               "TITLE_SUCCESS": "Sucesso",
+               "EMPTY_PROPERTY": "Informe um valor para propriedade"
+          },
+          "MENU": {
+               "TITLE": "Arquivo"
+          },
+          "BUTTONS": {
+               "TRANSLATE": "Traduzir",
+               "REMOVE": "Remover",
+               "COPY_CLIPBOARD": "Copiar para a área de transferência",
+               "COPY_CLIPBOARD_JS": "Copiar javascript para a área de transferência",
+               "ADD_FIELD": "Adicionar campo",
+               "ADD_OBJECT": "Adicionar objeto",
+               "ADD_PROPERTY_TO": "Adicionar propriedade para {{path}}",
+               "ROOT": "Raiz"
+          }
+     }
+}

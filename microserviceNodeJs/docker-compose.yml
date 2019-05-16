@@ -1,0 +1,25 @@
+version: '3'
+services:
+  ft-microservice:
+    build:
+      dockerfile: ./Dockerfile
+      context: .
+      args:
+        - port=${PORT}
+    image: ft/mongo/app
+    container_name: ft-mongo-app
+    ports:
+      - ${PORT}:${PORT}
+    networks: 
+      - ft-network
+    depends_on: 
+      - "ft-mongodb"
+  ft-mongodb:
+    image: docker.io/mongo
+    networks: 
+      - ft-network
+    volumes: 
+      - ./data/db:/data/db
+networks: 
+  ft-network:
+    driver: bridge

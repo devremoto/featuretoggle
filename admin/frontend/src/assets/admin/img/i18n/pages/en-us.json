@@ -1,0 +1,107 @@
+{
+    "HOME": {
+        "BANNER": {
+            "EASY_CUSTOMIZE": "Easy to Customize",
+            "ULTRA_RESPONSIVE": "Ultra Responsive",
+            "SLIDER": "Premium Slider Revolution",
+            "CLEAN_DESIGN": "Clean and Slick Design",
+            "VALUE": "Theme Values"
+        }
+    },
+    "MENU": {
+        "HOME": "HOME",
+        "RESUME": "RESUME",
+        "PORTIFOLIO": "PORTIFOLIO",
+        "BLOG": "BLOG",
+        "TRAINNING": "TRAINNING",
+        "CONTACT": "CONTACT"
+    },
+    "FOOTER": {
+        "SOCIAL_NETWORK": "SOCIAL NETWORK",
+        "DOWNLOAD_FORMAT": "file format .docx",
+        "DOWNLOAD_BUTTON": "download",
+        "TRAINNING": {
+            "TITLE": "CONSULTING AND TRAINING",
+            "TEXT": "Get in touch to receive more information about tranning and consulting."
+        },
+        "NEWSLETTER": {
+            "SUBSCRIBE": "SUBISCRIBE",
+            "SUBSCRIBE_LOADING": "SUBISCRIBING",
+            "PLACEHOLDER": "your e-mail here"
+        }
+    },
+    "PERSONAL_INFO": {
+        "TITLE": "PERSONAL INFO",
+        "NAME": "Name",
+        "BIRTH_DATE": "Birth date",
+        "PHONE_NUMBER": "Phone",
+        "EMAIL": "Email"
+    },
+    "PERSONAL_QUALITY": {
+        "TITLE": "CHACTERISTCIS",
+        "SUBTITLE": "about me"
+    },
+    "EXPERIENCE": {
+        "TITLE": "BACKGROUND",
+        "LEARN_MORE": "Learn more"
+    },
+    "PERSONAL_SKILL": {
+        "TITLE": "TECNOLOGIES",
+        "LEARN_MORE": "Learn more"
+    },
+    "TRAINNING": {
+        "TITLE": "Trainning",
+        "SUBTITLE": "Get in touch",
+        "DESCRIPTION": "Get in touch to receive more information about tranning and consulting."
+    },
+    "RESUME": {
+        "BACKGROUND": {
+            "TITLE": "Professional Background",
+            "SUBTITLE": "Work and dedication"
+        },
+        "QUALITIES": "Special Qualities",
+        "LANGUAGES": "Languages",
+        "COURSES": "Courses",
+        "EDUCATION": "Education",
+        "HOBBIES": "Hobbies"
+    },
+    "CONTACT": {
+        "TITLE": "Contact",
+        "SUBTITLE": "Get In touch",
+        "DESCRIPTION": "Get in touch to receive more information about tranning and consulting.",
+        "FORM": {
+            "NAME": "Name",
+            "ADDRESS": "Address",
+            "PHONE": "Phone",
+            "EMAIL": "E-mail",
+            "SUBJECT": "Subject",
+            "MESSAGE": "Message",
+            "SEND": "Send",
+            "SENDING": "Sending",
+            "VALIDATE": {
+                "EMAIL": {
+                    "REQUIRED": "Email is required",
+                    "PATTERN": "Email is invalid"
+                },
+                "NAME": {
+                    "REQUIRED": "Name is required"
+                },
+                "SUBJECT": {
+                    "REQUIRED": "Subject is required"
+                },
+                "PHONENUMBER": {
+                    "REQUIRED": "Phone Number is required"
+                },
+                "MESSAGE": {
+                    "REQUIRED": "Message is required"
+                }
+            }
+
+        }
+    },
+    "PORTIFOLIO": {
+        "TITLE": "Portifolio",
+        "SUBTITLE": "Soon",
+        "DESCRIPTION": "Soon"
+    }
+}

@@ -1,0 +1,107 @@
+{
+    "HOME": {
+        "BANNER": {
+            "EASY_CUSTOMIZE": "Customizável",
+            "ULTRA_RESPONSIVE": "Design Responsivo",
+            "SLIDER": "Premium Slider Revolution",
+            "CLEAN_DESIGN": "Clean",
+            "VALUE": "Agrega Valor"
+        }
+    },
+    "MENU": {
+        "HOME": "HOME",
+        "RESUME": "CURRICULUM",
+        "PORTIFOLIO": "PORTIFÓLIO",
+        "BLOG": "BLOG",
+        "TRAINNING": "TREINAMENTO",
+        "CONTACT": "CONTATO"
+    },
+    "FOOTER": {
+        "SOCIAL_NETWORK": "REDES SOCIAIS",
+        "DOWNLOAD_FORMAT": "arquivo em formato .docx",
+        "DOWNLOAD_BUTTON": "baixar",
+        "TRAINNING": {
+            "TITLE": "Consultoria e treinamento",
+            "TEXT": "Entre em contato para maiores informações sobre consultoria e treinamentos."
+        },
+        "NEWSLETTER": {
+            "SUBSCRIBE": "INSCREVA-SE",
+            "SUBSCRIBE_LOADING": "INSCREVENDO",
+            "PLACEHOLDER": "seu e-mail aqui"
+        }
+    },
+    "PERSONAL_INFO": {
+        "TITLE": "INFORMAÇÕES",
+        "NAME": "Nome",
+        "BIRTH_DATE": "Nascimento",
+        "PHONE_NUMBER": "Telefone",
+        "EMAIL": "Email"
+    },
+    "PERSONAL_QUALITY": {
+        "TITLE": "CARATERÍSTICAS",
+        "SUBTITLE": "Um pouco sobre mim"
+    },
+    "EXPERIENCE": {
+        "TITLE": "HISTÓRICO",
+        "LEARN_MORE": "Saiba mais"
+    },
+    "PERSONAL_SKILL": {
+        "TITLE": "TECNOLOGIAS",
+        "LEARN_MORE": "Saiba mais"
+    },
+    "TRAINNING": {
+        "TITLE": "Treinamentos",
+        "SUBTITLE": "Entre em contato",
+        "DESCRIPTION": "Para obter mais informações sobre: <br />Treinamentos online, presencial, incompany."
+    },
+    "RESUME": {
+        "BACKGROUND": {
+            "TITLE": "Histórico Profissional",
+            "SUBTITLE": "Trabalho e dedicação"
+        },
+        "QUALITIES": "Qualidades",
+        "LANGUAGES": "Idiomas",
+        "COURSES": "Cursos",
+        "EDUCATION": "Educação",
+        "HOBBIES": "Hobbies"
+    },
+    "CONTACT": {
+        "TITLE": "Contato",
+        "SUBTITLE": "Entre em contato",
+        "DESCRIPTION": "Para obter mais informações sobre: <br />Treinamentos online, presencial, incompany",
+        "FORM": {
+            "NAME": "Nome",
+            "ADDRESS": "Endereço",
+            "PHONE": "Telefone",
+            "EMAIL": "E-mail",
+            "SUBJECT": "Assunto",
+            "MESSAGE": "Mensagem",
+            "SEND": "Enviar",
+            "SENDING": "Enviando",
+            "VALIDATE": {
+                "EMAIL": {
+                    "REQUIRED": "Preencha Email",
+                    "PATTERN": "Email is invalid"
+                },
+                "NAME": {
+                    "REQUIRED": "Preencha o campo nome "
+                },
+                "SUBJECT": {
+                    "REQUIRED": "Preencha o campo assunto "
+                },
+                "PHONENUMBER": {
+                    "REQUIRED": "Preencha o campo telefone "
+                },
+                "MESSAGE": {
+                    "REQUIRED": "Preencha o campo mensagem "
+                }
+            }
+        }
+    },
+    "PORTIFOLIO": {
+        "TITLE": "Portifolio",
+        "SUBTITLE": "Em Breve",
+        "DESCRIPTION": "Em breve"
+    }
+
+}

@@ -1,0 +1,58 @@
+{
+     "HOME": {
+          "SIDE_BAR": {
+               "DASHBOARD": "Dashboard",
+               "NEW": "New",
+               "MENU": {
+                    "TITLE": "Administration",
+                    "SECTIONS": {
+                         "ADMIN": {
+                              "TITLE": "Admin",
+                              "CONTACT": "Contact"
+                         },
+                         "DATABASE": {
+                              "TITLE": "Data Base"
+                         }
+                    }
+               }
+          },
+          "HEADER": {
+               "MENU": {
+                    "DASHBOARD": "Dashboard"
+               },
+               "BREAD_CRUMB": {
+                    "DASHBOARD": "Dashboard",
+                    "SETTINGS": "Settings"
+               }
+          }
+     },
+     "TRANSLATOR": {
+          "TITLE": "Language editor",
+          "HEADER": {
+               "PRINT": "Print",
+               "SAVE": "Save",
+               "DOWNLOAD": "Download"
+          },
+          "TOASTER": {
+               "SAVE": "Save",
+               "ADD_ERROR": "Key {{key}} already set fffffon {{path}}",
+               "ADD_SUCCESS": "Key {{key}} set successfully to {{path}}",
+               "TITLE_ERROR": "Error",
+               "TITLE_SUCCESS": "Success",
+               "EMPTY_PROPERTY": "Enter a value for property"
+          },
+          "MENU": {
+               "TITLE": "File"
+          },
+          "BUTTONS": {
+               "TRANSLATE": "Translate",
+               "REMOVE": "Remove",
+               "COPY_CLIPBOARD": "Copy to the Clipboard",
+               "COPY_CLIPBOARD_JS": "Copying javascript to the Clipboard",
+               "ADD_FIELD": "Add field",
+               "ADD_OBJECT": "Add object",
+               "ADD_PROPERTY_TO": "Add property to {{path}}",
+               "ROOT": "Root"
+          }
+     }
+}

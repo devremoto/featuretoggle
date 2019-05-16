@@ -1,0 +1,25 @@
+.container {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .container > * {
+    width: 100%;
+  }
+
+  .fa{
+      margin:3px;
+      cursor:pointer
+  }
+
+  .fa-trash,.fa-minus{
+    color:red
+  }
+
+  .fa-plus{
+    color:green
+  }
+
+  mat-tree-node span, .card-body .row span{
+    cursor:pointer
+  }
