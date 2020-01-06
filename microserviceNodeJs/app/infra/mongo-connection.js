@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 const consts = require('../config/config');
 var DB_URL = process.env.DB_URL || consts.DB_URL;
 
-module.exports = {
+const mongoConnection = {
     createConnection: () => {
         return new Promise((resolve, reject) => {
             let objConn = {}
@@ -15,67 +15,29 @@ module.exports = {
                     } else {
                         return resolve(objConn)
                     }
-
                 }
             );
         })
     },
-    add: (model, data) => {
-        return new Promise((resolve, reject) => {
-            if (data instanceof Array) {
-                model.insertMany(data).then(docs => {
-                    resolve(docs)
-                }).catch(error => {
-                    reject(error);
-                })
-            } else {
-                new model(data).save().then(docs => {
-                    resolve(docs)
-                }).catch(error => {
-                    reject(error);
-                })
-            }
-        })
+    add: async (model, data) => {
+        if (data instanceof Array) {
+            return await model.insertMany(data);
+        } else {
+            return await new model(data).save()
+        }
     },
-    update: (model, data) => {
-        return new Promise((resolve, reject) => {
-
-            model.findOneAndUpdate({ _id: data._id }, data).then(docs => {
-                resolve(data)
-            }).catch(error => {
-                reject(error);
-            })
-        })
+    update: async (model, data) => {
+        return await model.findOneAndUpdate({ _id: data._id }, data);
     },
-    delete: (model, id) => {
-        return new Promise((resolve, reject) => {
-
-            model.findOneAndDelete({ _id: id }).then(docs => {
-                resolve(docs)
-            }).catch(error => {
-                reject(error);
-            })
-        })
+    delete: async (model, id) => {
+        return await model.findOneAndDelete({ _id: id });
     },
-    getAll: (model) => {
-        return new Promise((resolve, reject) => {
-            model.find({})
-                .then(docs => {
-                    resolve(docs)
-                }).catch(error => {
-                    reject(error);
-
-                })
-        })
+    getAll: async (model) => {
+        return await model.find({});
     },
-    find: (data) => {
-        return new Promise((resolve, reject) => {
-
-            data.model.find(data.query).then(docs => {
-                resolve(docs)
-            }).catch(error => {
-                reject(error);
-            })
-        })
+    find: async (data) => {
+        return await data.model.find(data.query);
     }
 }
+
+module.exports = mongoConnection;
