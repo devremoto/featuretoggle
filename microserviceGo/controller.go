@@ -27,11 +27,11 @@ func fill(key string) string {
 	var str, value string
 	str = conn.get(key)
 	if str != "" {
-		value = "{\"key\":\"" + key + "\",\"value\":" + str + "}"
-		fmt.Println("==========================================")
-		fmt.Println(value)
+		value = "{\"key\":\"" + key + "\",\"value\":" + str + "}";
+		fmt.Println("==========================================");
+		fmt.Println(value);
 	}
-	return value
+	return value;
 
 }
 
@@ -39,9 +39,9 @@ func fill(key string) string {
 // key
 //
 func Find(key string) interface{} {
-	var feat interface{}
-	json.Unmarshal([]byte(fill(strings.Replace(key, "+", " ", -1))), &feat)
-	return feat
+	var feat interface{};
+	json.Unmarshal([]byte(fill(strings.Replace(key, "+", " ", -1))), &feat);
+	return feat;
 }
 
 // All - It returns all features on redis
