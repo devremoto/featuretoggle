@@ -27,14 +27,14 @@ func connect() connection {
 	client := redis.NewClient(&redis.Options{
 		Addr: addr,
 	})
-	client.WrapProcess(func(old func(cmd redis.Cmder) error) func(cmd redis.Cmder) error {
-		return func(cmd redis.Cmder) error {
-			fmt.Printf("starting processing: <%s>\n", cmd)
-			err := old(cmd)
-			fmt.Printf("finished processing: <%s>\n", cmd)
-			return err
-		}
-	})
+	// client.WrapProcess(func(old func(cmd redis.Cmder) error) func(cmd redis.Cmder) error {
+	// 	return func(cmd redis.Cmder) error {
+	// 		fmt.Printf("starting processing: <%s>\n", cmd)
+	// 		err := old(cmd)
+	// 		fmt.Printf("finished processing: <%s>\n", cmd)
+	// 		return err
+	// 	}
+	// })
 	client.Ping()
 	return connection{
 		client: client,

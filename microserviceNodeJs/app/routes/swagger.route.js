@@ -3,7 +3,7 @@ const router = express.Router();
 const swaggerJSDoc = require('swagger-jsdoc');
 const swaggerUi = require('swagger-ui-express');
 
-module.exports = function(app) {
+module.exports = function (app) {
     var swaggerDefinition = {
         info: {
             title: 'Arquivo NODE JS Microservice',
@@ -25,7 +25,7 @@ module.exports = function(app) {
     var swaggerSpec = swaggerJSDoc(options);
 
     app.use(`/api/swagger`, swaggerUi.serve, swaggerUi.setup(swaggerSpec));
-    app.get(`/swagger.json`, function(req, res) {
+    app.get(`/swagger.json`, function (req, res) {
         res.setHeader('Content-Type', 'application/json');
         res.send(swaggerSpec);
     });

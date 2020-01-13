@@ -4,9 +4,9 @@ var load = require('express-load');
 const expressValidator = require('express-validator');
 const cors = require('cors');
 //const swaggerRouter = require('../routes/routes/swagger.route');
-const urlPrefix = '/featuretoggle/v1';
+const urlPrefix = '/featuretoggle';
 const consts = require('./config');
-module.exports = (function() {
+module.exports = (function () {
     const app = express();
     const http = require('http').Server(app);
 
@@ -26,20 +26,28 @@ module.exports = (function() {
     });
 
     app.use(cors());
-    app.use(bodyParser.urlencoded({ extended: true }));
+    app.use(bodyParser.urlencoded({
+        extended: true
+    }));
     app.use(bodyParser.json());
     app.use(expressValidator());
     //app.use(`${app.urlPrefix}`, swaggerRouter);
-    load('routes', { cwd: 'app' }).into(app);
+    load('routes', {
+        cwd: 'app'
+    }).into(app);
 
     app.use((req, res, next) => {
-        res.status(404).send({ code: 404 });
+        res.status(404).send({
+            code: 404
+        });
         next();
     });
 
     app.use((error, req, res, next) => {
         if (process.env.NODE_ENV === 'production') {
-            res.status(500).send({ code: 500 });
+            res.status(500).send({
+                code: 500
+            });
             return;
         }
         console.log(error);
@@ -60,10 +68,10 @@ Server running on
 http://localhost:${port}
 
 GET
-curl http://localhost:${port}${urlPrefix}/${name}s
+curl http://localhost:${port}/${name}s
 
 Swagger Document
-http://localhost:${port}${urlPrefix}/swagger
+http://localhost:${port}/api/swagger
 
 ================================================================================================
 ================================================================================================

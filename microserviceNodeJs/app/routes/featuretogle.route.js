@@ -1,5 +1,5 @@
 const controller = require('../controllers/featuretoggle');
-module.exports = function(app) {
+module.exports = function (app) {
     /**
      * @swagger
      * definition:
@@ -24,7 +24,7 @@ module.exports = function(app) {
      *         items:
      *             $ref: '#/definitions/featuretoggle'
      */
-    var name = '/featuretoggle/v1/featuretoggles';
+    var name = '/featuretoggles';
 
     /**
      * @swagger
