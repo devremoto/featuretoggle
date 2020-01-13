@@ -25,6 +25,11 @@
 
 <body class="app footer-fixed header-fixed sidebar-fixed aside-menu-fixed pace-done aside-menu-hidden" style="padding-top: 0 !important;">
   <script>window.__theme = 'bs4';</script>
+  <script>
+    if (global === undefined) {
+      var global = window;
+    }
+  </script>
 
   <!-- JAVASCRIPT -->
   <script src="https://code.jquery.com/jquery-3.3.1.min.js"

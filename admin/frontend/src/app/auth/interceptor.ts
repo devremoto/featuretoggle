@@ -18,6 +18,7 @@ export class AuthInterceptor implements HttpInterceptor {
     this._auth.onLogout.subscribe(() => {
       this.headers.delete('Authorization');
     });
+    console.log(this._config);
   }
 
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
@@ -28,23 +29,23 @@ export class AuthInterceptor implements HttpInterceptor {
 
     this.setHeader(newReq.headers, 'Content-Type', 'application/json');
     this.setHeader(newReq.headers, 'Origin', this._config.siteUrl);
-
+    this.setHeader(newReq.headers, 'Access-Control-Allow-Origin', '*');
 
     return next.handle(newReq)
       .pipe(
-      tap(
-        (event: HttpEvent<any>) => {
-          if (event instanceof HttpResponse) {
+        tap(
+          (event: HttpEvent<any>) => {
+            if (event instanceof HttpResponse) {
 
-          }
-        },
-        (err: any) => {
-          if (err instanceof HttpErrorResponse) {
-            console.log(err.error);
-            // return err.error
-            return this.handleRequest(err);
-          }
-        }));
+            }
+          },
+          (err: any) => {
+            if (err instanceof HttpErrorResponse) {
+              console.log(err.error);
+              // return err.error
+              return this.handleRequest(err);
+            }
+          }));
   }
   setHeaders() {
 

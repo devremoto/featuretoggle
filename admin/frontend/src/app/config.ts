@@ -1,31 +1,18 @@
 import { Injectable } from '@angular/core';
+import { environment } from 'src/environments/environment';
 
 export class Host {
   port: string;
   name: string;
   protocol: string;
   constructor() {
-    if (typeof window !== 'undefined') {
-      this.name = window.location.hostname;
-      this.port = window.location.port;
-      this.protocol = window.location.protocol;
-    } else {
-      this.name = '127.0.0.1';
-      this.port = '';
-      this.protocol = 'http';
-    }
-  }
-
-  get isLocal() {
-    return this.name === 'localhost';
-  }
-  get location(): string {
-    const url =
-      `${this.protocol}//${this.name}` + (this.port ? `:${this.port}` : '');
-    return url;
+    this.name = environment.HOST;
+    this.port = window.location.port;
+    this.protocol = window.location.protocol;
+    console.log(environment);
   }
 }
-export let baseApiAddress = 'http://localhost:5050';
+export let baseApiAddress = `${environment.HOST}:${environment.MS_MONGO_PORT}`;
 
 @Injectable()
 export class Config {
@@ -33,15 +20,9 @@ export class Config {
   host: Host = new Host();
 
   useAuthorityServer = true;
-  siteUrl: string = this.host.isLocal
-    ? this.host.location
-    : 'http://localhost:5000';
-  apiAddress: string = this.host.isLocal
-    ? `${baseApiAddress}/featuretoggle/v1/`
-    : 'http://localhost:5050/featuretoggle/v1/';
-  authorityAddress: string = this.host.isLocal
-    ? 'http://localhost:5000'
-    : 'http://localhost:5000';
+  siteUrl = `${environment.HOST}:${environment.FRONT_PORT}`;
+  apiAddress = `${baseApiAddress}/featuretoggle/v1/`;
+  authorityAddress = `${environment.HOST}:${environment.STS_PORT}`;
 
   iss: string = this.authorityAddress;
   server: string = this.authorityAddress;

@@ -13,7 +13,7 @@ import { NotificationService } from './../../../services/notification.service';
 })
 export class FeatureToggleComponent implements OnInit {
   selectedNode: FeatureToggle;
-  @ViewChild('nodeName') nodeName: ElementRef;
+  @ViewChild('nodeName',null) nodeName: ElementRef;
 
   init() {
     this._notification.on('update').subscribe(result => {

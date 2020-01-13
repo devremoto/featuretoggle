@@ -6,7 +6,7 @@ import { AdminLayoutModule } from './admin/_layout/admin-layout.module';
 const routes: Routes = [
   { path: '', data: { title: 'Home' }, redirectTo: 'admin', pathMatch: 'full' },
 
-  { path: '', loadChildren: './admin/admin.module#AdminModule', canActivate: [CanActivateViaAuthGuard] },
+  { path: '', loadChildren: () => import('./admin/admin.module').then(m => m.AdminModule), canActivate: [CanActivateViaAuthGuard] },
 
 
 

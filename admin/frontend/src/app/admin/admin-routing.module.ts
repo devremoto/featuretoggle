@@ -13,7 +13,7 @@ const routes: Routes = [
     component: IndexComponent,
     canActivate: [CanActivateViaAuthGuard],
     children: [
-      { path: '', loadChildren: './adminPages/admin-pages.module#AdminPagesModule', canActivate: [CanActivateViaAuthGuard] },
+      { path: '', loadChildren: () => import('./adminPages/admin-pages.module').then(m => m.AdminPagesModule), canActivate: [CanActivateViaAuthGuard] },
 
     ]
   }

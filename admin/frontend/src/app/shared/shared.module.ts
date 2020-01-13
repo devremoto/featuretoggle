@@ -2,7 +2,6 @@ import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { HttpModule } from '@angular/http';
 import { Config } from '../config';
 import { BreadcrumbsComponent } from '../directives/breadcrumb.component';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';

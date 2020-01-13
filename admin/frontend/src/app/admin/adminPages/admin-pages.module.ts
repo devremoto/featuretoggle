@@ -5,17 +5,14 @@ import { AdminPagesRoutingModule } from './admin-pages-routing.module';
 import { SharedModule } from '../../shared/shared.module';
 import { LibModule } from '../../shared/libModule.module';
 import { FeatureToggleComponent } from './feature-toggle/feature-toggle.component';
-import {
-  MatTreeModule,
-  MatIconModule,
-  MatCheckboxModule,
-  MatFormFieldModule,
-  MatInputModule,
-  MatDatepickerModule,
-  MatNativeDateModule,
-  MAT_DATE_LOCALE,
-  MatDividerModule
-} from '@angular/material';
+import { MatCheckboxModule } from '@angular/material/checkbox';
+import { MatNativeDateModule, MAT_DATE_LOCALE } from '@angular/material/core';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatDividerModule } from '@angular/material/divider';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatIconModule } from '@angular/material/icon';
+import { MatInputModule } from '@angular/material/input';
+import { MatTreeModule } from '@angular/material/tree';
 import { MenuComponent } from './menu/menu.component';
 
 @NgModule({

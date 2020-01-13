@@ -3,7 +3,12 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  HOST:'http://localhost',
+  FRONT_PORT:4200,
+  MS_MONGO_PORT:5050,
+  STS_PORT:5000,
+  PATH:''
 };
 
 /*
