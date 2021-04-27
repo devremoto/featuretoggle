@@ -19,7 +19,7 @@
 		"express-validator": "^5.3.0",
 		"jsnlog": "^2.28.0",
 		"mongoose": "^5.4.19",
-		"redis": "^2.8.0",
+		"redis": "^3.1.1",
 		"socket.io": "^2.3.0",
 		"swagger-jsdoc": "^3.2.5",
 		"swagger-ui-express": "^4.0.1"
