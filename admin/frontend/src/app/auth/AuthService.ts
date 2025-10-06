@@ -11,13 +11,14 @@ export class AuthService {
   private _sessionStorage: any;
   private _localStorage: any;
 
-  token: string;
-  id_token: string;
-  callbackUrl: string;
+  token: string | null = null;
+  id_token: string | null = null;
+  callbackUrl: string | null = null;
   onLogin: EventEmitter<User> = new EventEmitter();
   onLogout: EventEmitter<string> = new EventEmitter();
   userManager: UserManager;
-  user: User;
+  user: User|null = null;
+  logoutUrl: string | null = null;
 
   constructor(
     private _config: Config,
@@ -46,15 +47,15 @@ export class AuthService {
   }
 
   isLoggedIn(): boolean {
-    return this.user && this.user.access_token && !this.user.expired;
+    return !!(this.user && this.user.access_token && !this.user.expired);
   }
 
-  getToken(): string {
-    return this.user.access_token;
+  getToken(): string | null {
+    return this.user?.access_token || null;
   }
 
-  getIdToken(): string {
-    return this.user.id_token;
+  getIdToken(): string | null {
+    return this.user?.id_token || null;
   }
 
   async getUser() {
@@ -65,11 +66,11 @@ export class AuthService {
     this.userManager.signinRedirect();
   }
 
-  navigateTo(segment, params?: any) {
+  navigateTo(segment: string, params?: any) {
     this._router.navigate([segment, params]);
   }
 
-  navigateToUrl(url) {
+  navigateToUrl(url: string) {
     this._router.navigateByUrl(url);
   }
 
@@ -123,7 +124,7 @@ export class AuthService {
     this.token = null;
   }
 
-  public setCallbackUrl(url) {
+  public setCallbackUrl(url: string) {
     this.callbackUrl = url;
     this._sessionStorage.setItem('callback_url', url);
   }
@@ -137,8 +138,8 @@ export class AuthService {
     this._sessionStorage.removeItem('callback_url');
   }
 
-  public setLogoutUrl(url) {
-    this.callbackUrl = url;
+  public setLogoutUrl(url:string) {
+    this.logoutUrl = url;
     this._sessionStorage.setItem('logout_url', url);
   }
 

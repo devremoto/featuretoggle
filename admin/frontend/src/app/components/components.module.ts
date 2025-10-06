@@ -17,9 +17,9 @@ import { DirectivesModule } from '../directives/directives.module';
         DialogComponent
     ],
     exports: [
-        PageTitleComponent
+        PageTitleComponent,
+        DialogComponent
     ],
     providers: [DialogService],
-    entryComponents: [DialogComponent],
 })
 export class ComponentsModule { }

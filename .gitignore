@@ -1,1 +1,4 @@
 /data
+.angular
+/dist
+node_modules

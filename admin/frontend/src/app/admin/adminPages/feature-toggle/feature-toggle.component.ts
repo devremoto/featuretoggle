@@ -9,11 +9,12 @@ import { NotificationService } from './../../../services/notification.service';
 @Component({
   selector: 'app-feature-toggle',
   templateUrl: './feature-toggle.component.html',
-  styleUrls: ['./feature-toggle.component.css']
+  styleUrls: ['./feature-toggle.component.css'],
+  standalone: false
 })
 export class FeatureToggleComponent implements OnInit {
-  selectedNode: FeatureToggle;
-  @ViewChild('nodeName',null) nodeName: ElementRef;
+  selectedNode: FeatureToggle | null = null;
+  @ViewChild('nodeName', { static: false }) nodeName!: ElementRef;
 
   init() {
     this._notification.on('update').subscribe(result => {
@@ -25,7 +26,7 @@ export class FeatureToggleComponent implements OnInit {
     private _menuService: MenuService,
     private _notification: NotificationService
   ) {
-    this._menuService.onSelect.subscribe(data => {
+    this._menuService.onSelect.subscribe((data: FeatureToggle | null) => {
       this.selectNode(data);
     });
   }
@@ -36,7 +37,7 @@ export class FeatureToggleComponent implements OnInit {
     this.init();
   }
 
-  saveForm(nodeedit: FeatureToggle) {
+  saveForm(nodeedit: FeatureToggle | null) {
     this._menuService.save(nodeedit);
   }
 
@@ -44,7 +45,7 @@ export class FeatureToggleComponent implements OnInit {
    * It selects a node to be presented on the html form
    * @param node node to be edited
    */
-  selectNode(node: FeatureToggle) {
+  selectNode(node: FeatureToggle | null) {
     this.selectedNode = node;
     if (this.nodeName) {
       this.nodeName.nativeElement.select();

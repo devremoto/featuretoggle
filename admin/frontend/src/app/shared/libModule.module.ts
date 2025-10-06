@@ -1,5 +1,5 @@
-import { ToasterModule, ToasterService } from 'angular2-toaster';
-import { NgbModule, NgbAlertConfig, NgbAccordionModule } from '@ng-bootstrap/ng-bootstrap';
+import { ToastrService } from 'ngx-toastr';
+import { NgbAlertConfig } from '@ng-bootstrap/ng-bootstrap';
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 
@@ -9,19 +9,13 @@ import { NgModule } from '@angular/core';
     ],
     providers: [
         NgbAlertConfig,
-        ToasterService,
+        ToastrService,
     ],
     imports: [
         CommonModule,
-        NgbModule,
-        NgbAccordionModule,
-        ToasterModule,
     ],
     exports: [
-        CommonModule,
-        NgbModule,
-        ToasterModule,
-
+        CommonModule
     ],
 
 })

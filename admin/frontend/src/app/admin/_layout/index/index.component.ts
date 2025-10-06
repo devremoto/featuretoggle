@@ -7,20 +7,21 @@ import { Config } from 'src/app/config';
 
 declare var window: any;
 @Component({
-  selector: 'app-dashboard',
-  templateUrl: './index.component.html',
-  styleUrls: ['./index.component.css']
+    selector: 'app-dashboard',
+    templateUrl: './index.component.html',
+    styleUrls: ['./index.component.css'],
+    standalone: false
 })
 export class IndexComponent implements OnInit {
 
 
 
-  userData: any;
+    userData: any;
     constructor(
         private _authService: AuthService, private config: Config
     ) {
-      // window.__theme = 'bs4';
-      console.log(config);
+        // window.__theme = 'bs4';
+        console.log(config);
     }
     public disabled = false;
     public status: { isopen: boolean } = { isopen: false };
@@ -33,7 +34,7 @@ export class IndexComponent implements OnInit {
 
     ngOnInit(): void {
         if (this.config.useAuthorityServer) {
-            this.userData = this._authService.user.profile;
+            this.userData = this._authService!.user!.profile;
         }
         if (this.userData && !this.userData.picture) {
             this.userData.picture = 'assets/admin/img/avatars/6.jpg';

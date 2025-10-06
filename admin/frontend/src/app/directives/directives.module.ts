@@ -9,12 +9,10 @@ import { NAV_DROPDOWN_DIRECTIVES } from './nav-dropdown.directive';
 import { ProgressCircleDirective } from './progress-circle.directive';
 import { AsideToggleDirective } from './aside.directive';
 import { NlbrDirective } from './nlbr.directive';
-import { FormsModule } from '@angular/forms';
 import { EnterDirective } from './enter.directive';
 @NgModule({
   imports: [
     CommonModule,
-    FormsModule,
 
 
   ],

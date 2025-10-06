@@ -9,10 +9,10 @@ export class AccountService {
   }
 
   userInfo(): any {
-    return this._auth.user.profile;
+    return this._auth!.user?.profile;
   }
 
-  logout(returnUrl) {
+  logout(returnUrl:string) {
     this._auth.fullLogout(returnUrl);
   }
 }

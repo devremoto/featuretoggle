@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpInterceptor, HttpEvent, HttpHandler, HttpRequest, HttpResponse, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
 import { AuthService } from './AuthService';
 import { Observable, throwError } from 'rxjs';
-import { tap } from 'rxjs/operators/tap';
+import { tap } from 'rxjs/operators';
 import { Config } from 'src/app/config';
 
 
@@ -10,7 +10,7 @@ import { Config } from 'src/app/config';
 @Injectable()
 export class AuthInterceptor implements HttpInterceptor {
 
-  headers: HttpHeaders;
+  headers: HttpHeaders = new HttpHeaders();
   constructor(
     private _auth: AuthService,
     private _config: Config

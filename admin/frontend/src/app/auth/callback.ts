@@ -6,11 +6,12 @@ import { User } from 'oidc-client';
 
 @Component({
   templateUrl: './callback.html',
+  standalone: false
 })
 export class LoginCallBackComponent implements OnInit {
-  user: User;
-  loginModel: LoginModel;
-  message: string;
+  user: User | null = null;
+  loginModel: LoginModel = new LoginModel();
+  message: string = '';
 
   ngOnInit() {
     const params = this._router.parseUrl(this._router.url).queryParams;

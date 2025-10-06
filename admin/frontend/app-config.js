@@ -1,5 +1,4 @@
 const webpack = require('webpack');
-console.log(process.env);
 module.exports = {
     plugins: [new webpack.DefinePlugin({
         'process.env': {

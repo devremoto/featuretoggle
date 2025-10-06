@@ -12,7 +12,7 @@ export class HttpService {
     private config: Config) {
   }
 
-  prepareUrl(url, usePrefix: boolean = true): string {
+  prepareUrl(url: any, usePrefix: boolean = true): string {
     if (url.indexOf('://') === -1 && usePrefix) {
       return this.config.apiAddress + url;
     }
@@ -47,7 +47,7 @@ export class HttpService {
     return this.http.get<T>(this.prepareUrl(url + (params ? + this.param(params) : ''), usePrefix), this.options);
   }
 
-  param(obj) {
+  param(obj: any) {
     const params = new URLSearchParams();
     for (const key in obj) {
       if (typeof obj[key] !== 'object') {

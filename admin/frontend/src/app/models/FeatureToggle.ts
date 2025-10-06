@@ -8,12 +8,12 @@ export class FeatureToggle {
   refid?: string;
   name: string;
   enabled: boolean;
-  expiration: Date;
+  expiration?: Date;
   environments?: Environment[];
   users?: User[];
   children?: FeatureToggle[];
   tempName?: string;
-  level: number;
+  level: number = 0;
   constructor() {
     this.name = 'new item';
     this.enabled = true;

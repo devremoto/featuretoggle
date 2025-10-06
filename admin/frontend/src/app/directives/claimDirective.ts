@@ -2,11 +2,12 @@ import { Directive, ElementRef, HostListener, Input } from '@angular/core';
 
 @Directive({
     selector: '[claim]',
+    standalone: false
 
 })
 export class ClaimDirective {
 
-    @Input('claim') name: string;
+    @Input('claim') name: string = '';
 
     constructor(private el: ElementRef) {
         if (this.name === 'nao') {

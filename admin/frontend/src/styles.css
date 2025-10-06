@@ -1,6 +1,27 @@
 /* You can add global styles to this file, and also import other style files */
 @import "~bootstrap/dist/css/bootstrap.min.css";
 @import "~@angular/material/prebuilt-themes/indigo-pink.css";
+/* You can add global styles to this file, and also import other style files */
+
+/* Importing CoreUI Angular Theme files manually */
+/* @import "assets/admin/css/admin-icons.min.css";
+@import "assets/admin/css/admin-base.min.css";
+@import "assets/admin/css/admin-buttons.min.css";
+@import "assets/admin/css/admin-grid.min.css";
+@import "assets/admin/css/admin-forms.min.css";
+@import "assets/admin/css/admin-type.min.css";
+@import "assets/admin/css/admin-sidebar.min.css";
+@import "assets/admin/css/admin-navbar.min.css";
+@import "assets/admin/css/admin-breadcrumb.min.css";
+@import "assets/admin/css/admin-card.min.css";
+@import "assets/admin/css/admin-modal.min.css";
+@import "assets/admin/css/admin-badge.min.css";
+@import "assets/admin/css/admin-alert.min.css";
+@import "assets/admin/css/admin-tables.min.css";
+@import "assets/admin/css/admin-utilities.min.css";
+@import "assets/admin/css/admin-progressbar.min.css";
+@import "assets/admin/css/admin-bootstrap.min.css";
+@import "assets/admin/css/admin-custom.min.css"; */
 @import "assets/admin/css/style.css";
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

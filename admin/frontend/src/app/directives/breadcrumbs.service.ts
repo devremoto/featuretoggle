@@ -1,6 +1,6 @@
 import { Injectable, Injector } from '@angular/core';
 import { Router, ActivatedRoute, NavigationEnd } from '@angular/router';
-import { BehaviorSubject, Observable } from 'rxjs/index';
+import { BehaviorSubject, Observable } from 'rxjs';
 import { filter } from 'rxjs/operators';
 
 
@@ -20,9 +20,9 @@ export class BreadcrumbsService {
     this.breadcrumbs = this._breadcrumbs.asObservable();
 
     this.router.events.pipe(filter(event => event instanceof NavigationEnd)).subscribe((event) => {
-      const breadcrumbs = [];
-      let currentRoute = this.route.root,
-      url = '';
+      const breadcrumbs: any[] = [];
+      let currentRoute: ActivatedRoute | null = this.route.root,
+        url = '';
       do {
         const childrenRoutes = currentRoute.children;
         currentRoute = null;
@@ -33,7 +33,7 @@ export class BreadcrumbsService {
             url += '/' + routeSnapshot.url.map(segment => segment.path).join('/');
             breadcrumbs.push({
               label: route.snapshot.data,
-              url:   url
+              url: url
             });
             currentRoute = route;
           }

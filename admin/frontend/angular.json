@@ -13,8 +13,8 @@
         "build": {
           "builder": "@angular-builders/custom-webpack:browser",
           "options": {
-            "customWebpackConfig":{
-              "path":"./app-config.js"
+            "customWebpackConfig": {
+              "path": "./app-config.js"
             },
             "outputPath": "wwwroot",
             "index": "src/index.html",
@@ -27,6 +27,7 @@
             ],
             "styles": [
               "./node_modules/@angular/material/prebuilt-themes/indigo-pink.css",
+              "./node_modules/ngx-toastr/toastr.css",
               "src/styles.css"
             ],
             "scripts": []
@@ -42,7 +43,6 @@
               "optimization": true,
               "outputHashing": "all",
               "sourceMap": false,
-              "extractCss": true,
               "namedChunks": true,
               "aot": true,
               "extractLicenses": true,
@@ -55,18 +55,18 @@
           "builder": "@angular-builders/custom-webpack:dev-server",
           "options": {
             "port": 4200,
-            "browserTarget": "web:build"
+            "buildTarget": "web:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "web:build:production"
+              "buildTarget": "web:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "web:build"
+            "buildTarget": "web:build"
           }
         },
         "test": {
@@ -128,5 +128,7 @@
       }
     }
   },
-  "defaultProject": "web"
+  "cli": {
+    "analytics": false
+  }
 }

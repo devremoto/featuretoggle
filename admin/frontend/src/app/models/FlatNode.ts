@@ -1,6 +1,6 @@
 import { FeatureToggle } from './FeatureToggle';
 export class FlatNode extends FeatureToggle {
-  expandable: boolean;
-  name: string;
-  level: number;
+  expandable: boolean = false;
+  name: string = '';
+  level: number = 0;
 }

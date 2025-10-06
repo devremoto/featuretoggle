@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { AdminRoutingModule } from './admin-routing.module';
-import { HttpClient, HTTP_INTERCEPTORS } from '@angular/common/http';
+import {  HTTP_INTERCEPTORS } from '@angular/common/http';
 import { LibModule } from '../shared/libModule.module';
 import { SharedModule } from '../shared/shared.module';
 import { AuthInterceptor } from '../auth/interceptor';

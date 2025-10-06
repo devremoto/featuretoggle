@@ -1,5 +1,6 @@
 
-<link rel="stylesheet" type="text/css" href="https://npmcdn.com/angular2-toaster@5.0.0/toaster.css" />
+<link rel="stylesheet" type="text/css"
+  href="https://npmcdn.com/angular2-toaster@5.0.0/toaster.css" />
 
 <!-- Icons -->
 <link href="/assets/admin/css/font-awesome.min.css" rel="stylesheet">
@@ -7,7 +8,8 @@
 <!-- Main styles for this application -->
 
 <header class="app-header navbar">
-  <button class="navbar-toggler d-lg-none" type="button" appMobileSidebarToggler>&#9776;</button>
+  <button class="navbar-toggler d-lg-none" type="button"
+    appMobileSidebarToggler>&#9776;</button>
   <a class="navbar-brand" routerLink="/admin"></a>
   <ul class="nav navbar-nav d-md-down-none">
     <li class="nav-item">
@@ -18,18 +20,25 @@
     </li>
   </ul>
   <ul class="nav navbar-nav ml-auto">
-    
+
     <li class="nav-item dropdown" ngbDropdown>
-      <a class="nav-link dropdown-toggle" style="cursor:pointer" ngbDropdownToggle>
-        <img *ngIf="userData?.picture" [src]="userData?.picture" class="img-avatar" [alt]="userData?.name">
+      <a class="nav-link dropdown-toggle" style="cursor:pointer"
+        ngbDropdownToggle>
+        <img *ngIf="userData?.picture" [src]="userData?.picture"
+          class="img-avatar" [alt]="userData?.name">
         <span class="d-md-down-none">{{userData?.name}}</span>
       </a>
-      <div class="dropdown-menu dropdown-menu-right" aria-labelledby="simple-dropdown" ngbDropdownMenu>
+      <div class="dropdown-menu dropdown-menu-right"
+        aria-labelledby="simple-dropdown" ngbDropdownMenu>
 
-                <a class="dropdown-item" href="#"><em class="fa fa-bell-o"></em> Updates<span class="badge badge-info">42</span></a>
-                <a class="dropdown-item" href="#"><em class="fa fa-envelope-o"></em> Messages<span class="badge badge-success">42</span></a>
-                <a class="dropdown-item" href="#"><em class="fa fa-tasks"></em> Tasks<span class="badge badge-danger">42</span></a>
-                <a class="dropdown-item" href="#"><em class="fa fa-comments"></em> Comment<span class="badge badge-warning">42</span></a>-->
+        <a class="dropdown-item" href="#"><em class="fa fa-bell-o"></em>
+          Updates<span class="badge badge-info">42</span></a>
+        <a class="dropdown-item" href="#"><em class="fa fa-envelope-o"></em>
+          Messages<span class="badge badge-success">42</span></a>
+        <a class="dropdown-item" href="#"><em class="fa fa-tasks"></em>
+          Tasks<span class="badge badge-danger">42</span></a>
+        <a class="dropdown-item" href="#"><em class="fa fa-comments"></em>
+          Comment<span class="badge badge-warning">42</span></a>-->
         <div class="dropdown-header text-center">
           <strong>Settings</strong>
         </div>
@@ -45,7 +54,8 @@
       </div>
     </li>
     <li class="nav-item d-md-down-none">
-      <a class="nav-link navbar-toggler" href="#" appAsideMenuToggler>&#9776;</a>
+      <a class="nav-link navbar-toggler" href="#"
+        appAsideMenuToggler>&#9776;</a>
     </li>
   </ul>
 </header>
@@ -54,7 +64,8 @@
     <nav class="sidebar-nav">
       <ul class="nav">
         <li class="nav-item">
-          <a class="nav-link" routerLinkActive="active" [routerLink]="['dashboard']">
+          <a class="nav-link" routerLinkActive="active"
+            [routerLink]="['dashboard']">
             <em class="icon-speedometer"></em> Feature Toggle App
           </a>
         </li>
@@ -62,18 +73,20 @@
         <li class="nav-title">
           Admin
         </li>
-        <li class="nav-item nav-dropdown" routerLinkActive="open" appNavDropdown>
+        <li class="nav-item nav-dropdown" routerLinkActive="open"
+          appNavDropdown>
           <a class="nav-link nav-dropdown-toggle" href="#" appNavDropdownToggle>
             <em class="icon-settings"></em> Admin</a>
           <ul class="nav-dropdown-items">
             <li class="nav-item">
-              <a class="nav-link" routerLinkActive="active" [routerLink]="['/admin/feature-toggle']">
+              <a class="nav-link" routerLinkActive="active"
+                [routerLink]="['/admin/feature-toggle']">
                 <em class="fa fa-users"></em> Feature Toggles
               </a>
             </li>
           </ul>
         </li>
-       
+
         <li class="divider"></li>
       </ul>
     </nav>
@@ -81,7 +94,8 @@
   <!-- Main content -->
   <main class="main">
     <!-- Breadcrumb -->
-    <ol class="breadcrumb" app-breadcrumbs [fixed]="true" style="border-radius: 0;" >
+    <ol class="breadcrumb" app-breadcrumbs [fixed]="true"
+      style="border-radius: 0;">
 
     </ol>
     <div class="container-fluid">
@@ -90,30 +104,28 @@
     <!-- /.conainer-fluid -->
   </main>
   <aside class="aside-menu">
-    <ngb-tabset>
-      <ngb-tab>
-        <ng-template ngbTabTitle>
-          <em class="icon-list"></em>
-        </ng-template>
-        <ng-template ngbTabContent>
-          
-        </ng-template>
-      </ngb-tab>
-      <ngb-tab>
-        <ng-template ngbTabTitle>
-          <em class="icon-speech"></em>
-        </ng-template>
-        <ng-template ngbTabContent>
-        </ng-template>
-      </ngb-tab>
-      <ngb-tab>
-        <ng-template ngbTabTitle>
-          <em class="icon-settings"></em>
-        </ng-template>
-        <ng-template ngbTabContent>
-        </ng-template>
-      </ngb-tab>
-    </ngb-tabset>
+    <div ngbNav class="nav-tabs-right">
+
+      <ng-template ngbTabTitle>
+        <em class="icon-list"></em>
+      </ng-template>
+      <ng-template ngbTabContent>
+
+      </ng-template>
+
+      <ng-template ngbTabTitle>
+        <em class="icon-speech"></em>
+      </ng-template>
+      <ng-template ngbTabContent>
+      </ng-template>
+
+      <ng-template ngbTabTitle>
+        <em class="icon-settings"></em>
+      </ng-template>
+      <ng-template ngbTabContent>
+      </ng-template>
+
+    </div>
   </aside>
 </div>
 <footer class="app-footer">
@@ -123,12 +135,12 @@
     <a href="http://tugon.com.br" target="_blank">Tugon</a>
   </span>
 </footer>
-<toaster-container></toaster-container>
 <!-- Scroll up -->
 <a href="#" class="fa scrollup"></a>
 <!-- ----------------------------------------------------------------------------------------------- -->
 <script src="https://code.jquery.com/jquery-3.2.1.min.js"
-integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
-crossorigin="anonymous"></script>
+  integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+  crossorigin="anonymous"></script>
 <script src="https://npmcdn.com/tether@1.2.4/dist/js/tether.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+<script
+  src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>

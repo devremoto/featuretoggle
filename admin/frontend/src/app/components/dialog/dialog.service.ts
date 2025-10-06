@@ -5,8 +5,8 @@ import { NgbModal, NgbModalRef } from '@ng-bootstrap/ng-bootstrap';
 
 @Injectable()
 export class DialogService {
-  callback: Function;
-  modalRef: NgbModalRef;
+  callback: Function | undefined;
+  modalRef: NgbModalRef | undefined;
   constructor(
     private modalService: NgbModal
   ) {
@@ -24,7 +24,7 @@ export class DialogService {
     this.openModal(message, callback, 'warning');
   }
 
-  private openModal(message: string, callback?: Function, windowClass?: any) {
+  private openModal(message: string, callback?: Function | undefined, windowClass?: any) {
     if (!windowClass) {
       windowClass = 'primary';
     }

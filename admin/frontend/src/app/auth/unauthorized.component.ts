@@ -4,12 +4,13 @@ import { ActivatedRoute } from '../../../node_modules/@angular/router';
 @Component({
   selector: 'app-unauthorized',
   templateUrl: './unauthorized.component.html',
+  standalone: false,
   styles: []
 })
 export class UnauthorizedComponent implements OnInit {
   private error: number;
   private statuses: { code: number, text: string }[];
-  status: { code: number, text: string };
+  status: { code: number, text: string }= { code: 0, text: '' };
   constructor(private _router: ActivatedRoute) {
 
     this.error = this._router.snapshot.params['id'];

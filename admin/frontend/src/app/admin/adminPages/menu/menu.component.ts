@@ -2,7 +2,7 @@ import { SelectionModel } from '@angular/cdk/collections';
 import { FlatTreeControl } from '@angular/cdk/tree';
 import { Component } from '@angular/core';
 import { MatTreeFlatDataSource, MatTreeFlattener } from '@angular/material/tree';
-import { ToasterService } from 'angular2-toaster';
+import { ToastrService } from 'ngx-toastr';
 
 import { FeatureToggle } from '../../../models/FeatureToggle';
 import { FlatNode } from '../../../models/FlatNode';
@@ -17,7 +17,8 @@ import { MenuService } from './menu.service';
 @Component({
   selector: 'app-menu',
   templateUrl: './menu.component.html',
-  styleUrls: ['./menu.component.css']
+  styleUrls: ['./menu.component.css'],
+  standalone: false
 })
 export class MenuComponent {
   /** Map from flat node to nested node. This helps us finding the nested node to be modified */
@@ -44,7 +45,7 @@ export class MenuComponent {
 
   constructor(
     private database: MenuService,
-    private _toasterService: ToasterService
+    private _toasterService: ToastrService
   ) {
     this.treeFlattener = new MatTreeFlattener(
       this.transformer,
@@ -72,7 +73,7 @@ export class MenuComponent {
 
   isExpandable = (node: FlatNode) => node.expandable;
 
-  getChildren = (node: FeatureToggle): FeatureToggle[] => node.children;
+  getChildren = (node: FeatureToggle): FeatureToggle[] => node.children ?? [];
 
   hasChild(_: number, _nodeData: FlatNode) {
     return _nodeData.children && _nodeData.children.length;
@@ -100,7 +101,7 @@ export class MenuComponent {
     flatNode.users = node.users;
     flatNode.enabled = node.enabled;
     flatNode.tempName = node.name;
-    flatNode.expandable = node.children && node.children.length > 0;
+    flatNode.expandable = !!(node.children && node.children.length > 0);
     this.flatNodeMap.set(flatNode, node);
     this.nestedNodeMap.set(node, flatNode);
     return flatNode;
@@ -143,6 +144,9 @@ export class MenuComponent {
     if (!this.validateInsert(newNode)) {
       return;
     }
+    if (!node.children) {
+      node.children = [];
+    }
     newNode.name = `${node.name}.${node.children.length + 1}`;
     newNode.level = node.level + 1;
     node.children.push(newNode);
@@ -159,14 +163,16 @@ export class MenuComponent {
     if (this.selectedNode) {
       const parentNode = this.getParentNode(node);
       if (parentNode) {
-        const index = this.containsRefId(parentNode.children, node.refid);
+        const index = this.containsRefId(parentNode.children ?? [], node.refid ?? '');
         if (index >= 0) {
-          parentNode.children[index] = node;
+          if (parentNode.children) {
+            parentNode.children[index] = node;
+          }
           const root = this.getRoot(parentNode);
           this.database.saveNode(root, node);
         }
       } else {
-        const index = this.containsRefId(this.dataSource.data, node.refid);
+        const index = this.containsRefId(this.dataSource.data, node.refid ?? '');
         if (index >= 0) {
           this.dataSource.data[index] = node;
           this.database.saveNode(node, node);
@@ -180,7 +186,7 @@ export class MenuComponent {
       msg = `Already exists a feature called "${node.name}"`;
     }
     if (msg) {
-      this._toasterService.pop('error', 'error', msg);
+      this._toasterService.error(msg, 'Error');
       return false;
     }
     return true;
@@ -198,7 +204,7 @@ export class MenuComponent {
       msg = `Already exists a feature called "${node.name}"`;
     }
     if (msg) {
-      this._toasterService.pop('error', 'error', msg);
+      this._toasterService.error(msg, 'Error');
       return false;
     }
     return true;
@@ -217,12 +223,14 @@ export class MenuComponent {
       }
     } else {
       const parentNode = this.getParentNode(node);
-      const index = parentNode.children.findIndex(x => x.refid === node.refid);
-      if (index >= 0) {
-        parentNode.children.splice(index, 1);
-        const root = this.getRoot(parentNode);
-        this.database.deleteNode(root);
-        this.treeControl.expand(parentNode);
+      if (parentNode && parentNode.children) {
+        const index = parentNode.children.findIndex(x => x.refid === node.refid);
+        if (index >= 0) {
+          parentNode.children.splice(index, 1);
+          const root = this.getRoot(parentNode);
+          this.database.deleteNode(root);
+          this.treeControl.expand(parentNode);
+        }
       }
     }
   }

@@ -6,15 +6,25 @@ import { map, filter, catchError } from 'rxjs/operators';
 @Injectable({ providedIn: 'root' })
 export class BaseService<T> {
 
-  protected _controller: string;
+  protected _controller: string = ``;
   private _emitter: Subject<any>;
 
   constructor(protected httpService: HttpService) {
-    this._emitter = new Subject<any>();
+    this._emitter = new Subject<unknown>();
     if (!this._controller) {
-      const comp: T = Object.assign({}, <T>{}, {});
+      const comp: T = Object.assign({}, ({} as T), {}) as T;
 
-      this._controller = (<T>comp).constructor.name;
+      this.setControllerName(comp);
+      //this._controller = (comp as T & Function).constructor.name;
+    }
+  }
+
+  private setControllerName(comp: T) {
+    const ctor = Object.getPrototypeOf(comp)?.constructor;
+    if (ctor && ctor.name !== 'Object') {
+      this._controller = ctor.name;
+    } else {
+      this._controller = typeof comp;
     }
   }
 

@@ -6,10 +6,11 @@ import { Config } from '../config';
 declare var $: any;
 
 @Directive({
-  selector: '[inRole]'
+  selector: '[inRole]',
+  standalone: false
 })
 export class InRoleDirective implements OnInit {
-  userRoles = [];
+  userRoles: any[] = [];
   @Input('inRole') roles: Array<string> = [];
 
   constructor(

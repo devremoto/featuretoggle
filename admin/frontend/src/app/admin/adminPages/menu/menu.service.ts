@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
-import { ToasterService } from 'angular2-toaster';
-import { BehaviorSubject } from 'rxjs';
+import { ToastrService } from 'ngx-toastr';
+import { BehaviorSubject, Observable } from 'rxjs';
 
 import { FeatureToggle } from '../../../models/FeatureToggle';
 import { FeatureToggleService } from '../../../services/feature-toogle.service';
@@ -11,22 +11,22 @@ import { NotificationService } from './../../../services/notification.service';
 })
 export class MenuService {
   dataChange = new BehaviorSubject<FeatureToggle[]>([]);
-  tree: FeatureToggle[];
+  tree: FeatureToggle[] = [];
   get data(): FeatureToggle[] {
     return this.dataChange.value;
   }
-  onSelect = new BehaviorSubject<FeatureToggle>(<FeatureToggle>{});
-  get select(): FeatureToggle {
+  onSelect = new BehaviorSubject<FeatureToggle | null>(null);
+  get select(): FeatureToggle | null {
     return this.onSelect.value;
   }
-  onSave = new BehaviorSubject<FeatureToggle>(<FeatureToggle>{});
-  get saveHandler(): FeatureToggle {
+  onSave = new BehaviorSubject<FeatureToggle | null>(null);
+  get saveHandler(): FeatureToggle | null {
     return this.onSave.value;
   }
 
   constructor(
     private _service: FeatureToggleService,
-    private _toasterService: ToasterService,
+    private _toasterService: ToastrService,
     private _notification: NotificationService
   ) {
     this.initialize();
@@ -46,28 +46,26 @@ export class MenuService {
     });
   }
 
-  save(node: FeatureToggle): any {
+  save(node: FeatureToggle | null): any {
     this.onSave.next(node);
   }
 
-  addFeature(node: FeatureToggle) {
-    this._service.save(node, false).subscribe(
+  addFeature(node: FeatureToggle | null) {
+    this._service.save(node!, false).subscribe(
       result => {
-        const index = this.data.findIndex(x => x.refid === node.refid);
+        const index = this.data.findIndex(x => x.refid === node!.refid);
         this.data[index] = result;
         this.tree[index] = result;
         this.dataChange.next(this.data);
         this.onSelect.next(null);
-        this._toasterService.pop(
-          'success',
-          `Feature "${node.name}" created successfully`
+        this._toasterService.success(
+          `Feature "${node!.name}" created successfully`
         );
       },
       error => {
         console.log(error);
-        this._toasterService.pop(
-          'error',
-          `Error creating feature "${node.name}"`
+        this._toasterService.error(
+          `Error creating feature "${node!.name}"`
         );
       }
     );
@@ -75,22 +73,27 @@ export class MenuService {
   }
 
   deleteFeature(node: FeatureToggle) {
-    this._service.removeById(node._id).subscribe(
-      result => {
-        this.onSelect.next(null);
-        this._toasterService.pop(
-          'success',
-          `Feature "${node.name}" removed successfully`
-        );
-      },
-      error => {
-        console.log(error);
-        this._toasterService.pop(
-          'error',
-          `Error removing feature "${node.name}"`
-        );
-      }
-    );
+    if (node._id) {
+      this._service.removeById(node._id).subscribe(
+        result => {
+          this.onSelect.next(null);
+          this._toasterService.success(
+            `Feature "${node.name}" removed successfully`
+          );
+        },
+        error => {
+          console.log(error);
+          this._toasterService.error(
+            `Error removing feature "${node.name}"`
+          );
+        }
+      );
+    } else {
+      console.error('Feature _id is undefined, cannot remove.');
+      this._toasterService.error(
+        `Error removing feature "${node.name}": missing _id`
+      );
+    }
     this.dataChange.next(this.data);
   }
 
@@ -98,10 +101,10 @@ export class MenuService {
     this._service.save(root, true).subscribe(
       result => {
         this.onSelect.next(null);
-        this._toasterService.pop('success', `Feature created successfully`);
+        this._toasterService.success('Feature created successfully');
       },
       error => {
-        this._toasterService.pop('error', JSON.stringify(error));
+        this._toasterService.error(JSON.stringify(error));
       }
     );
     this.dataChange.next(this.data);
@@ -110,13 +113,12 @@ export class MenuService {
   saveNode(root: FeatureToggle, node: FeatureToggle) {
     this._service.save(root, true).subscribe(
       result => {
-        this._toasterService.pop(
-          'success',
+        this._toasterService.success(
           `Feature "${node.name}" saved successfully`
         );
       },
       error => {
-        this._toasterService.pop('error', JSON.stringify(error));
+        this._toasterService.error(JSON.stringify(error));
       }
     );
     this.dataChange.next(this.data);
@@ -127,10 +129,10 @@ export class MenuService {
       result => {
         this.dataChange.next(this.data);
         this.onSelect.next(null);
-        this._toasterService.pop('success', 'Item removed');
+        this._toasterService.success('Item removed');
       },
       error => {
-        this._toasterService.pop('error', JSON.stringify(error));
+        this._toasterService.error(JSON.stringify(error));
       }
     );
   }

@@ -3,7 +3,8 @@ declare var ProgressBar: any;
 declare var $: any;
 
 @Directive({
-  selector: '[appProgressCircle]'
+  selector: '[appProgressCircle]',
+  standalone: false
 })
 export class ProgressCircleDirective implements OnInit, AfterViewInit {
   @Input('appProgressCircle') options: any = {
@@ -21,7 +22,7 @@ export class ProgressCircleDirective implements OnInit, AfterViewInit {
     text: {
       autoStyleContainer: false
     },
-    step: function (state, circle) {
+    step: (state: any, circle: any) => {
       circle.path.setAttribute('stroke', state.color);
       circle.path.setAttribute('stroke-width', state.width);
 
@@ -47,7 +48,7 @@ export class ProgressCircleDirective implements OnInit, AfterViewInit {
 
   animate() {
     const options = this.options;
-    $(this.el.nativeElement).each(function (key, obj) {
+    $(this.el.nativeElement).each(function (key: string, obj: any) {
       const bar = new ProgressBar.Circle(obj, options);
       bar.animate(options.value);
     });

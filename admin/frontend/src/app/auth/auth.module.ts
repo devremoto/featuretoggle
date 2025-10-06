@@ -7,7 +7,6 @@ import { LoginCallBackComponent } from './callback';
 import { AuthInterceptor } from './interceptor';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AccountService } from './account.service';
-import 'rxjs/operators/tap';
 import { UnauthorizedComponent } from './unauthorized.component';
 
 @NgModule({
