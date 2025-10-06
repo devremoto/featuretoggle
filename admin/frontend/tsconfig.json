@@ -11,6 +11,8 @@
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
     "target": "es2015",
+    "forceConsistentCasingInFileNames": true,
+    "strict": true,
     "typeRoots": [
       "node_modules/@types"
     ],

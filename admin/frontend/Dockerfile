@@ -10,7 +10,7 @@ ARG STS_SERVER=${STS_SERVER}
 ARG FRONT_PORT=${FRONT_PORT}
 
 COPY package.json package-lock.json  /app/
-RUN cd /app && npm set progress=false && npm install
+RUN cd /app && npm set progress=false && npm install --force
 
 COPY .  /app
 RUN cd /app && npm run build-prod

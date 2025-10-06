@@ -1,4 +1,5 @@
-FROM microsoft/dotnet:sdk AS build
+ARG DOTNET_VERSION=2.2
+FROM mcr.microsoft.com/dotnet/core/sdk:${DOTNET_VERSION} AS build
 WORKDIR /app
 COPY ["Skoruba.IdentityServer4.Admin/Skoruba.IdentityServer4.Admin.csproj", "Skoruba.IdentityServer4.Admin/"]
 COPY ["Skoruba.IdentityServer4.Admin.EntityFramework.DbContexts/Skoruba.IdentityServer4.Admin.EntityFramework.DbContexts.csproj", "Skoruba.IdentityServer4.Admin.EntityFramework.DbContexts/"]
@@ -13,8 +14,8 @@ COPY . ./
 
 RUN dotnet publish "Skoruba.IdentityServer4.Admin/Skoruba.IdentityServer4.Admin.csproj" -c Release -o /app/out
 
-
-FROM microsoft/dotnet:aspnetcore-runtime
+# FROM mcr.microsoft.com/dotnet/aspnet:${DOTNET_VERSION}
+FROM mcr.microsoft.com/dotnet/core/aspnet:${DOTNET_VERSION}
 ARG sts_port=5000
 ARG sts_https_port=5001
 ARG sts_admin_port=9000
