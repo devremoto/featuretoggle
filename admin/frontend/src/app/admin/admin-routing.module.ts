@@ -3,6 +3,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { IndexComponent } from './_layout/index/index.component';
 import { AdminLayoutModule } from './_layout/admin-layout.module';
 import { CanActivateViaAuthGuard } from '../auth/CanActivateViaAuthGuard';
+import { FormsModule } from '@angular/forms';
 
 const routes: Routes = [
   {

@@ -59,6 +59,16 @@ import 'web-animations-js';  // Run `npm install --save web-animations-js`.
 import 'zone.js';  // Included with Angular CLI.
 
 
+/***************************************************************************************************
+ * APPLICATION IMPORTS
+ */
+
+/**
+ * Import for Angular localize - required for NgBootstrap date picker
+ */
+import '@angular/localize/init';
+
+
 
 /***************************************************************************************************
  * APPLICATION IMPORTS

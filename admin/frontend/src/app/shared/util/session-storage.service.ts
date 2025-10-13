@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 declare var require: any;
 declare var process: any;
 
-@Injectable()
+@Injectable({ providedIn: 'root' })
 export class SessionStorageService {
 
 

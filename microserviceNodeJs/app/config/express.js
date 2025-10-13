@@ -3,7 +3,7 @@ const bodyParser = require('body-parser');
 var load = require('express-load');
 const expressValidator = require('express-validator');
 const cors = require('cors');
-//const swaggerRouter = require('../routes/routes/swagger.route');
+const swaggerRouter = require('../routes/swagger.route');
 const urlPrefix = '/featuretoggle';
 const consts = require('./config');
 module.exports = (function () {
@@ -11,14 +11,22 @@ module.exports = (function () {
     const http = require('http').Server(app);
 
     let name = 'featuretoggle';
-    const io = require('socket.io')(http);
+    const io = require('socket.io')(http, {
+        cors: {
+            origin: "*"
+        }
+    });
     app.set('io', io);
-    app.get('io').on('connection', socket => {
-        console.log('connected', socket.id);
-        socket.on('list', result => {
-            console.log('=================io funcionando=================\n');
-            console.log(result);
+    io.on('connection', socket => {
+        socket.on("hello", (arg) => {
+            console.log(arg); // world
         });
+        console.log('connected', JSON.stringify(socket.id));
+
+    });
+    io.on('list', result => {
+        console.log('=================io funcionando=================\n');
+        console.log(result);
     });
     app.use((req, res, next) => {
         req.io = io;
@@ -31,7 +39,11 @@ module.exports = (function () {
     }));
     app.use(bodyParser.json());
     app.use(expressValidator());
-    //app.use(`${app.urlPrefix}`, swaggerRouter);
+
+    // Enable Swagger
+    app.urlPrefix = urlPrefix;
+    swaggerRouter(app);
+
     load('routes', {
         cwd: 'app'
     }).into(app);
@@ -57,9 +69,9 @@ module.exports = (function () {
     app.urlPrefix = urlPrefix;
 
     app.start = () => {
-        let port = process.env.PORT || consts.PORT;
+        let port = process.env.MS_MONGO_PORT || consts.PORT;
         http.listen(port, () => {
-            console.clear();
+            //console.clear();
             console.log(`
 ================================================================================================
 ================================================================================================
@@ -75,6 +87,8 @@ http://localhost:${port}/api/swagger
 
 ================================================================================================
 ================================================================================================
+
+${JSON.stringify(consts, null, 2)}
 `);
         });
     };

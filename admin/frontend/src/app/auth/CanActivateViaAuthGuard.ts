@@ -3,13 +3,13 @@ import { CanActivate, Router, RouterStateSnapshot, ActivatedRouteSnapshot } from
 import { Config } from '../config';
 import { AuthService } from './AuthService';
 declare var process: any;
-@Injectable()
+@Injectable({ providedIn: 'root' })
 export class CanActivateViaAuthGuard implements CanActivate {
 
     constructor(private authService: AuthService, private _router: Router, private config: Config) { }
 
     canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean {
-        console.log(this.config);
+        //console.log(this.config);
         if (!this.config.useAuthorityServer) {
             return true;
         }

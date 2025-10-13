@@ -1,6 +1,7 @@
 package main
 
 import (
+	"context"
 	"fmt"
 	"os"
 
@@ -27,22 +28,15 @@ func connect() connection {
 	client := redis.NewClient(&redis.Options{
 		Addr: addr,
 	})
-	// client.WrapProcess(func(old func(cmd redis.Cmder) error) func(cmd redis.Cmder) error {
-	// 	return func(cmd redis.Cmder) error {
-	// 		fmt.Printf("starting processing: <%s>\n", cmd)
-	// 		err := old(cmd)
-	// 		fmt.Printf("finished processing: <%s>\n", cmd)
-	// 		return err
-	// 	}
-	// })
-	client.Ping()
+
+	client.Ping(context.Background())
 	return connection{
 		client: client,
 	}
 }
 
 func (c connection) get(key string) string {
-	value, err := c.client.Get(key).Result()
+	value, err := c.client.Get(context.Background(), key).Result()
 	if err != nil {
 		fmt.Printf("%s not found", key)
 	} else {
@@ -53,14 +47,14 @@ func (c connection) get(key string) string {
 }
 
 func (c connection) set(key string, value interface{}) {
-	err := c.client.Set(key, value, 0).Err()
+	err := c.client.Set(context.Background(), key, value, 0).Err()
 	if err != nil {
 		panic(err)
 	}
 }
 
 func (c connection) keys(pattern string) []string {
-	value, err := c.client.Keys(pattern).Result()
+	value, err := c.client.Keys(context.Background(), pattern).Result()
 	if err != nil {
 		panic(err)
 	}

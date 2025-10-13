@@ -4,13 +4,8 @@ const service = require('../services/mongo-service');
 module.exports = {
     list: async (req, res) => {
         try {
-            const result = await service.list();
-            req.io.emit('list', result);
+            const result = await service.list(req.io);
             JL('controller:list').info(result);
-            req.io.on('list', result => {
-                console.log('=================io funcionando=================\n');
-                console.log(result);
-            });
             res.send(result);
         } catch (error) {
             JL('controller:list:error').error(error);
@@ -20,7 +15,7 @@ module.exports = {
 
     getByName: async (req, res) => {
         try {
-            const result = await service.getByName(req.params.name)
+            const result = await service.getByName(req.params.name, req.io);
             res.send(result);
         } catch (error) {
             JL('controller').error(

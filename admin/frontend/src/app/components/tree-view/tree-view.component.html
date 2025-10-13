@@ -1,0 +1,50 @@
+<div class="tree-node" *ngFor="let node of data"
+    [style.padding-left]="getPaddingLeft()">
+    <div class="node-content">
+        <!-- Expand/Collapse Icon -->
+        @if (hasChildren(node)) {
+        <em
+            class="fa node-toggle"
+            (click)="toggleNode(node)"
+            [ngClass]="{
+        'fa-angle-down': isExpanded(node),
+        'fa-angle-right': !isExpanded(node)
+      }"></em>
+        }
+
+        <!-- Empty space for nodes without children to align content -->
+        @if (!hasChildren(node)) {
+        <span class="node-spacer"></span>
+        }
+
+        <!-- Node name -->
+        <span
+            class="node-name"
+            (click)="onSelectNode(node)"
+            [title]="'Edit feature [' + node.name + ']'">
+            {{node.level}} {{ node.name }}
+        </span>
+
+        <!-- Action buttons -->
+        <em
+            class="fa fa-plus fa-sm node-action"
+            (click)="onAddNode(node)"
+            [title]="'Add feature in: [' + node.name + ']'"></em>
+
+        <em
+            class="fa fa-trash red node-action"
+            (click)="onDeleteNode(node)"
+            [title]="'Remove feature [' + node.name + ']'"></em>
+    </div>
+
+    <!-- Children nodes (recursive) -->
+    @if (hasChildren(node) && isExpanded(node)) {
+    <app-tree-view
+        [data]="node.children || []"
+        [level]="level + 1"
+        (nodeSelected)="nodeSelected.emit($event)"
+        (nodeDeleted)="nodeDeleted.emit($event)"
+        (nodeAdded)="nodeAdded.emit($event)"></app-tree-view>
+    }
+
+</div>

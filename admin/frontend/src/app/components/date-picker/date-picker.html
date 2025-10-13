@@ -1,0 +1,30 @@
+@if(label){
+<label class="form-label" for="dp">{{label}}
+</label>
+}
+
+<div class="input-group">
+    <input
+        class="form-control"
+        placeholder="yyyy-mm-dd"
+        name="dp"
+        [ngModel]="selectedDate"
+        (ngModelChange)="onDateSelect($event)"
+        [showWeekNumbers]="showWeekNumbers"
+        [autoClose]="autoClose"
+        [startDate]="startDate"
+        [minDate]="minDate"
+        [maxDate]="maxDate"
+        [disabled]="disabled"
+        ngbDatepicker
+        #d="ngbDatepicker"
+        readonly />
+    <button
+        title="Select date"
+        class="input-group-text"
+        (click)="d.toggle()"
+        [disabled]="disabled"
+        type="button">
+        <span class="fa fa-calendar"></span>
+    </button>
+</div>

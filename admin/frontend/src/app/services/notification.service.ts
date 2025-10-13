@@ -1,37 +1,60 @@
 import { Injectable } from '@angular/core';
-import { Socket } from 'ngx-socket-io';
-import { map } from 'rxjs';
+import { SocketService } from './ISocketService';
+import { Observable } from 'rxjs';
+import { FeatureToggle } from '../models/FeatureToggle';
 
 @Injectable({
   providedIn: 'root'
 })
 export class NotificationService {
-  constructor(private socket: Socket) { }
+  constructor(private socketService: SocketService) {
+    this.init();
 
-  onUpdate() {
-    return this.socket.fromEvent<any>('update').pipe(
-      map((data) => {
-        return data;
-      })
+  }
+  // safely handles circular references
+  safeStringify(obj: any, indent = 2) {
+    let cache: any[] | null = [];
+    const retVal = JSON.stringify(
+      obj,
+      (key, value) =>
+        typeof value === "object" && value !== null
+          ? cache!.includes(value)
+            ? undefined // Duplicate reference found, discard key
+            : cache!.push(value) && value // Store value in our collection
+          : value,
+      indent
     );
+    cache = null;
+    return retVal;
+  }
+  init() {
+
+    this.socketService.connect();
+
+    this.listeners();
   }
 
-  onList() {
-    return this.socket.fromEvent('list').pipe(
-      map((data) => {
-        return data;
-      })
-    );
+  on(event: string): Observable<any> {
+    return this.socketService.on(event);
   }
 
-  on(event: string) {
-    return this.socket.fromEvent(event).pipe(
-      map((data) => {
-        return data;
-      })
-    );
+  emit(event: string, data: any) {
+    this.socketService.emit(event, data);
   }
-  emit(event: string, obj: any) {
-    this.socket.emit(event, obj);
+
+  listeners() {
+    this.socketService.on('list').subscribe(result => {
+      console.log(result);
+    });
+    this.socketService.on('update').subscribe(result => {
+      console.log(result);
+    });
+    this.socketService.on('connection').subscribe(result => {
+      console.log(result);
+    });
   }
+
+
+
+
 }

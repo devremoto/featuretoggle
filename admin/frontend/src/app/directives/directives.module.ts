@@ -10,9 +10,11 @@ import { ProgressCircleDirective } from './progress-circle.directive';
 import { AsideToggleDirective } from './aside.directive';
 import { NlbrDirective } from './nlbr.directive';
 import { EnterDirective } from './enter.directive';
+import { FormsModule } from '@angular/forms';
 @NgModule({
   imports: [
     CommonModule,
+    FormsModule
 
 
   ],

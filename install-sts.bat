@@ -1,5 +1,5 @@
 @echo off
-
+call env-vars.bat
 
 set directory=%~dp0
 cd /d %directory%. 
@@ -28,12 +28,7 @@ rem sudo dotnet ef migrations add IdentityServerPersistedGrantsDbInit -c Identit
 cd ../../../
 
 docker network create ft-network
-set STS_PORT=5000 
-set STS_HTTPS_PORT=5001 
-set STS_ADMIN_PORT=9000 
-set STS_ADMIN_HTTPS_PORT=9001 
-set STS_SERVER=http://localhost 
-set STS_ADMIN_SERVER=http://localhost 
+
 
 docker-compose -f docker-compose-sts.yml up --build -d
 

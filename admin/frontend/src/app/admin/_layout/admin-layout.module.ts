@@ -1,20 +1,24 @@
-import { NgModule } from '@angular/core';
-import { SharedModule } from '../../shared/shared.module';
+import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
 import { IndexComponent } from './index/index.component';
-import { LibModule } from '../../shared/libModule.module';
+import { NgbDatepickerModule } from '@ng-bootstrap/ng-bootstrap';
+import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
+import { RouterModule } from '@angular/router';
 
 @NgModule({
     imports: [
-        SharedModule,
-        LibModule
+        CommonModule,
+        FormsModule,
+        NgbDatepickerModule,
+        RouterModule
     ],
     declarations: [
         IndexComponent
     ],
     exports: [
-        SharedModule,
         IndexComponent
-    ]
+    ],
+    schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
 export class AdminLayoutModule {
 

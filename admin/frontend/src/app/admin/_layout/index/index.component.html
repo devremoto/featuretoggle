@@ -24,8 +24,9 @@
     <li class="nav-item dropdown" ngbDropdown>
       <a class="nav-link dropdown-toggle" style="cursor:pointer"
         ngbDropdownToggle>
-        <img *ngIf="userData?.picture" [src]="userData?.picture"
-          class="img-avatar" [alt]="userData?.name">
+        <img *ngIf="true" [src]="userData?.picture"
+          class="img-avatar" [alt]="userData?.name"
+          title="{{ userData?.name }}" />
         <span class="d-md-down-none">{{userData?.name}}</span>
       </a>
       <div class="dropdown-menu dropdown-menu-right"
@@ -38,7 +39,7 @@
         <a class="dropdown-item" href="#"><em class="fa fa-tasks"></em>
           Tasks<span class="badge badge-danger">42</span></a>
         <a class="dropdown-item" href="#"><em class="fa fa-comments"></em>
-          Comment<span class="badge badge-warning">42</span></a>-->
+          Comment<span class="badge badge-warning">42</span></a>
         <div class="dropdown-header text-center">
           <strong>Settings</strong>
         </div>
@@ -75,8 +76,8 @@
         </li>
         <li class="nav-item nav-dropdown" routerLinkActive="open"
           appNavDropdown>
-          <a class="nav-link nav-dropdown-toggle" href="#" appNavDropdownToggle>
-            <em class="icon-settings"></em> Admin</a>
+          <span class="nav-link nav-dropdown-toggle" appNavDropdownToggle>
+            <em class="icon-settings"></em> Admin</span>
           <ul class="nav-dropdown-items">
             <li class="nav-item">
               <a class="nav-link" routerLinkActive="active"
@@ -94,10 +95,9 @@
   <!-- Main content -->
   <main class="main">
     <!-- Breadcrumb -->
-    <ol class="breadcrumb" app-breadcrumbs [fixed]="true"
-      style="border-radius: 0;">
-
-    </ol>
+    <app-breadcrumbs [fixed]="true">
+      <ol class="breadcrumb" style="border-radius: 0;"></ol>
+    </app-breadcrumbs>
     <div class="container-fluid">
       <router-outlet></router-outlet>
     </div>
@@ -130,9 +130,10 @@
 </div>
 <footer class="app-footer">
   <span>
-    <a href="http://tugon.com.br" target="_blank">Tugon</a> © 2019 Tugon</span>
+    <a href="http://tugon.com.br" target="_blank" rel="noopener">Tugon</a> ©
+    2019 Tugon</span>
   <span class="ml-auto">Powered by
-    <a href="http://tugon.com.br" target="_blank">Tugon</a>
+    <a href="http://tugon.com.br" target="_blank" rel="noopener">Tugon</a>
   </span>
 </footer>
 <!-- Scroll up -->

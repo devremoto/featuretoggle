@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { AccountService } from '../../../auth/account.service';
 
 import { AuthService } from '../../../auth/AuthService';
 import { Config } from 'src/app/config';
@@ -21,7 +20,6 @@ export class IndexComponent implements OnInit {
         private _authService: AuthService, private config: Config
     ) {
         // window.__theme = 'bs4';
-        console.log(config);
     }
     public disabled = false;
     public status: { isopen: boolean } = { isopen: false };

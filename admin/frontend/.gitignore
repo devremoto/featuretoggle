@@ -5,6 +5,7 @@
 /wwwroot
 /tmp
 /out-tsc
+.env
 
 # dependencies
 /node_modules

@@ -1,162 +1,75 @@
-import { SelectionModel } from '@angular/cdk/collections';
-import { FlatTreeControl } from '@angular/cdk/tree';
 import { Component } from '@angular/core';
-import { MatTreeFlatDataSource, MatTreeFlattener } from '@angular/material/tree';
 import { ToastrService } from 'ngx-toastr';
 
 import { FeatureToggle } from '../../../models/FeatureToggle';
-import { FlatNode } from '../../../models/FlatNode';
 import { MenuService } from './menu.service';
 
 /**
- * The component used here is the Tree From Angular Materisl
- * In order to get more info, go to:
- * https://material.angular.io/components/tree/
+ * Feature Toggle Menu Component with Custom Tree View
+ * Replaces the Angular Material Tree with a simple custom tree component
  */
 
 @Component({
   selector: 'app-menu',
   templateUrl: './menu.component.html',
   styleUrls: ['./menu.component.css'],
-  standalone: false
+  standalone: false,
+  animations: [],
 })
 export class MenuComponent {
-  /** Map from flat node to nested node. This helps us finding the nested node to be modified */
-  flatNodeMap = new Map<FlatNode, FeatureToggle>();
+  /** Tree data source */
+  treeData: FeatureToggle[] = [];
 
-  /** Map from nested node to flattened node. This helps us to keep the same object for selection */
-  nestedNodeMap = new Map<FeatureToggle, FlatNode>();
-
-  /** A selected parent node to be inserted */
-  selectedParent: FlatNode | null = null;
-
-  /** The new item's name */
-  newItemName = 'sdfsdf';
-
-  treeControl: FlatTreeControl<FlatNode>;
-
-  treeFlattener: MatTreeFlattener<FeatureToggle, FlatNode>;
-
-  dataSource: MatTreeFlatDataSource<FeatureToggle, FlatNode>;
-
-  /** The selection for checklist */
-  checklistSelection = new SelectionModel<FlatNode>(true /* multiple */);
-  selectedNode: any;
+  /** Currently selected node */
+  selectedNode: FeatureToggle | null = null;
 
   constructor(
     private database: MenuService,
     private _toasterService: ToastrService
   ) {
-    this.treeFlattener = new MatTreeFlattener(
-      this.transformer,
-      this.getLevel,
-      this.isExpandable,
-      this.getChildren
-    );
-    this.treeControl = new FlatTreeControl<FlatNode>(
-      this.getLevel,
-      this.isExpandable
-    );
-    this.dataSource = new MatTreeFlatDataSource(
-      this.treeControl,
-      this.treeFlattener
-    );
+    // Subscribe to save events
     database.onSave.subscribe(data => {
-      this.saveNode(<FlatNode>data);
-    });
-    database.dataChange.subscribe(data => {
-      this.dataSource.data = data;
-    });
-  }
-
-  getLevel = (node: FlatNode) => node.level;
-
-  isExpandable = (node: FlatNode) => node.expandable;
-
-  getChildren = (node: FeatureToggle): FeatureToggle[] => node.children ?? [];
-
-  hasChild(_: number, _nodeData: FlatNode) {
-    return _nodeData.children && _nodeData.children.length;
-  }
-
-  hasNoContent = (_: number, _nodeData: FlatNode) => _nodeData.name === '';
-
-  /**
-   * Transformer to convert nested node to flat node. Record the nodes in maps for later use.
-   */
-  transformer = (node: FeatureToggle, level: number) => {
-    const existingNode = this.nestedNodeMap.get(node);
-    const flatNode =
-      existingNode && existingNode.name === node.name
-        ? existingNode
-        : new FlatNode();
-    if (node._id) {
-      flatNode._id = node._id;
-    }
-    flatNode.name = node.name;
-    flatNode.level = level;
-    flatNode.refid = node.refid;
-    flatNode.children = node.children;
-    flatNode.environments = node.environments;
-    flatNode.users = node.users;
-    flatNode.enabled = node.enabled;
-    flatNode.tempName = node.name;
-    flatNode.expandable = !!(node.children && node.children.length > 0);
-    this.flatNodeMap.set(flatNode, node);
-    this.nestedNodeMap.set(node, flatNode);
-    return flatNode;
-  }
-
-  /* Get the parent node of a node */
-  getParentNode(node: FlatNode): FlatNode | null {
-    const currentLevel = this.getLevel(node);
-
-    if (currentLevel < 1) {
-      return null;
-    }
-    const startIndex =
-      this.treeControl.dataNodes.findIndex(x => x.refid === node.refid) - 1;
-
-    for (let i = startIndex; i >= 0; i--) {
-      const currentNode = this.treeControl.dataNodes[i];
-
-      if (this.getLevel(currentNode) < currentLevel) {
-        return currentNode;
+      if (data) {
+        this.saveNode(data as FeatureToggle);
       }
-    }
-    return null;
+    });
+
+    // Subscribe to data changes
+    database.dataChange.subscribe(data => {
+      this.treeData = data;
+    });
   }
 
   addFeature() {
     const node = new FeatureToggle();
-    node.name = `feature ${this.dataSource.data.length + 1}`;
+    node.name = `feature ${this.treeData.length + 1}`;
     if (!this.validateInsert(node)) {
       return;
     }
-    this.dataSource.data.push(<FlatNode>node);
+    this.treeData.push(node);
     this.database.addFeature(node);
-    this.treeControl.expand(<FlatNode>node);
   }
 
-  /** Select the category so we can insert the new item. */
-  addNewItem(node: FlatNode) {
+  /** Add a new child node to the specified parent */
+  addNewItem(parentNode: FeatureToggle) {
     const newNode = new FeatureToggle();
+    newNode.level = (parentNode.level ?? 0) + 1;
+
     if (!this.validateInsert(newNode)) {
       return;
     }
-    if (!node.children) {
-      node.children = [];
+    if (!parentNode.children) {
+      parentNode.children = [];
     }
-    newNode.name = `${node.name}.${node.children.length + 1}`;
-    newNode.level = node.level + 1;
-    node.children.push(newNode);
-    const root = this.getRoot(node);
+    newNode.name = `${parentNode.name}.${parentNode.children.length + 1}`;
+    parentNode.children.push(newNode);
+    parentNode.opened = true;
+    const root = this.getRoot(parentNode);
     this.database.addNode(root);
-    this.treeControl.expand(node);
   }
 
   /** Save the node to database */
-  saveNode(node: FlatNode) {
+  saveNode(node: FeatureToggle) {
     if (!this.validateSave(node)) {
       return;
     }
@@ -172,17 +85,18 @@ export class MenuComponent {
           this.database.saveNode(root, node);
         }
       } else {
-        const index = this.containsRefId(this.dataSource.data, node.refid ?? '');
+        const index = this.containsRefId(this.treeData, node.refid ?? '');
         if (index >= 0) {
-          this.dataSource.data[index] = node;
+          this.treeData[index] = node;
           this.database.saveNode(node, node);
         }
       }
     }
   }
-  validateInsert(node: FeatureToggle) {
+
+  validateInsert(node: FeatureToggle): boolean {
     let msg;
-    if (this.treeControl.dataNodes.find(x => x.name === node.name)) {
+    if (this.findNodeByName(this.treeData, node.name)) {
       msg = `Already exists a feature called "${node.name}"`;
     }
     if (msg) {
@@ -194,13 +108,8 @@ export class MenuComponent {
 
   validateSave(node: FeatureToggle): boolean {
     let msg;
-    if (
-      this.treeControl &&
-      this.treeControl.dataNodes &&
-      this.treeControl.dataNodes.find(
-        x => x.name === node.name && x.refid !== node.refid
-      )
-    ) {
+    const existingNode = this.findNodeByName(this.treeData, node.name);
+    if (existingNode && existingNode.refid !== node.refid) {
       msg = `Already exists a feature called "${node.name}"`;
     }
     if (msg) {
@@ -209,58 +118,90 @@ export class MenuComponent {
     }
     return true;
   }
+
   containsRefId(array: FeatureToggle[], refid: string): number {
     const index = array.findIndex(x => x.refid === refid);
     return index;
   }
-  deleteNode(node: FlatNode) {
-    if (node.level === 0) {
-      const index = this.dataSource.data.findIndex(x => x.refid === node.refid);
+
+  deleteNode(node: FeatureToggle) {
+    const parentNode = this.getParentNode(node);
+    if (parentNode && parentNode.children) {
+      const index = parentNode.children.findIndex(x => x.refid === node.refid);
       if (index >= 0) {
-        this.dataSource.data.splice(index, 1);
-        this.database.deleteFeature(node);
-        this.treeControl.expand(node);
+        parentNode.children.splice(index, 1);
+        const root = this.getRoot(parentNode);
+        this.database.deleteNode(root);
       }
     } else {
-      const parentNode = this.getParentNode(node);
-      if (parentNode && parentNode.children) {
-        const index = parentNode.children.findIndex(x => x.refid === node.refid);
-        if (index >= 0) {
-          parentNode.children.splice(index, 1);
-          const root = this.getRoot(parentNode);
-          this.database.deleteNode(root);
-          this.treeControl.expand(parentNode);
-        }
+      // Root level node
+      const index = this.treeData.findIndex(x => x.refid === node.refid);
+      if (index >= 0) {
+        this.treeData.splice(index, 1);
+        this.database.deleteFeature(node);
       }
     }
   }
 
-  selectNode(node: FlatNode) {
+  selectNode(node: FeatureToggle) {
     this.selectedNode = { ...node };
     this.database.onSelect.next(this.selectedNode);
   }
 
   /**
-   * It gets the root element of a specific node
-   * @param node
+   * Find a node by name in the tree (recursive search)
+   */
+  findNodeByName(nodes: FeatureToggle[], name: string): FeatureToggle | null {
+    for (const node of nodes) {
+      if (node.name === name) {
+        return node;
+      }
+      if (node.children) {
+        const found = this.findNodeByName(node.children, name);
+        if (found) {
+          return found;
+        }
+      }
+    }
+    return null;
+  }
+
+  /**
+   * Find the parent node of a specific node
+   */
+  getParentNode(targetNode: FeatureToggle): FeatureToggle | null {
+    return this.findParentInNodes(this.treeData, targetNode);
+  }
+
+  private findParentInNodes(nodes: FeatureToggle[], targetNode: FeatureToggle): FeatureToggle | null {
+    for (const node of nodes) {
+      if (node.children) {
+        // Check if targetNode is a direct child
+        if (node.children.some(child => child.refid === targetNode.refid)) {
+          return node;
+        }
+        // Recursively search in children
+        const found = this.findParentInNodes(node.children, targetNode);
+        if (found) {
+          return found;
+        }
+      }
+    }
+    return null;
+  }
+
+  /**
+   * Get the root element of a specific node
    */
   getRoot(node: FeatureToggle): FeatureToggle {
-    let search = this.getParent(node);
-    let root = this.getParent(node);
+    let search = this.getParentNode(node);
+    let root = this.getParentNode(node);
     while (search) {
-      search = this.getParent(search);
+      search = this.getParentNode(search);
       if (search) {
         root = search;
       }
     }
     return root || node;
-  }
-
-  /**
-   * It gets respective parent of the specific node
-   * @param node current node
-   */
-  getParent(node: FeatureToggle) {
-    return this.getParentNode(<FlatNode>node);
   }
 }

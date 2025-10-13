@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { ToastrService } from 'ngx-toastr';
-import { BehaviorSubject, Observable } from 'rxjs';
+import { BehaviorSubject, map, Observable } from 'rxjs';
 
 import { FeatureToggle } from '../../../models/FeatureToggle';
 import { FeatureToggleService } from '../../../services/feature-toogle.service';
@@ -29,21 +29,36 @@ export class MenuService {
     private _toasterService: ToastrService,
     private _notification: NotificationService
   ) {
+    this._notification.on('update').subscribe(result => {
+      this.initialize();
+    });
+    this._notification.on('list').subscribe(result => {
+      console.log(result);
+    });
     this.initialize();
     this.dataChange.subscribe(data => {
       this.tree = data;
     });
-    this._notification.on('update').subscribe(result => {
-      this.initialize();
-    });
+
   }
 
   initialize() {
-    this._service.getAll().subscribe(data => {
-      this.tree = data;
-      this.onSelect.next(null);
-      this.dataChange.next(this.tree);
-    });
+    setTimeout(() => {
+      this._service.getAll()
+        .pipe(
+          map(data => {
+
+
+            // Transform the data if needed
+            return data;
+          })
+        )
+        .subscribe(data => {
+          this.tree = data;
+          this.onSelect.next(null);
+          this.dataChange.next(this.tree);
+        });
+    }, 100);
   }
 
   save(node: FeatureToggle | null): any {

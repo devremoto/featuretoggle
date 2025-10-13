@@ -13,7 +13,8 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [AdminLayoutModule, RouterModule.forRoot(routes, { useHash: false })],
+  imports: [AdminLayoutModule, 
+    RouterModule.forRoot(routes, { useHash: false })],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }

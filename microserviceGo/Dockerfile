@@ -1,66 +1,56 @@
-FROM golang
+# Use the official Go image as the base image
+FROM golang:1.22-alpine AS builder
 
+# Set the working directory inside the container
+WORKDIR /app
+
+# Copy go.mod and go.sum files
+COPY go.mod go.sum ./
+
+# Download dependencies
+RUN go mod download
+
+# Copy the source code
+COPY . .
+
+# Build the application
+RUN CGO_ENABLED=0 GOOS=linux go build -a -installsuffix cgo -o main .
+
+# Use a minimal image for the final stage
+FROM alpine:latest
+
+# Install ca-certificates for HTTPS requests (if needed)
+RUN apk --no-cache add ca-certificates
+
+# Create a non-root user
+RUN addgroup -g 1001 -S appgroup && \
+    adduser -u 1001 -S appuser -G appgroup
+
+# Set the working directory
+WORKDIR /root/
+
+# Copy the binary from the builder stage
+COPY --from=builder /app/main .
+
+# Change ownership of the binary
+RUN chown appuser:appgroup main
+
+# Switch to non-root user
+USER appuser
+
+# Define build arguments with default values
 ARG port=8085
 ARG redis_port=6379
-ARG redis_server="ft-redis"
+ARG REDIS_SERVER=localhost
 
-ENV PORT $port
-ENV REDIS_PORT $redis_port
-ENV REDIS_SERVER $redis_server
+# Expose the port the app runs on (using the build argument)
+EXPOSE ${port}
 
-ADD . /go/src/featuretoggle
+# Set environment variables with fallbacks to build arguments
+ENV PORT=${port}
+ENV GO_PORT=${port}
+ENV REDIS_SERVER=${REDIS_SERVER}
+ENV REDIS_PORT=${redis_port}
 
-RUN if [ ! -f go.mod ]; then go mod init featuretoggle; fi
-RUN go get github.com/redis/go-redis/v9@latest \
-    && go get github.com/gorilla/mux@v1.8.1 \
-    && go mod download
-
-#RUN go install featuretoggle
-
-ENTRYPOINT /go/bin/featuretoggle
-
-EXPOSE $port
-
-
-# FROM golang:1.22 AS builder
-# WORKDIR /app
-
-# ARG port=8085
-# ARG redis_port=6379
-# ARG redis_server="ft-redis"
-
-# ENV PORT=${port} \
-#     REDIS_PORT=${redis_port} \
-#     REDIS_SERVER=${redis_server}
-
-# # Copy everything (handles repos without go.mod/go.sum gracefully)
-# COPY . .
-
-# # Initialize module if missing (adjust module path if you want)
-# RUN if [ ! -f go.mod ]; then go mod init featuretoggle; fi
-# # add required deps explicitly to avoid tidy surprises
-# RUN go get github.com/redis/go-redis/v9@latest \
-#     && go get github.com/gorilla/mux@v1.8.1 \
-#     && go mod download
-
-# # Build (adjust path if main isn't at repo root)
-# RUN CGO_ENABLED=0 GOOS=linux GOARCH=amd64 \
-#     go build -trimpath -ldflags="-s -w" -o /src/featuretoggle .
-
-# # ---- Runtime stage ----
-# FROM gcr.io/distroless/static-debian12:nonroot
-# WORKDIR /app
-
-# ARG port=8085
-# ARG redis_port=6379
-# ARG redis_server="ft-redis"
-# ENV PORT=${port} \
-#     REDIS_PORT=${redis_port} \
-#     REDIS_SERVER=${redis_server}
-
-# COPY --from=builder /out/featuretoggle /app/featuretoggle
-# EXPOSE ${port}
-# USER nonroot:nonroot
-# ENTRYPOINT ["/app/featuretoggle"]
-
-
+# Command to run the application
+CMD ["./main"]

@@ -5,18 +5,23 @@ var DB_URL = process.env.DB_URL || consts.DB_URL;
 const mongoConnection = {
     createConnection: () => {
         return new Promise((resolve, reject) => {
+            console.log(`Attempting to connect to MongoDB at: ${DB_URL}`);
             let objConn = {}
             mongoose.connect(
                 DB_URL,
-                { useNewUrlParser: true },
-                (error) => {
-                    if (error) {
-                        return reject(objConn);
-                    } else {
-                        return resolve(objConn)
-                    }
+                {
+                    useNewUrlParser: true,
+                    useUnifiedTopology: true,
+                    serverSelectionTimeoutMS: 5000, // Timeout after 5s instead of 30s
+                    socketTimeoutMS: 45000, // Close sockets after 45 seconds of inactivity
                 }
-            );
+            ).then(() => {
+                console.log('MongoDB connected successfully');
+                resolve(objConn);
+            }).catch((error) => {
+                console.error('MongoDB connection error:', error.message);
+                reject(error);
+            });
         })
     },
     add: async (model, data) => {

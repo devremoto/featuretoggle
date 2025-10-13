@@ -1,25 +1,40 @@
-import { NgModule, NO_ERRORS_SCHEMA } from '@angular/core';
-import { SharedModule } from '../shared/shared.module';
+import { CUSTOM_ELEMENTS_SCHEMA, NgModule, NO_ERRORS_SCHEMA } from '@angular/core';
 import { PageTitleComponent } from './page-title/page-title.component';
-import { LibModule } from '../shared/libModule.module';
 import { DialogComponent } from './dialog/dialog.component';
 import { DialogService } from './dialog/dialog.service';
 import { DirectivesModule } from '../directives/directives.module';
+import { BreadcrumbsComponent } from './breadcrumb/breadcrumb.component';
+import { TreeViewComponent } from './tree-view/tree-view.component';
+import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
+import { RouterModule } from '@angular/router';
+import { DatePicker } from './date-picker/date-picker';
+import { NgbAlertModule, NgbDatepickerModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
     imports: [
-        SharedModule,
-        LibModule,
-        DirectivesModule
+        CommonModule,
+        FormsModule,
+        DirectivesModule,
+        RouterModule,
+        NgbDatepickerModule,
+        NgbAlertModule
     ],
     declarations: [
         PageTitleComponent,
-        DialogComponent
+        DialogComponent,
+        BreadcrumbsComponent,
+        TreeViewComponent,
+        DatePicker
     ],
     exports: [
         PageTitleComponent,
-        DialogComponent
+        DialogComponent,
+        BreadcrumbsComponent,
+        TreeViewComponent,
+        DatePicker
     ],
     providers: [DialogService],
+    schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
 export class ComponentsModule { }

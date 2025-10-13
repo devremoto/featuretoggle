@@ -1,43 +1,16 @@
-<div class="card">
-  <div class="card-header">
-    menu
-  </div>
-  <div class="card-body">
+<div class="card v100">
+  <div class="card-header row">
     <div (click)="addFeature()" ngbTooltip="add new feature">
       <em class="fa fa-plus fa-sm"></em>
       <span style="cursor:pointer">add new feature</span>
     </div>
-    <mat-tree [dataSource]="dataSource" [treeControl]="treeControl">
-      <mat-tree-node *matTreeNodeDef="let node" matTreeNodePadding>
-        <em
-          *ngIf="node!.children && node!.children!.length"
-          class="fa"
-          matTreeNodeToggle
-          [attr.aria-label]="'toggle ' + node.name"
-          [ngClass]="{
-            'fa-angle-down': treeControl.isExpanded(node),
-            'fa-angle-right': !treeControl.isExpanded(node)
-          }"
-        ></em>
+  </div>
+  <div class="card-body">
 
-        <span
-          (click)="selectNode(node)"
-          ngbTooltip="edit feature [{{ node.name }}]"
-          >{{ node.name }}</span
-        >
-        <em
-          class="fa fa-plus fa-sm"
-          (click)="addNewItem(node)"
-          placement="top"
-          ngbTooltip="add feature in: [{{ node.name }}]"
-        ></em>
-        <em
-          class="fa fa-trash red"
-          (click)="deleteNode(node)"
-          placement="right"
-          ngbTooltip="remove feature [{{ node.name }}]"
-        ></em>
-      </mat-tree-node>
-    </mat-tree>
+    <app-tree-view
+      [data]="treeData"
+      (nodeSelected)="selectNode($event)"
+      (nodeDeleted)="deleteNode($event)"
+      (nodeAdded)="addNewItem($event)"></app-tree-view>
   </div>
 </div>

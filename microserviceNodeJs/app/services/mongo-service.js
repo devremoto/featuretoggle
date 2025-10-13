@@ -2,12 +2,12 @@ const JL = require('jsnlog').JL;
 const repository = require('../infra/repositories/mongo-repository');
 
 module.exports = {
-    list: async () => {
-        return await repository.getAll();
+    list: async (socketIo) => {
+        return await repository.getAll(socketIo);
     },
 
-    getByName: async name => {
-        const result = await repository.find({ query: { name } })
+    getByName: async (name, socketIo) => {
+        const result = await repository.find({ query: { name } });
         if (result.length == 1) {
             return result[0];
         } else if (result.length <= 0) {
@@ -49,7 +49,7 @@ module.exports = {
     },
 
     delete: async (id, socketIo) => {
-        const search = await repository.find({ query: { _id: id } })
+        const search = await repository.find({ query: { _id: id } });
         if (search) {
             const result = await repository.delete(id, socketIo);
             return result;

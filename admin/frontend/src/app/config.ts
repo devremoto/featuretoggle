@@ -14,22 +14,22 @@ export class Host {
 }
 export let baseApiAddress = `${environment.HOST}:${environment.MS_MONGO_PORT}`;
 
-@Injectable()
+@Injectable({ providedIn: 'root' })
 export class Config {
   siteTile = `FEATURE TOGGLE`;
   host: Host = new Host();
 
-  useAuthorityServer = true;
+  useAuthorityServer = environment.USE_AUTHORITY_SERVER;
   siteUrl = `${environment.HOST}:${environment.FRONT_PORT}`;
-  apiAddress = `${baseApiAddress}/featuretoggle/v1/`;
-  authorityAddress = `${environment.HOST}:${environment.STS_PORT}`;
+  apiAddress = `${baseApiAddress}/`;
+  authorityAddress = `${environment.STS_SERVER}`;
 
   iss: string = this.authorityAddress;
   server: string = this.authorityAddress;
   redirect_url: string = this.siteUrl + '/callback';
   jwks_url: string =
     this.authorityAddress + '/.well-known/openid-configuration/jwks';
-  client_id = 'feature_toggle_admin';
+  client_id = environment.CLIENT_ID;
   response_type = 'id_token token';
   scope = 'openid profile offline_access roles feature_toggle_api';
   post_logout_redirect_uri: string = this.siteUrl + '/callback';

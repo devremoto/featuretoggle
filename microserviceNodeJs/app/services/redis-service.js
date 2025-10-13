@@ -11,13 +11,13 @@ const redisService = {
 
         let element = JSON.parse(JSON.stringify(el));
         while (element) {
-            this.fill(element);
+            redisService.fill(element);
             if (element.children) {
                 element.children.forEach(obj => {
                     if (!element.enabled) {
                         obj.enabled = false;
                     }
-                    this.parse(obj);
+                    redisService.parse(obj);
                 });
             }
             element = null;
@@ -36,11 +36,11 @@ const redisService = {
         delete value.__v;
         delete value.expandable;
 
-        if (!this.flatTree.find(x => x.key == key)) {
+        if (!redisService.flatTree.find(x => x.key == key)) {
             if (value.children) {
                 delete value.children;
             }
-            this.flatTree.push({
+            redisService.flatTree.push({
                 key,
                 value
             });
@@ -70,14 +70,14 @@ const redisService = {
         });
     },
 
-    deleteAll: async () => await this.deleteTree(),
+    deleteAll: async () => await redisService.deleteTree(),
 
     syncList: async listFromMongo => {
         JL('redis-service:sync').info('init');
 
         try {
             JL('redis-service:sync').info('init promisse');
-            await this.deleteAll();
+            await redisService.deleteAll();
         } catch (error) {
             const errorMessage = `error deleting all keys: ${JSON.stringify(error)}`
             JL('redis-service:sync').error(errorMessage);
@@ -85,12 +85,12 @@ const redisService = {
         };
 
         JL('redis-service:sync').info('delete all');
-        this.flatTree = [];
+        redisService.flatTree = [];
         listFromMongo.forEach(nodeElement => {
-            this.parse(nodeElement);
+            redisService.parse(nodeElement);
         });
         try {
-            const result = await this.populateRedis(this.flatTree)
+            const result = await redisService.populateRedis(redisService.flatTree)
             JL('redis-service:sync').info(`OK: ${JSON.stringify(result)}`);
             return result;
         } catch (error) {

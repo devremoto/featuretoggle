@@ -4,7 +4,7 @@ import { HttpClient } from '@angular/common/http';
 import { Config } from '../config';
 
 
-@Injectable()
+@Injectable({  providedIn: 'root'})
 export class HttpService {
   options: any;
   constructor(

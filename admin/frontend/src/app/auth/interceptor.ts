@@ -18,7 +18,7 @@ export class AuthInterceptor implements HttpInterceptor {
     this._auth.onLogout.subscribe(() => {
       this.headers.delete('Authorization');
     });
-    console.log(this._config);
+    //console.log(this._config);
   }
 
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {

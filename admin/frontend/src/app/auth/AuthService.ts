@@ -1,4 +1,4 @@
-import { Injectable, EventEmitter } from '@angular/core';
+import { Injectable, EventEmitter, Inject } from '@angular/core';
 import { Router } from '@angular/router';
 import { Config } from '../config';
 import { SessionStorageService } from '../shared/util/session-storage.service';
@@ -19,11 +19,10 @@ export class AuthService {
   userManager: UserManager;
   user: User|null = null;
   logoutUrl: string | null = null;
-
   constructor(
-    private _config: Config,
-    private _router: Router,
-    private _storage: SessionStorageService
+    @Inject(Router) private _router: Router,
+    @Inject(SessionStorageService) private _storage: SessionStorageService,
+    @Inject(Config) private _config: Config
   ) {
     this._localStorage = this._storage.localStorage;
     this._sessionStorage = this._storage.sessionStorage;

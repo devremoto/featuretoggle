@@ -1,16 +1,22 @@
 FROM node:alpine
 
-
 # Create app directory
 WORKDIR /usr/src/app
-ARG port=5000
-ARG redis_port=6379
 
-ENV DB_URL "mongodb://ft-mongodb:27017/featuretoggledb"
-ENV REDIS_SERVER "ft-redis"
-ENV REDIS_PORT  $redis_port
+# Accept build arguments and set default values if not provided
+ARG MONGO_PORT=27027
+ARG REDIS_SERVER=ft-redis
+ARG REDIS_PORT=6379
+ARG MS_MONGO_PORT=5050
 
-ENV PORT $port
+# Set environment variables from build arguments
+ENV MONGO_PORT=${MONGO_PORT}
+ENV DB_URL="mongodb://ft-mongodb:27017/featuretoggledb"
+ENV REDIS_SERVER=${REDIS_SERVER}
+ENV REDIS_PORT=${REDIS_PORT}
+ENV MS_MONGO_PORT=${MS_MONGO_PORT}
+
+ENV MS_MONGO_PORT=${MS_MONGO_PORT:-5050}
 
 # Install app dependencies
 # A wildcard is used to ensure both package.json AND package-lock.json are copied
@@ -24,9 +30,9 @@ RUN npm install
 # Bundle app source
 COPY . .
 
-EXPOSE $port
+EXPOSE ${MS_MONGO_PORT:-5050}
 CMD [ "npm", "start" ]
 
 #To build and run this app on docker, execute the following commands
 #docker build -t Arquivo.img.node .
-#docker run -d -p 5000:5000 --name Arquivo.container.node Arquivo.img.node
+#docker run -d -p 5050:5050 --name Arquivo.container.node Arquivo.img.node

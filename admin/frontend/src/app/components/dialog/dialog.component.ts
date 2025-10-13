@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Inject } from '@angular/core';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
@@ -14,7 +14,7 @@ export class DialogComponent implements OnInit {
   @Input() callback: Function = () => {};
   @Input() windowClass: string = '';
 
-  constructor(public activeModal: NgbActiveModal) { }
+  constructor(@Inject(NgbActiveModal) public activeModal: NgbActiveModal) { }
 
   ngOnInit() {
   }

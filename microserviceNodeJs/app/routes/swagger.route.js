@@ -10,7 +10,7 @@ module.exports = function (app) {
             version: '1.0.0',
             description: 'Arquivo'
         },
-        basePath: app.urlPrefix
+        basePath: '/'
     };
 
     // options for the swagger docs

@@ -1,0 +1,98 @@
+basePath: /
+definitions:
+  main.data:
+    properties:
+      key:
+        type: string
+      value: {}
+    type: object
+  main.jsonErr:
+    properties:
+      code:
+        type: integer
+      text:
+        type: string
+    type: object
+host: localhost:8085
+info:
+  contact:
+    email: support@swagger.io
+    name: API Support
+    url: http://www.swagger.io/support
+  description: This is a feature toggle microservice API
+  license:
+    name: Apache 2.0
+    url: http://www.apache.org/licenses/LICENSE-2.0.html
+  termsOfService: http://swagger.io/terms/
+  title: Feature Toggle API
+  version: "1.0"
+paths:
+  /feature:
+    post:
+      consumes:
+      - application/json
+      description: Create a new feature toggle in Redis
+      parameters:
+      - description: Feature Toggle Data
+        in: body
+        name: feature
+        required: true
+        schema:
+          $ref: '#/definitions/main.data'
+      produces:
+      - application/json
+      responses:
+        "201":
+          description: Created
+          schema:
+            $ref: '#/definitions/main.data'
+        "422":
+          description: Unprocessable Entity
+          schema:
+            type: string
+      summary: Create a new feature
+      tags:
+      - features
+  /feature/:
+    get:
+      consumes:
+      - application/json
+      description: Get all feature toggles from Redis
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/main.data'
+            type: array
+      summary: Get all features
+      tags:
+      - features
+  /feature/{key}:
+    get:
+      consumes:
+      - application/json
+      description: Get a specific feature toggle by its key
+      parameters:
+      - description: Feature Key
+        in: path
+        name: key
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/main.data'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/main.jsonErr'
+      summary: Get feature by key
+      tags:
+      - features
+swagger: "2.0"

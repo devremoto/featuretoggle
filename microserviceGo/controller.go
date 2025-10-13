@@ -4,7 +4,6 @@ import (
 	"encoding/json"
 	"fmt"
 	"io"
-	"io/ioutil"
 	"net/http"
 	"strings"
 
@@ -37,7 +36,6 @@ func fill(key string) string {
 
 // Find - It finds feature base on key
 // key
-//
 func Find(key string) interface{} {
 	var feat interface{}
 	json.Unmarshal([]byte(fill(strings.Replace(key, "+", " ", -1))), &feat)
@@ -45,7 +43,6 @@ func Find(key string) interface{} {
 }
 
 // All - It returns all features on redis
-//
 func All() interface{} {
 	var arr []string
 	var feat []interface{}
@@ -62,13 +59,20 @@ func All() interface{} {
 }
 
 // Set - It sets data on redis
-//
 func Set(data data) {
 	conn.set(data.Key, data.Value)
 }
 
-// GetByKey - It tries to find a feature base on key
-//
+// GetByKey godoc
+// @Summary Get feature by key
+// @Description Get a specific feature toggle by its key
+// @Tags features
+// @Accept  json
+// @Produce  json
+// @Param key path string true "Feature Key"
+// @Success 200 {object} data
+// @Failure 404 {object} jsonErr
+// @Router /feature/{key} [get]
 func GetByKey(w http.ResponseWriter, r *http.Request) {
 	vars := mux.Vars(r)
 	key := vars["key"]
@@ -90,8 +94,14 @@ func GetByKey(w http.ResponseWriter, r *http.Request) {
 
 }
 
-// GetAll - It returns all features on redis
-//
+// GetAll godoc
+// @Summary Get all features
+// @Description Get all feature toggles from Redis
+// @Tags features
+// @Accept  json
+// @Produce  json
+// @Success 200 {array} data
+// @Router /feature/ [get]
 func GetAll(w http.ResponseWriter, r *http.Request) {
 
 	result := All()
@@ -103,14 +113,20 @@ func GetAll(w http.ResponseWriter, r *http.Request) {
 
 }
 
-// Create - It creates a feture on redis
+// Create godoc
+// @Summary Create a new feature
+// @Description Create a new feature toggle in Redis
+// @Tags features
+// @Accept  json
+// @Produce  json
+// @Param feature body data true "Feature Toggle Data"
+// @Success 201 {object} data
+// @Failure 422 {object} string
+// @Router /feature [post]
 func Create(w http.ResponseWriter, r *http.Request) {
 	var toggle data
-	body, err := ioutil.ReadAll(io.LimitReader(r.Body, 1048576))
+	body, err := io.ReadAll(io.LimitReader(r.Body, 1048576))
 	if err != nil {
-		panic(err)
-	}
-	if err := r.Body.Close(); err != nil {
 		panic(err)
 	}
 	if err := json.Unmarshal(body, &toggle); err != nil {
