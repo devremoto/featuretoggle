@@ -1,7 +1,12 @@
 import 'hammerjs';
-import { enableProdMode, importProvidersFrom } from '@angular/core';
+import { enableProdMode, importProvidersFrom, LOCALE_ID } from '@angular/core';
+import { registerLocaleData } from '@angular/common';
+import localeEn from '@angular/common/locales/en';
 
 import { environment } from './environments/environment';
+
+// Register the default locale
+registerLocaleData(localeEn, 'en');
 import { BrowserModule, bootstrapApplication } from '@angular/platform-browser';
 import { APP_BASE_HREF, CommonModule } from '@angular/common';
 import { SocketService } from './app/services/ISocketService';
@@ -62,6 +67,7 @@ bootstrapApplication(AppComponent, {
       ToastrModule.forRoot(),
       SocketIoModule.forRoot(socketConfig)),
     { provide: APP_BASE_HREF, useValue: '/' },
+    { provide: LOCALE_ID, useValue: 'en' },
     {
       provide: SocketService,
       useClass: environment.useNgxSocket ? NgxSocketService : SocketClientService

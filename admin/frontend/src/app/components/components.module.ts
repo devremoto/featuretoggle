@@ -8,22 +8,22 @@ import { TreeViewComponent } from './tree-view/tree-view.component';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
-import { DatePicker } from './date-picker/date-picker';
+import { DatePicker } from './forms/date-picker/date-picker';
 import { NgbAlertModule, NgbDatepickerModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
     imports: [
-    CommonModule,
-    FormsModule,
-    RouterModule,
-    NgbDatepickerModule,
-    NgbAlertModule,
-    PageTitleComponent,
-    DialogComponent,
-    BreadcrumbsComponent,
-    TreeViewComponent,
-    DatePicker
-],
+        CommonModule,
+        FormsModule,
+        RouterModule,
+        NgbDatepickerModule,
+        NgbAlertModule,
+        PageTitleComponent,
+        DialogComponent,
+        BreadcrumbsComponent,
+        TreeViewComponent,
+        DatePicker
+    ],
     exports: [
         PageTitleComponent,
         DialogComponent,

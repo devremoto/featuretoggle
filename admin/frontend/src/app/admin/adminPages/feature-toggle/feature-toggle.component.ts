@@ -3,7 +3,7 @@ import { Component, ElementRef, inject, OnInit, ViewChild } from '@angular/core'
 import { FormsModule } from '@angular/forms';
 import { NgbCalendar, NgbDate, NgbDateParserFormatter } from '@ng-bootstrap/ng-bootstrap';
 
-import { DatePicker } from '../../../components/date-picker/date-picker';
+import { DatePicker } from '../../../components/forms/date-picker/date-picker';
 import { Environment } from '../../../models/Environment';
 import { FeatureToggle } from '../../../models/FeatureToggle';
 import { User } from '../../../models/User';
