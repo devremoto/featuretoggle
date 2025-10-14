@@ -1,11 +1,12 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { FeatureToggle } from '../../models/FeatureToggle';
+import {  NgClass } from '@angular/common';
 
 @Component({
     selector: 'app-tree-view',
     templateUrl: './tree-view.component.html',
     styleUrls: ['./tree-view.component.css'],
-    standalone: false
+    imports: [ NgClass, ]
 })
 export class TreeViewComponent {
     @Input() data: FeatureToggle[] = [];

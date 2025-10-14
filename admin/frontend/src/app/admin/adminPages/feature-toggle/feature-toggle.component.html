@@ -4,38 +4,49 @@
   </div>
   <div class="col-8 " *ngIf="selectedNode">
     <div class="card v100">
-      <div class="card-header row">
-        <div class="col-3">
-          <label for="nodeName">Name</label>
-          <input
-            class="form-control"
-            id="nodeName"
-            [(ngModel)]="selectedNode.name"
-            #nodeName
-            placeholder="Name" />
+      <div class="card-header">
+
+        <div class="row row-cols-lg-auto g-3 align-items-center">
+          <div class="col-auto">
+            <label class="sr-only" for="nodeName">Name</label>
+            <input
+              class="form-control"
+              title="Feature name"
+              id="nodeName"
+              [(ngModel)]="selectedNode.name"
+              #nodeName
+              placeholder="Name" />
+          </div>
+          <div class="col-auto">
+            <app-date-picker
+              title="Feature expiration"
+              [(ngModel)]="selectedNode!.expiration"
+              [allowClear]="true"
+              [format]="'dd/MM/yyyy'"
+              [placeholder]="'Select the expiration date'"
+              id="nodeExpiration"></app-date-picker>
+          </div>
+          <div class="col-2">
+            <div class="form-check">
+              <input type="checkbox"
+                role="button"
+                class="form-check-input offset2"
+                id="nodeEnabled"
+                [(ngModel)]="selectedNode!.enabled" />
+              <label class="form-check-label" for="nodeEnabled" role="button">
+                {{ selectedNode.enabled ? 'Enabled' : 'Disabled' }}
+              </label>
+
+            </div>
+          </div>
+          <div class="col-auto">
+            <button class="btn btn-success"
+              (click)="saveForm(selectedNode)">
+              Save
+            </button>
+          </div>
         </div>
-        <div class="col-3">
-          <app-date-picker
-            [(ngModel)]="selectedNode!.expiration"
-            id="nodeExpiration"
-            [label]="'Expiration'"
-            placeholder="Expiration"></app-date-picker>
-        </div>
-        <div class="col-3">
-          <!-- add the space offset for nodeEnabled   -->
-          <span class="offset2">&nbsp;</span>x
-          <label for="nodeEnabled">&nbsp;</label>
-          <input type="checkbox"
-            class="form-check-input offset2"
-            id="nodeEnabled"
-            [(ngModel)]="selectedNode!.enabled" /><label
-            for="nodeEnabled">Enabled</label>
-        </div>
-        <div class="col-3">
-          <button class="btn btn-success" (click)="saveForm(selectedNode)">
-            Save
-          </button>
-        </div>
+
       </div>
       <div class="card-body">
         <div class="row">

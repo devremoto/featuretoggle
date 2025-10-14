@@ -4,10 +4,7 @@ import { Router } from '@angular/router';
 import { LoginModel } from '../models/loginModel';
 import { User } from 'oidc-client';
 
-@Component({
-  templateUrl: './callback.html',
-  standalone: false
-})
+@Component({ templateUrl: './callback.html' })
 export class LoginCallBackComponent implements OnInit {
   user: User | null = null;
   loginModel: LoginModel = new LoginModel();

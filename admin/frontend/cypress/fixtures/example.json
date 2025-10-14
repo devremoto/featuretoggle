@@ -1,0 +1,9 @@
+{
+  "name": "example",
+  "description": "This is an example fixture for testing.",
+  "data": {
+    "id": 1,
+    "title": "Sample Title",
+    "body": "This is a sample body for the example fixture."
+  }
+}

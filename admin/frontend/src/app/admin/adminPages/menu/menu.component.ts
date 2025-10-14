@@ -1,45 +1,45 @@
 import { Component } from '@angular/core';
 import { ToastrService } from 'ngx-toastr';
 
+import { TreeViewComponent } from '../../../components/tree-view/tree-view.component';
 import { FeatureToggle } from '../../../models/FeatureToggle';
 import { MenuService } from './menu.service';
-
 /**
  * Feature Toggle Menu Component with Custom Tree View
  * Replaces the Angular Material Tree with a simple custom tree component
  */
-
 @Component({
   selector: 'app-menu',
   templateUrl: './menu.component.html',
   styleUrls: ['./menu.component.css'],
-  standalone: false,
   animations: [],
+  imports: [TreeViewComponent],
 })
 export class MenuComponent {
-  /** Tree data source */
-  treeData: FeatureToggle[] = [];
-
-  /** Currently selected node */
+  //#region Fields · public
   selectedNode: FeatureToggle | null = null;
+  treeData: FeatureToggle[] = [];
+  //#endregion Fields · public
 
+  //#region Constructor
   constructor(
     private database: MenuService,
     private _toasterService: ToastrService
   ) {
-    // Subscribe to save events
+
     database.onSave.subscribe(data => {
       if (data) {
         this.saveNode(data as FeatureToggle);
       }
     });
 
-    // Subscribe to data changes
     database.dataChange.subscribe(data => {
       this.treeData = data;
     });
   }
+  //#endregion Constructor
 
+  //#region Methods · public
   addFeature() {
     const node = new FeatureToggle();
     node.name = `feature ${this.treeData.length + 1}`;
@@ -50,11 +50,9 @@ export class MenuComponent {
     this.database.addFeature(node);
   }
 
-  /** Add a new child node to the specified parent */
   addNewItem(parentNode: FeatureToggle) {
     const newNode = new FeatureToggle();
     newNode.level = (parentNode.level ?? 0) + 1;
-
     if (!this.validateInsert(newNode)) {
       return;
     }
@@ -68,7 +66,61 @@ export class MenuComponent {
     this.database.addNode(root);
   }
 
-  /** Save the node to database */
+  containsRefId(array: FeatureToggle[], refid: string): number {
+    const index = array.findIndex(x => x.refid === refid);
+    return index;
+  }
+
+  deleteNode(node: FeatureToggle) {
+    const parentNode = this.getParentNode(node);
+    if (parentNode && parentNode.children) {
+      const index = parentNode.children.findIndex(x => x.refid === node.refid);
+      if (index >= 0) {
+        parentNode.children.splice(index, 1);
+        const root = this.getRoot(parentNode);
+        this.database.deleteNode(root);
+      }
+    } else {
+
+      const index = this.treeData.findIndex(x => x.refid === node.refid);
+      if (index >= 0) {
+        this.treeData.splice(index, 1);
+        this.database.deleteFeature(node);
+      }
+    }
+  }
+
+  findNodeByName(nodes: FeatureToggle[], name: string): FeatureToggle | null {
+    for (const node of nodes) {
+      if (node.name === name) {
+        return node;
+      }
+      if (node.children) {
+        const found = this.findNodeByName(node.children, name);
+        if (found) {
+          return found;
+        }
+      }
+    }
+    return null;
+  }
+
+  getParentNode(targetNode: FeatureToggle): FeatureToggle | null {
+    return this.findParentInNodes(this.treeData, targetNode);
+  }
+
+  getRoot(node: FeatureToggle): FeatureToggle {
+    let search = this.getParentNode(node);
+    let root = this.getParentNode(node);
+    while (search) {
+      search = this.getParentNode(search);
+      if (search) {
+        root = search;
+      }
+    }
+    return root || node;
+  }
+
   saveNode(node: FeatureToggle) {
     if (!this.validateSave(node)) {
       return;
@@ -83,15 +135,22 @@ export class MenuComponent {
           }
           const root = this.getRoot(parentNode);
           this.database.saveNode(root, node);
+          this.selectNode(node);
         }
       } else {
         const index = this.containsRefId(this.treeData, node.refid ?? '');
         if (index >= 0) {
           this.treeData[index] = node;
           this.database.saveNode(node, node);
+          this.selectNode(node);
         }
       }
     }
+  }
+
+  selectNode(node: FeatureToggle) {
+    this.selectedNode = { ...node };
+    this.database.onSelect.next(this.selectedNode);
   }
 
   validateInsert(node: FeatureToggle): boolean {
@@ -118,69 +177,17 @@ export class MenuComponent {
     }
     return true;
   }
+  //#endregion Methods · public
 
-  containsRefId(array: FeatureToggle[], refid: string): number {
-    const index = array.findIndex(x => x.refid === refid);
-    return index;
-  }
-
-  deleteNode(node: FeatureToggle) {
-    const parentNode = this.getParentNode(node);
-    if (parentNode && parentNode.children) {
-      const index = parentNode.children.findIndex(x => x.refid === node.refid);
-      if (index >= 0) {
-        parentNode.children.splice(index, 1);
-        const root = this.getRoot(parentNode);
-        this.database.deleteNode(root);
-      }
-    } else {
-      // Root level node
-      const index = this.treeData.findIndex(x => x.refid === node.refid);
-      if (index >= 0) {
-        this.treeData.splice(index, 1);
-        this.database.deleteFeature(node);
-      }
-    }
-  }
-
-  selectNode(node: FeatureToggle) {
-    this.selectedNode = { ...node };
-    this.database.onSelect.next(this.selectedNode);
-  }
-
-  /**
-   * Find a node by name in the tree (recursive search)
-   */
-  findNodeByName(nodes: FeatureToggle[], name: string): FeatureToggle | null {
-    for (const node of nodes) {
-      if (node.name === name) {
-        return node;
-      }
-      if (node.children) {
-        const found = this.findNodeByName(node.children, name);
-        if (found) {
-          return found;
-        }
-      }
-    }
-    return null;
-  }
-
-  /**
-   * Find the parent node of a specific node
-   */
-  getParentNode(targetNode: FeatureToggle): FeatureToggle | null {
-    return this.findParentInNodes(this.treeData, targetNode);
-  }
-
+  //#region Methods · private
   private findParentInNodes(nodes: FeatureToggle[], targetNode: FeatureToggle): FeatureToggle | null {
     for (const node of nodes) {
       if (node.children) {
-        // Check if targetNode is a direct child
+
         if (node.children.some(child => child.refid === targetNode.refid)) {
           return node;
         }
-        // Recursively search in children
+
         const found = this.findParentInNodes(node.children, targetNode);
         if (found) {
           return found;
@@ -189,19 +196,5 @@ export class MenuComponent {
     }
     return null;
   }
-
-  /**
-   * Get the root element of a specific node
-   */
-  getRoot(node: FeatureToggle): FeatureToggle {
-    let search = this.getParentNode(node);
-    let root = this.getParentNode(node);
-    while (search) {
-      search = this.getParentNode(search);
-      if (search) {
-        root = search;
-      }
-    }
-    return root || node;
-  }
+  //#endregion Methods · private
 }

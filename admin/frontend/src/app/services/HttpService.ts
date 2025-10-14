@@ -16,7 +16,6 @@ export class HttpService {
     if (url.indexOf('://') === -1 && usePrefix) {
       return this.config.apiAddress + url;
     }
-    console.log(this.config)
     return url;
   }
 

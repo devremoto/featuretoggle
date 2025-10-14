@@ -5,10 +5,10 @@
 
 <div class="input-group">
     <input
+        title="{{placeholder || 'Select date'}}"
         class="form-control"
-        placeholder="yyyy-mm-dd"
         name="dp"
-        [ngModel]="selectedDate"
+        [ngModel]="displayDate"
         (ngModelChange)="onDateSelect($event)"
         [showWeekNumbers]="showWeekNumbers"
         [autoClose]="autoClose"
@@ -16,15 +16,28 @@
         [minDate]="minDate"
         [maxDate]="maxDate"
         [disabled]="disabled"
+        [placeholder]="placeholder"
         ngbDatepicker
         #d="ngbDatepicker"
         readonly />
+    @if(allowClear){
     <button
-        title="Select date"
+        title="{{!selectedDate ? 'No date selected' : 'Clear date'}}"
+        [disabled]="!selectedDate || disabled"
+        [ngClass]="{'text-info': selectedDate, 'text-body-tertiary': !selectedDate}"
+        class="input-group-text"
+        (click)="clearDate()"
+        type="button">
+        <span class="fa fa-times"></span>
+    </button>
+    }
+    <button
+        title="Open calendar"
         class="input-group-text"
         (click)="d.toggle()"
         [disabled]="disabled"
         type="button">
-        <span class="fa fa-calendar"></span>
+        <span class="fa fa-calendar" aria-hidden="true"></span>
+        <span class="visually-hidden">Open calendar</span>
     </button>
 </div>

@@ -2,10 +2,7 @@ import { Directive, ElementRef, Input, OnInit, AfterViewInit } from '@angular/co
 declare var ProgressBar: any;
 declare var $: any;
 
-@Directive({
-  selector: '[appProgressCircle]',
-  standalone: false
-})
+@Directive({ selector: '[appProgressCircle]' })
 export class ProgressCircleDirective implements OnInit, AfterViewInit {
   @Input('appProgressCircle') options: any = {
     progressbar: 'circle',

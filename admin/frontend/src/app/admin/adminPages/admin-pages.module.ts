@@ -8,16 +8,16 @@ import { MenuComponent } from './menu/menu.component';
 import { FormsModule } from '@angular/forms';
 
 @NgModule({
-  imports: [
-    CommonModule,
-    FormsModule,
-    ComponentsModule,
-    AdminPagesRoutingModule
-  ],
-  declarations: [FeatureToggleComponent, MenuComponent],
-  providers: [],
-  exports: [MenuComponent],
-  schemas: [CUSTOM_ELEMENTS_SCHEMA]
+    imports: [
+        CommonModule,
+        FormsModule,
+        ComponentsModule,
+        AdminPagesRoutingModule,
+        FeatureToggleComponent, MenuComponent
+    ],
+    providers: [],
+    exports: [MenuComponent],
+    schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
 export class AdminPagesModule {
   constructor() { }

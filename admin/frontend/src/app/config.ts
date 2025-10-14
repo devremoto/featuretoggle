@@ -9,7 +9,6 @@ export class Host {
     this.name = environment.HOST;
     this.port = window.location.port;
     this.protocol = window.location.protocol;
-    console.log(environment);
   }
 }
 export let baseApiAddress = `${environment.HOST}:${environment.MS_MONGO_PORT}`;

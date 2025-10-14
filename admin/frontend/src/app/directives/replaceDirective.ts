@@ -1,9 +1,6 @@
 import { Directive, ElementRef, HostListener, Input, OnInit, AfterViewInit } from '@angular/core';
 declare var $: any;
-@Directive({
-    selector: '[replace]',
-    standalone: false
-})
+@Directive({ selector: '[replace]' })
 export class ReplaceDirective implements AfterViewInit {
     userRoles = ['operator'];
 

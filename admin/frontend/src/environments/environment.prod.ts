@@ -13,4 +13,3 @@ export const environment = {
   useNgxSocket: true
 }
 
-console.log('Environment variables:', JSON.stringify(process.env, null, 2));

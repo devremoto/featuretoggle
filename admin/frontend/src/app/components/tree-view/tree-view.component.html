@@ -1,4 +1,5 @@
-<div class="tree-node" *ngFor="let node of data"
+@for (node of data; track node._id) {
+<div class="tree-node" 
     [style.padding-left]="getPaddingLeft()">
     <div class="node-content">
         <!-- Expand/Collapse Icon -->
@@ -48,3 +49,4 @@
     }
 
 </div>
+}

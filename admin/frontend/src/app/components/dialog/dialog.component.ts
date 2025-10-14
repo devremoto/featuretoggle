@@ -1,11 +1,12 @@
 import { Component, OnInit, Input, Inject } from '@angular/core';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
+import { EnterDirective } from '../../directives/enter.directive';
 
 @Component({
-  selector: 'app-dialog',
-  templateUrl: './dialog.component.html',
-  styleUrls: ['./dialog.component.css'],
-  standalone: false
+    selector: 'app-dialog',
+    templateUrl: './dialog.component.html',
+    styleUrls: ['./dialog.component.css'],
+    imports: [EnterDirective]
 })
 export class DialogComponent implements OnInit {
 

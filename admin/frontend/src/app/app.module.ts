@@ -3,9 +3,9 @@ import { HttpClientModule } from '@angular/common/http';
 import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
 import { SocketIoConfig, SocketIoModule } from 'ngx-socket-io';
 import { ToastrModule } from 'ngx-toastr';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { AppRoutingModule } from './app-routing.module';
-import { AppComponent } from './app.component';
 import { AuthModule } from './auth/auth.module';
 import { ComponentsModule } from './components/components.module';
 import { baseApiAddress } from './config';
@@ -13,7 +13,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
 import { NgbDatepickerModule } from '@ng-bootstrap/ng-bootstrap';
 import { SocketClientService } from './services/SocketClientService';
-import { ISocketService, SocketService } from './services/ISocketService';
+import { SocketService } from './services/ISocketService';
 import { NgxSocketService } from './services/NgxSocketService';
 import { environment } from 'src/environments/environment';
 const socketConfig: SocketIoConfig = {
@@ -33,23 +33,24 @@ const socketConfig: SocketIoConfig = {
   }
 };
 @NgModule({
-  declarations: [AppComponent],
+  declarations: [],
   imports: [
     HttpClientModule,
     CommonModule,
     FormsModule,
     NgbDatepickerModule,
     BrowserModule,
+    BrowserAnimationsModule,
     AuthModule,
     ComponentsModule,
     AppRoutingModule,
     ToastrModule.forRoot(),
     SocketIoModule.forRoot(socketConfig)
   ],
-  providers: [{ provide: APP_BASE_HREF, useValue: '/' },
-  { provide: SocketService, useClass: environment.useNgxSocket ? NgxSocketService : SocketClientService }
+  providers: [
+    { provide: APP_BASE_HREF, useValue: '/' },
+    { provide: SocketService, useClass: environment.useNgxSocket ? NgxSocketService : SocketClientService }
   ],
-  bootstrap: [AppComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
 export class AppModule {

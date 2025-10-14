@@ -10,22 +10,20 @@ import { AccountService } from './account.service';
 import { UnauthorizedComponent } from './unauthorized.component';
 
 @NgModule({
-  imports: [
-    RouterModule.forChild([
-
-      { path: 'callback', component: LoginCallBackComponent },
-      { path: 'unauthorized/:id', component: UnauthorizedComponent },
-
-    ])
-  ],
-  providers: [
-    AuthService,
-    CanActivateViaAuthGuard,
-    AccountService,
-    { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
-  ],
-  declarations: [LoginCallBackComponent, UnauthorizedComponent],
-  exports: [LoginCallBackComponent]
+    imports: [
+        RouterModule.forChild([
+            { path: 'callback', component: LoginCallBackComponent },
+            { path: 'unauthorized/:id', component: UnauthorizedComponent },
+        ]),
+        LoginCallBackComponent, UnauthorizedComponent
+    ],
+    providers: [
+        AuthService,
+        CanActivateViaAuthGuard,
+        AccountService,
+        { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
+    ],
+    exports: [LoginCallBackComponent]
 })
 
 export class AuthModule {

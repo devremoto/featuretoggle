@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule, UrlSegment } from '@angular/router';
 import { CanActivateViaAuthGuard } from './auth/CanActivateViaAuthGuard';
-import { AdminLayoutModule } from './admin/_layout/admin-layout.module';
+
 
 const routes: Routes = [
   { path: '', data: { title: 'Home' }, redirectTo: 'admin', pathMatch: 'full' },
@@ -13,7 +13,7 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [AdminLayoutModule, 
+  imports: [
     RouterModule.forRoot(routes, { useHash: false })],
   exports: [RouterModule]
 })

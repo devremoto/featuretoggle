@@ -1,10 +1,6 @@
 import { Directive, ElementRef, HostListener, Input } from '@angular/core';
 
-@Directive({
-    selector: '[claim]',
-    standalone: false
-
-})
+@Directive({ selector: '[claim]' })
 export class ClaimDirective {
 
     @Input('claim') name: string = '';

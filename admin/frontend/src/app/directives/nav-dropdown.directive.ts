@@ -1,9 +1,6 @@
 import { Directive, HostListener, ElementRef } from '@angular/core';
 
-@Directive({
-  selector: '[appNavDropdown]',
-  standalone: false
-})
+@Directive({ selector: '[appNavDropdown]' })
 export class NavDropdownDirective {
 
   constructor(private el: ElementRef) { }
@@ -16,10 +13,7 @@ export class NavDropdownDirective {
 /**
 * Allows the dropdown to be toggled via click.
 */
-@Directive({
-  selector: '[appNavDropdownToggle]',
-  standalone: false
-})
+@Directive({ selector: '[appNavDropdownToggle]' })
 export class NavDropdownToggleDirective {
   constructor(private dropdown: NavDropdownDirective) { }
 

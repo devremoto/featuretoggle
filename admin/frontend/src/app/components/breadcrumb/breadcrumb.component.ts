@@ -1,11 +1,13 @@
 import { Component, ElementRef, Input, OnInit } from '@angular/core';
 import { Breadcrumb } from '../../models/Breadcrumb';
 import { BreadcrumbsService } from './breadcrumbs.service';
+import { NgClass } from '@angular/common';
+import { RouterLink } from '@angular/router';
 
 @Component({
-  selector: '[app-breadcrumbs]',
-  standalone: false,
-  templateUrl: './breadcrumb.component.html'
+    selector: '[app-breadcrumbs]',
+    templateUrl: './breadcrumb.component.html',
+    imports: [NgClass, RouterLink]
 })
 export class BreadcrumbsComponent implements OnInit {
 

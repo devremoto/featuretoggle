@@ -1,9 +1,6 @@
 import { Directive, ElementRef } from '@angular/core';
 declare var window: any;
-@Directive({
-  selector: '[appEnter]',
-  standalone: false
-})
+@Directive({ selector: '[appEnter]' })
 export class EnterDirective {
 
   constructor(private el: ElementRef) {

@@ -1,15 +1,16 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, NO_ERRORS_SCHEMA, OnInit } from '@angular/core';
 
 import { AuthService } from '../../../auth/AuthService';
 import { Config } from 'src/app/config';
+import { RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
+import { NgIf } from '@angular/common';
 
-
-declare var window: any;
 @Component({
     selector: 'app-dashboard',
     templateUrl: './index.component.html',
     styleUrls: ['./index.component.css'],
-    standalone: false
+    schemas: [NO_ERRORS_SCHEMA],
+    imports: [RouterLink, NgIf, RouterLinkActive, RouterOutlet]
 })
 export class IndexComponent implements OnInit {
 

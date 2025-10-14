@@ -18,7 +18,6 @@ export class AuthInterceptor implements HttpInterceptor {
     this._auth.onLogout.subscribe(() => {
       this.headers.delete('Authorization');
     });
-    //console.log(this._config);
   }
 
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
@@ -41,8 +40,7 @@ export class AuthInterceptor implements HttpInterceptor {
           },
           (err: any) => {
             if (err instanceof HttpErrorResponse) {
-              console.log(err.error);
-              // return err.error
+              
               return this.handleRequest(err);
             }
           }));

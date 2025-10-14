@@ -2,7 +2,7 @@ import { CUSTOM_ELEMENTS_SCHEMA, NgModule, NO_ERRORS_SCHEMA } from '@angular/cor
 import { PageTitleComponent } from './page-title/page-title.component';
 import { DialogComponent } from './dialog/dialog.component';
 import { DialogService } from './dialog/dialog.service';
-import { DirectivesModule } from '../directives/directives.module';
+
 import { BreadcrumbsComponent } from './breadcrumb/breadcrumb.component';
 import { TreeViewComponent } from './tree-view/tree-view.component';
 import { CommonModule } from '@angular/common';
@@ -13,20 +13,17 @@ import { NgbAlertModule, NgbDatepickerModule } from '@ng-bootstrap/ng-bootstrap'
 
 @NgModule({
     imports: [
-        CommonModule,
-        FormsModule,
-        DirectivesModule,
-        RouterModule,
-        NgbDatepickerModule,
-        NgbAlertModule
-    ],
-    declarations: [
-        PageTitleComponent,
-        DialogComponent,
-        BreadcrumbsComponent,
-        TreeViewComponent,
-        DatePicker
-    ],
+    CommonModule,
+    FormsModule,
+    RouterModule,
+    NgbDatepickerModule,
+    NgbAlertModule,
+    PageTitleComponent,
+    DialogComponent,
+    BreadcrumbsComponent,
+    TreeViewComponent,
+    DatePicker
+],
     exports: [
         PageTitleComponent,
         DialogComponent,
