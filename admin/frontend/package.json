@@ -11,7 +11,8 @@
     "build-dev": "ng build --configuration development",
     "test": "ng test",
     "lint": "ng lint",
-    "e2e": "ng e2e"
+    "e2e": "ng e2e",
+    "update": "ng update @angular/cdk  @angular/cli  @angular/core --force"
   },
   "private": true,
   "dependencies": {
