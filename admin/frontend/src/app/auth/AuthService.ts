@@ -17,7 +17,7 @@ export class AuthService {
   onLogin: EventEmitter<User> = new EventEmitter();
   onLogout: EventEmitter<string> = new EventEmitter();
   userManager: UserManager;
-  user: User|null = null;
+  user: User | null = null;
   logoutUrl: string | null = null;
   constructor(
     @Inject(Router) private _router: Router,
@@ -75,7 +75,7 @@ export class AuthService {
 
   callBackLogin() {
     this.userManager.signinRedirectCallback().then(
-      (user) => {
+      (user: User) => {
         this.user = user;
         this.onLogin.emit(user);
         const url = this.getCallbackUrl();
@@ -110,7 +110,7 @@ export class AuthService {
 
   callBackRenew(): any {
     this.userManager.signinSilentCallback()
-      .catch((error) => {
+      .catch((error: any) => {
         console.log(error);
       });
   }
@@ -137,7 +137,7 @@ export class AuthService {
     this._sessionStorage.removeItem('callback_url');
   }
 
-  public setLogoutUrl(url:string) {
+  public setLogoutUrl(url: string) {
     this.logoutUrl = url;
     this._sessionStorage.setItem('logout_url', url);
   }

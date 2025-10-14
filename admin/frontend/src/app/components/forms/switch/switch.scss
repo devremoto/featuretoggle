@@ -1,0 +1,57 @@
+@import "bootstrap/scss/functions";
+@import "bootstrap/scss/variables";
+@import "bootstrap/scss/maps";
+
+$focus-ring-width: 0.25rem !default;
+$focus-ring-opacity: 0.25 !default;
+
+$bs-switch-glow-blur: 0.35rem !default;
+$bs-switch-glow-opacity: 0.6 !default;
+
+@mixin _switch-ring($color) {
+  box-shadow: 0 0 0 $focus-ring-width rgba($color, $focus-ring-opacity);
+}
+
+@mixin _switch-glow($color) {
+  box-shadow:
+    0 0 0 $focus-ring-width rgba($color, $focus-ring-opacity),
+    0 0 $bs-switch-glow-blur rgba($color, $bs-switch-glow-opacity);
+}
+
+@each $name, $value in $theme-colors {
+  .form-check-input.switch-#{$name} {
+    border-color: $value;
+
+    &:focus {
+      @include _switch-ring($value);
+    }
+
+    &:checked {
+      @include _switch-glow($value);
+    }
+
+    &:hover {
+      border-color: $value;
+    }
+  }
+
+  .form-check-input.border-#{$name} {
+    &:focus {
+      @include _switch-ring($value);
+    }
+  }
+}
+
+@each $name, $value in $theme-colors {
+  .form-check-input.switch-#{$name} {
+    background-color: $value;
+    border-color: $value;
+
+    &:focus {
+      @include _switch-ring($value);
+    }
+    &:checked {
+      @include _switch-glow($value);
+    }
+  }
+}

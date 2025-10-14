@@ -1,4 +1,4 @@
-import { NgIf, NgFor } from '@angular/common';
+import { NgIf, NgFor, CommonModule } from '@angular/common';
 import { Component, ElementRef, inject, OnInit, ViewChild } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { NgbCalendar, NgbDate, NgbDateParserFormatter } from '@ng-bootstrap/ng-bootstrap';
@@ -9,12 +9,13 @@ import { FeatureToggle } from '../../../models/FeatureToggle';
 import { User } from '../../../models/User';
 import { MenuComponent } from '../menu/menu.component';
 import { MenuService } from '../menu/menu.service';
+import { Switch } from "src/app/components/forms/switch/switch";
 @Component({
   selector: 'app-feature-toggle',
   templateUrl: './feature-toggle.component.html',
   styleUrls: ['./feature-toggle.component.css'],
   providers: [],
-  imports: [MenuComponent, NgIf, FormsModule, DatePicker, NgFor]
+  imports: [CommonModule, MenuComponent, FormsModule, DatePicker, Switch]
 })
 export class FeatureToggleComponent implements OnInit {
   //#region Fields · public

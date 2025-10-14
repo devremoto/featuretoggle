@@ -1,0 +1,13 @@
+<div class="form-check form-switch">
+    <input class="form-check-input switch-{{color}}" type="checkbox"
+        [disabled]="disabled"
+        [ngModel]="isChecked"
+        (ngModelChange)="onToggle($event)"
+        [ngClass]="{'switch-light': !isChecked}"
+        role="button"
+        id="flexSwitchCheckDefault">
+    <label class="form-check-label custom-switch-label"
+        role="button"
+        for="flexSwitchCheckDefault">{{ isChecked ? labelOn : labelOff
+        }}</label>
+</div>

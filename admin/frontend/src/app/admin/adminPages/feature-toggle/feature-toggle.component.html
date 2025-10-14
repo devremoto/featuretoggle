@@ -27,20 +27,17 @@
               id="nodeExpiration"></app-date-picker>
           </div>
           <div class="col-2">
-            <div class="form-check">
-              <input type="checkbox"
-                role="button"
-                class="form-check-input offset2"
-                id="nodeEnabled"
-                [(ngModel)]="selectedNode!.enabled" />
-              <label class="form-check-label" for="nodeEnabled" role="button">
-                {{ selectedNode.enabled ? 'Enabled' : 'Disabled' }}
-              </label>
 
+            <div class="form-check form-switch">
+              <app-switch
+                [(ngModel)]="selectedNode!.enabled"
+                color="success"
+                [labelOn]="'On'"
+                [labelOff]="'Off'" />
             </div>
           </div>
           <div class="col-auto">
-            <button class="btn btn-success"
+            <button class="btn btn-primary" type="button"
               (click)="saveForm(selectedNode)">
               Save
             </button>

@@ -24,4 +24,8 @@
     cursor:pointer
   }
 
-
+.custom-switch-label {
+  cursor: pointer;
+  width: 30px;
+  text-align: center;
+}
