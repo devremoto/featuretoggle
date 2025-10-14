@@ -30,6 +30,21 @@
     if (global === undefined) {
       var global = window;
     }
+    
+    // Suppress Chrome extension runtime errors
+    (function() {
+      const originalError = console.error;
+      console.error = function(...args) {
+        const errorMsg = args[0];
+        if (typeof errorMsg === 'string' && 
+            (errorMsg.includes('runtime.lastError') ||
+             errorMsg.includes('message channel closed') ||
+             errorMsg.includes('Extension context invalidated'))) {
+          return; // Suppress these specific errors
+        }
+        originalError.apply(console, args);
+      };
+    })();
   </script>
 
     <!-- JAVASCRIPT -->

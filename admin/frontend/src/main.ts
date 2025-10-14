@@ -53,6 +53,82 @@ if (environment.production) {
   // Keep console.error for critical issues
 }
 
+// Comprehensive Chrome extension error suppression
+(function () {
+  // Override chrome.runtime if it exists (for extension errors)
+  if (typeof (window as any).chrome !== 'undefined' && (window as any).chrome.runtime) {
+    const originalSendMessage = (window as any).chrome.runtime.sendMessage;
+    (window as any).chrome.runtime.sendMessage = function (...args: any[]) {
+      try {
+        return originalSendMessage.apply(this, args);
+      } catch (error) {
+        // Silently catch chrome extension errors
+        return;
+      }
+    };
+  }
+
+  // Suppress specific console errors
+  const originalConsoleError = console.error;
+  console.error = function (...args: any[]) {
+    const message = args[0];
+    if (typeof message === 'string' &&
+      (message.includes('runtime.lastError') ||
+        message.includes('message port closed') ||
+        message.includes('message channel closed'))) {
+      return; // Don't log these errors
+    }
+    originalConsoleError.apply(console, args);
+  };
+
+  // Suppress window errors
+  window.addEventListener('error', (event) => {
+    const message = event.message || (event.error && event.error.message) || '';
+    if (message.includes('runtime.lastError') ||
+      message.includes('message port closed') ||
+      message.includes('message channel closed') ||
+      message.includes('Extension context invalidated')) {
+      event.preventDefault();
+      event.stopPropagation();
+      return false;
+    }
+  }, true);
+
+  // Suppress unhandled promise rejections
+  window.addEventListener('unhandledrejection', (event) => {
+    const message = (event.reason && event.reason.message) || event.reason || '';
+    if (typeof message === 'string' &&
+      (message.includes('runtime.lastError') ||
+        message.includes('message port closed') ||
+        message.includes('message channel closed'))) {
+      event.preventDefault();
+      return false;
+    }
+  });
+})();
+
+// Suppress Chrome extension runtime errors
+window.addEventListener('error', (event) => {
+  if (event.error && event.error.message &&
+    (event.error.message.includes('runtime.lastError') ||
+      event.error.message.includes('message channel closed') ||
+      event.error.message.includes('Extension context invalidated'))) {
+    event.preventDefault();
+    event.stopPropagation();
+    return false;
+  }
+});
+
+// Suppress unhandled promise rejections from Chrome extensions
+window.addEventListener('unhandledrejection', (event) => {
+  if (event.reason && event.reason.message &&
+    (event.reason.message.includes('runtime.lastError') ||
+      event.reason.message.includes('message channel closed'))) {
+    event.preventDefault();
+    return false;
+  }
+});
+
 bootstrapApplication(AppComponent, {
   providers: [
     importProvidersFrom(
